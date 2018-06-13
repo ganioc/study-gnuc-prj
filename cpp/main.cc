@@ -16,9 +16,12 @@ int main(int nNumberofArgs, char *pszArgs[])
 
     cout << funcNameIt() << endl;
 
-    NameDataSet *nName = new NameDataSet(101);
+    NameDataSet *nName = new NameDataSet(101, "Mike", "John");
 
     nName->print();
+    nName->printId();
+
+    delete nName;
 
     cout << "end" << endl;
     return 0;
