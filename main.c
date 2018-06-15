@@ -53,6 +53,12 @@ int function2(char *string, int num)
 
     return 0;
 }
+int compute_example()
+{
+    int a = function2("", 0);
+    printf("I am compute exmaple : %s\n", __FUNCTION__);
+    return 0;
+}
 int main()
 {
     __label__ something, otherthing;
@@ -88,6 +94,8 @@ int main()
     }
     printf("\n");
     debug("size of int:%lu\n", sizeof(int));
+
+    compute_example();
 
     goto otherthing;
 something:
