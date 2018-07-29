@@ -15,5 +15,7 @@ int main()
     cout << s2 << endl;
     cout << s3 << endl;
 
+    cout <<endl<< s3.size() <<endl;
+
     return 0;
 }
