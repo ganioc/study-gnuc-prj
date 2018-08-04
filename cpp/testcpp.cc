@@ -58,5 +58,15 @@ int main()
     cout << bitvec5 << "-" << bitvec6 << endl;
     cout << bitvec5.size() << "-" << bitvec6.count() << endl;
 
+    int someNum(100);
+    cout << "some number:" << someNum << endl;
+
+    // search value
+    int search_value = 42;
+    vector<int> ivec5(10, -1);
+    // vector<int> vec(12,13,14);
+
+    vector<int> vec = {1, 2,3, 1000, 4, 5};
+
     return 0;
 }

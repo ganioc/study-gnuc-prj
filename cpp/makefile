@@ -9,7 +9,10 @@ VPATH := ./src ./include
 
 .PHONY: clean
 
-all: main testcpp
+all: main testcpp testfan
+
+testfan: testfan.o
+	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
 testcpp: testcpp.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
