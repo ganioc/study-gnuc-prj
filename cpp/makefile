@@ -25,4 +25,4 @@ main: main.o NameDataSet.o
 
 clean:
 	rm -f *.o
-	rm -f main testcpp
+	rm -f main testcpp testfan

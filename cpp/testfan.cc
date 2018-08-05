@@ -13,9 +13,21 @@ int main()
     vector<char>::const_iterator iter;
     iter = find(vec.begin(), vec.end(), search_value);
 
-    cout << "The value " << search_value 
-        << ((iter == vec.end())? " is not present.":" is present.")
-        << endl;
+    cout << "The value " << search_value
+         << ((iter == vec.end()) ? " is not present." : " is present.")
+         << endl;
+
+    for (int i : vec)
+    {
+        cout << i << ";" << endl;
+    }
+
+    enum class apple
+    {
+        green,
+        red
+    };
+    cout << (apple::green == apple::red) << endl;
 
     return 1;
 }
