@@ -1,7 +1,9 @@
 #include "CLI11.hpp"
+#include "rang.hpp"
 #include <iostream>
 
 using namespace std;
+using namespace rang;
 
 int main(int argc, char **argv)
 {
@@ -62,9 +64,14 @@ int main(int argc, char **argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    cout << "Flag value: " << bmy_flag << endl;
-    cout << "Parameter value: " << p << endl;
+    cout << fg::red << endl;
+    cout << "value:  " << bmy_flag << endl;
+    cout
+        << "Parameter value: "
+        << p
+        << endl;
     cout << "My vector options: " << int_vec.size() << endl;
+    cout << style::reset;
 
     return 0;
 }
