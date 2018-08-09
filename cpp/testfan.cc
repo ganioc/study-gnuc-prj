@@ -28,6 +28,7 @@ int main()
         red
     };
     cout << (apple::green == apple::red) << endl;
+    cout << "hi! End." << endl;
 
     return 1;
 }
