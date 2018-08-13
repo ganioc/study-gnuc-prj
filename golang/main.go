@@ -27,7 +27,7 @@ func main() {
 
 	fmt.Println(fNum1)
 	fmt.Print("Please enter an float number: ")
-	fmt.Scanf("%f", &fNum2)
+	// fmt.Scanf("%f", &fNum2)
 	fmt.Printf("Input %f\n", fNum2)
 
 	var i int16 = 1
@@ -38,4 +38,17 @@ func main() {
 	var xArr [5]int
 	xArr[1] = 123
 	fmt.Println(xArr)
+
+	for i := 0; i < 5; i++ {
+		xArr[i] = i + 2
+		fmt.Printf("%d ", xArr[i])
+	}
+	fmt.Println(" ")
+
+	var total int = 0
+	for _, value := range xArr {
+		// fmt.Println(i, " ", value)
+		total += value
+	}
+	fmt.Println("total:", total)
 }
