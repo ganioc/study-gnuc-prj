@@ -35,4 +35,7 @@ func main() {
 		fmt.Printf("%d ", i)
 		i++
 	}
+	var xArr [5]int
+	xArr[1] = 123
+	fmt.Println(xArr)
 }
