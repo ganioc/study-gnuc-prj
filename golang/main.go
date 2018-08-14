@@ -51,4 +51,20 @@ func main() {
 		total += value
 	}
 	fmt.Println("total:", total)
+
+	var yArr = [5]float64{98, 94, 22, 45, 22}
+	fmt.Println(yArr)
+
+	var zArr []float32
+	var aArr = make([]float32, 6, 10)
+	fmt.Println("zArr:", zArr)
+	fmt.Println("aArr:", aArr)
+
+	var xMap = make(map[string]int)
+	xMap["key"] = 1
+	xMap["goal"] = 40
+	xMap["goal"] = 402
+	fmt.Println(xMap)
+	xK, xV := xMap["key"]
+	fmt.Println(xK, xV)
 }
