@@ -1,6 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+	"time"
+
+	"math/rand"
+
+	m "./maths"
+)
 
 func main() {
 	fmt.Printf("hello, world\n")
@@ -67,4 +75,75 @@ func main() {
 	fmt.Println(xMap)
 	xK, xV := xMap["key"]
 	fmt.Println(xK, xV)
+
+	var elements = map[string]map[string]string{
+		"h": map[string]string{
+			"name":    "John",
+			"surname": "Smith",
+		},
+	}
+	fmt.Println(elements)
+
+	if el, ok := elements["h"]; ok {
+		fmt.Println(el["name"], el["surname"])
+	}
+
+	var c1, d1 = f()
+	fmt.Println(c1, d1)
+
+	fmt.Println(factorial(10))
+
+	defer second()
+
+	first()
+
+	testPanic()
+
+	fmt.Println(strings.Contains("test", "te"))
+
+	fmt.Println(m.Average([]float64{1, 2, 3, 4}))
+
+	for i := 0; i < 10; i++ {
+		go fTask(i)
+	}
+
+	m.Run()
+
+	var input string
+	fmt.Scanln(&input)
+}
+func init() {
+	fmt.Println("============= init() ==============")
+}
+func f() (int, int) {
+	return 1, 2
+}
+func factorial(x uint) uint {
+	if x == 0 {
+		return 1
+	}
+	return x * factorial(x-1)
+}
+func first() {
+	fmt.Println("I'm first")
+}
+func second() {
+	fmt.Println("I'm second")
+}
+func testPanic() {
+	defer func() {
+		str := recover()
+		fmt.Println("recover:", str)
+	}()
+	panic("I am Panic")
+}
+func zero(nPtr *int) {
+	*nPtr = 0
+}
+func fTask(n int) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(n, ":", i)
+		amt := time.Duration(rand.Intn(250))
+		time.Sleep(time.Millisecond * amt)
+	}
 }

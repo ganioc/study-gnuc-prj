@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "CMessage.h"
+#include "Folder.h"
 
 int main()
 {
@@ -29,6 +31,31 @@ int main()
     };
     cout << (apple::green == apple::red) << endl;
     cout << "hi! End." << endl;
+
+    cout << "Test CMessage Class implementation" << endl;
+    string s1 = "hello";
+    string s2 = "world";
+
+    CMessage m1(s1);
+    CMessage m2(s2);
+
+    Folder f1;
+    Folder f2;
+
+    m1.save(f1);
+    m2.save(f1);
+    m2.save(f2);
+
+    m1.debug_print();
+    m2.debug_print();
+
+    f1.debug_print();
+    f2.debug_print();
+
+    f1.remove(m2);
+
+    f1.debug_print();
+    f2.debug_print();
 
     return 1;
 }

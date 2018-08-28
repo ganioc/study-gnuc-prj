@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <bitset>
+#include "GT.h"
+#include <functional>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -66,7 +70,18 @@ int main()
     vector<int> ivec5(10, -1);
     // vector<int> vec(12,13,14);
 
-    vector<int> vec = {1, 2,3, 1000, 4, 5};
+    vector<int> vec = {1, 2, 3, 1000, 4, 5};
+
+    cout << "I'm trying:" << less_equal<int>()(15, 11) << endl;
+    // cout << std::bind(less_equal<int>(), 10)(4) << endl;
+    auto f = bind(less_equal<int>(), 34, placeholders::_1);
+    cout << "23 is less than 34:" << f(23) << endl;
+    cout << "55 is less than 34:" << f(55) << endl;
+
+    auto f1 = less<int>();
+    cout << "After negate f() function" << endl;
+    cout << "23 is less than 34:" << f1(23, 34) << endl;
+    cout << "55 is less than 34:" << f1(55, 34) << endl;
 
     return 0;
 }

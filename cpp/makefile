@@ -3,7 +3,7 @@ CFLAGS   := -std=gnu++11  -g
 CPPFLAGS := 
 INCLUDES := -I ./include
 LIBS     :=
-LDFLAGS  := -lstdc++ -p
+LDFLAGS  := -lstdc++ 
 
 VPATH := ./src ./include
 
@@ -14,7 +14,7 @@ all: main testcpp testfan testCLI
 testCLI: testCLI.o 
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testfan: testfan.o
+testfan: testfan.o CMessage.o Folder.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
 testcpp: testcpp.o
