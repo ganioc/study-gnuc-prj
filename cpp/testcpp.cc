@@ -8,6 +8,35 @@
 
 using namespace std;
 
+template <class T, size_t N>
+void array_init(T (&param)[N])
+{
+    for (size_t i = 0; i != N; i++)
+    {
+        param[i] = 0;
+    }
+}
+class X
+{
+  public:
+    int num;
+    X()
+    {
+        num = 1;
+    }
+
+  public:
+    X &operator()(int elem)
+    {
+        cout << "X-" << elem << endl;
+        return *this;
+    };
+    X &getNum()
+    {
+        cout << "Get num is:" << this->num << endl;
+        return *this;
+    }
+};
 int main()
 {
     cout << "testcpp running" << endl;
@@ -82,6 +111,31 @@ int main()
     cout << "After negate f() function" << endl;
     cout << "23 is less than 34:" << f1(23, 34) << endl;
     cout << "55 is less than 34:" << f1(55, 34) << endl;
+
+    int x[55];
+
+    array_init(x);
+
+    X fo;
+    fo(12345);
+    fo.getNum();
+
+    class PrintInt
+    {
+      public:
+        void operator()(int elem) const
+        {
+            cout << elem << ' ';
+        }
+    };
+
+    vector<int> coll;
+    for (int i = 1; i <= 19; i++)
+    {
+        coll.push_back(i);
+    }
+    for_each(coll.begin(), coll.end(), PrintInt());
+    cout << endl;
 
     return 0;
 }

@@ -4,6 +4,25 @@
         "unordered_map": "cpp",
         "__tree": "cpp",
         "list": "cpp",
-        "functional": "cpp"
-    }
+        "functional": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp",
+        "cstddef": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "stdexcept": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "algorithm": "cpp",
+        "slist": "cpp",
+        "cfenv": "cpp",
+        "cmath": "cpp",
+        "cstdint": "cpp",
+        "random": "cpp",
+        "*.ipp": "cpp",
+        "cstdio": "cpp",
+        "variant": "cpp",
+        "ostream": "cpp"
+    },
+    "git.ignoreLimitWarning": true
 }

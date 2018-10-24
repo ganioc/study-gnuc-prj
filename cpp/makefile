@@ -9,7 +9,13 @@ VPATH := ./src ./include
 
 .PHONY: clean
 
-all: main testcpp testfan testCLI
+all: main testcpp testfan testCLI testboost testlib
+
+testlib: testlib.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
+
+testboost: testboost.o
+	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
 testCLI: testCLI.o 
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
@@ -28,4 +34,4 @@ main: main.o NameDataSet.o
 
 clean:
 	rm -f *.o
-	rm -f main testcpp testfan testCLI
+	rm -f main testcpp testfan testCLI testboost
