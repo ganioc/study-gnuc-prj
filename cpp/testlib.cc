@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <set>
 #include <deque>
+#include <map>
+#include <sstream>
 
 using namespace std;
 
@@ -125,6 +127,27 @@ void test1()
     IntSet colintset;
     colintset.insert(101);
     IntSet colintset2(colintset.begin(), colintset.end());
+
+    map<string, float> colmap;
+    map<string, float>::iterator itermap;
+
+    for (auto i = 1; i < 5; i++)
+    {
+        pair<string, float> a;
+        stringstream s1;
+        s1 << i + 100;
+        a.first = s1.str();
+        a.second = i;
+
+        colmap.insert(a);
+    }
+    // itermap = colmap.begin();
+    cout << endl;
+    for (itermap = colmap.begin(); itermap != colmap.end(); itermap++)
+    {
+        cout << "key:" << itermap->first << "\t"
+             << "value:" << itermap->second << endl;
+    }
 }
 
 int main()
