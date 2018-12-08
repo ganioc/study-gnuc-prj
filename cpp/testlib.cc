@@ -148,6 +148,13 @@ void test1()
         cout << "key:" << itermap->first << "\t"
              << "value:" << itermap->second << endl;
     }
+    colmap.insert(map<string, float>::value_type("abc", 1.12));
+    cout << "^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+    for (itermap = colmap.begin(); itermap != colmap.end(); itermap++)
+    {
+        cout << "key:" << itermap->first << "\t"
+             << "value:" << itermap->second << endl;
+    }
 }
 
 int main()
