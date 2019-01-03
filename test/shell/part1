@@ -1,0 +1,3 @@
+./execin.sh:( grep -r "root" ../awk/ | sort > part2 ) &
+./execin.sh:( grep -r "root" ./* | sort > part1 ) &
+./part2:../awk//passwd:root:x:0:0:root:/root:/bin/bash

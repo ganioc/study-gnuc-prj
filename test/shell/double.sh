@@ -190,16 +190,62 @@ echo "\n\nprint a chess"
 # done
 
 echo -e "\nWhich is your favourite color?"
-select color in "red" "blue" "yellow" "white" "green"
-do  
-    break
-done
+# select color in "red" "blue" "yellow" "white" "green"
+# do  
+#     break
+# done
 
 echo "You have chosed ${color}"
 
+echo -e "\n\nRead"
+# read
+echo "${REPLY}"
+
+str2=abcd
+echo "${str2} length is: ${#str2}"
+# expr length ${str2}
+echo "${str2:2:2}"
+echo "${str2:(-2)}"
+exp1=$(expr ${str2} : '\([ab]*\)')
+echo "exp1:" ${exp1}
+echo "delete:" ${str2#ab}
+echo "delete:" ${str2##ab}
+echo "delete from tail:" ${str2%cd}
+echo "replace:" ${str2/ab/xy}
+
+declare -i variaInt varia3
+variaInt=90
+varia3=${variaInt}+1
+echo "varia3 is:" "${varia3}"
+
+(( a = 2009))
+echo ${a}
+(( a++ ))
+echo ${a}
+#declare -f
+
+echo -e "\n\nTest indirect reference"
+variable1=variable2
+variable2=Hadoop
+
+echo ${variable1}
+echo ${variable2}
+eval tempvar=\$$variable1
+echo "variable1 is:" ${tempvar}
+echo ${!variable1}
 
 
+echo -e "\nTest bc"
+var1=20
+var3=`echo "${var1} ^ 2 " | bc`
+echo "var3:${var3}"
 
+str4="Speeding up small jobs in Hadoop"
+echo ${str4} | awk '{print length($0)}'
+echo ${str4} | awk '{print substr($0,1,9)}'
+echo ${str4} | awk '{print substr($1, 2)}'
 
-
+echo -e "\nTest pipe"
+awk 'BEGIN{ while (("ls /usr" | getline d)>0) print d}'
+df -k | awk '$4>100000'
 
