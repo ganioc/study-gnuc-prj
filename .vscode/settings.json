@@ -22,7 +22,8 @@
         "*.ipp": "cpp",
         "cstdio": "cpp",
         "variant": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iosfwd": "cpp"
     },
     "git.ignoreLimitWarning": true
 }

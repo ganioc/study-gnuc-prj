@@ -7,6 +7,7 @@
 #include <deque>
 #include <map>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -128,6 +129,7 @@ void test1()
     colintset.insert(101);
     IntSet colintset2(colintset.begin(), colintset.end());
 
+    // Test map
     map<string, float> colmap;
     map<string, float>::iterator itermap;
 
@@ -156,7 +158,159 @@ void test1()
              << "value:" << itermap->second << endl;
     }
 }
+template <class K, class V>
+class value_equals
+{
+  private:
+    V value;
 
+  public:
+    value_equals(const V &v) : value(v) {}
+    // comparison
+    bool operator()(pair<const K, V> elem)
+    {
+        return elem.second == value;
+    }
+};
+void test6()
+{
+    cout << "\n\nTest chapt 6.31" << endl;
+    map<string, float> colmap;
+    map<string, float>::iterator iterColmap;
+
+    colmap.insert(map<string, float>::value_type("otto", 23.3));
+    colmap.insert(pair<string, float>("Mary", 41.0));
+    colmap.insert(make_pair("John", 55.0));
+    colmap["marry"] = 45.4;
+
+    for (iterColmap = colmap.begin(); iterColmap != colmap.end(); iterColmap++)
+    {
+        cout << "key:" << iterColmap->first << "\t"
+             << "value:" << iterColmap->second << endl;
+    }
+
+    cout << "\nTo delete \"otto\"" << endl;
+    for (iterColmap = colmap.begin(); iterColmap != colmap.end();)
+    {
+        if (iterColmap->first == "otto")
+        {
+            colmap.erase(iterColmap++);
+        }
+        else
+        {
+            iterColmap++;
+        }
+    }
+    for (iterColmap = colmap.begin(); iterColmap != colmap.end(); iterColmap++)
+    {
+        cout << "key:" << iterColmap->first << "\t"
+             << "value:" << iterColmap->second << endl;
+    }
+
+    cout << endl;
+    cout << "John is:" << colmap["John"] << endl;
+
+    cout << "\nTest multimap" << endl;
+
+    typedef multimap<string, string> StrStrMMap;
+    StrStrMMap dict;
+    dict.insert(make_pair("bee", "sting"));
+    dict.insert(make_pair("fan", "wind"));
+    dict.insert(make_pair("fan", "cool"));
+    StrStrMMap::iterator iterDict;
+    for (iterDict = dict.begin(); iterDict != dict.end(); iterDict++)
+    {
+        cout << " " << iterDict->first << " " << iterDict->second << endl;
+    }
+
+    typedef map<float, float> FloatFloatMap;
+    FloatFloatMap ffColl;
+    FloatFloatMap::iterator iterFfColl;
+
+    ffColl[1] = 4;
+    ffColl[2] = 5;
+    ffColl[3] = 99;
+    ffColl[4] = 12.3;
+    ffColl[5] = 3.0;
+
+    iterFfColl = ffColl.find(1.0);
+    if (iterFfColl != ffColl.end())
+    {
+        cout << iterFfColl->first << ": " << iterFfColl->second << endl;
+    }
+
+    iterFfColl = find_if(ffColl.begin(), ffColl.end(),
+                         value_equals<float, float>(3.0));
+
+    if (iterFfColl != ffColl.end())
+    {
+        cout << iterFfColl->first << ": " << iterFfColl->second << endl;
+    }
+
+    cout << "\nEnd of Test chpt 6.31\n"
+         << endl;
+}
+class RuntimeStringCmp
+{
+  public:
+    enum cmp_mode
+    {
+        normal,
+        nocase
+    };
+
+  private:
+    const cmp_mode mode; // actual mode
+    static bool nocase_compare(char c1, char c2)
+    {
+        return toupper(c1) < toupper(c2);
+    }
+
+  public:
+    RuntimeStringCmp(cmp_mode m = normal) : mode(m)
+    {
+    }
+
+    bool operator()(const string &s1, const string &s2) const
+    {
+        if (mode == normal)
+        {
+            return s1 < s2;
+        }
+        else
+        {
+            return lexicographical_compare(s1.begin(), s1.end(),
+                                           s2.begin(), s2.end(), nocase_compare);
+        }
+    }
+};
+typedef map<string, string, RuntimeStringCmp> StringStringMap;
+void fillAndPrint(StringStringMap &coll);
+void test6_6()
+{
+    StringStringMap coll1;
+    fillAndPrint(coll1);
+    RuntimeStringCmp ignorecase(RuntimeStringCmp::nocase);
+    StringStringMap coll2(ignorecase);
+    fillAndPrint(coll2);
+}
+void fillAndPrint(StringStringMap &coll)
+{
+    coll["Deutschland"] = "Germany";
+    coll["deutch"] = "German";
+    coll["Haken"] = "snag";
+    coll["Hund"] = "dog";
+
+    StringStringMap::iterator pos;
+    cout.setf(ios::left, ios::adjustfield);
+    for (pos = coll.begin(); pos != coll.end(); ++pos)
+    {
+        cout << setw(15) << pos->first.c_str() << " "
+             << pos->second << endl;
+    }
+    cout << endl;
+}
+// main entry function
 int main()
 {
     set<int, less<int>> coll1;
@@ -178,6 +332,8 @@ int main()
     }
 
     test1();
+    test6();
+    test6_6();
 
     return 0;
 }
