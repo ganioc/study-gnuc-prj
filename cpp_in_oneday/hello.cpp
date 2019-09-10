@@ -1,7 +1,10 @@
 #include <iostream>
 
-int main()
-{
-    std::cout << "hello world" << std::endl;
+int main() {
+    using namespace std;
+
+    cout << "hello world" << endl;
+
+    // Return a value to the OS
     return 0;
 }
