@@ -9,7 +9,7 @@ else
 endif
 
 
-PROGS =	mytry
+PROGS =	mytry mysleep mysleep2 sigmask
 
 all:	$(PROGS)
 
