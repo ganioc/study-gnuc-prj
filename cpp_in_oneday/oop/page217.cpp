@@ -1,4 +1,5 @@
 #include <iostream>
+#include "derive.hpp"
 #include "human.h"
 #include "mystring.h"
 #include "president.h"
@@ -20,7 +21,18 @@ void testPresident() {
     cout << President::GetInstance().GetName() << endl;
     //    President secondPresident;
 }
+void testDerive() {
+    Carp myLunch;
+    Tuna myDinner;
 
+    cout << "About my food:" << endl;
+    cout << "Lunch: ";
+    myLunch.Swim();
+
+    cout << "Dinner: ";
+    myDinner.Swim();
+    myDinner.Fish::Swim();
+}
 int main() {
     Human firstMan;
 
@@ -36,6 +48,8 @@ int main() {
 
     testString();
     testPresident();
+
+    testDerive();
 
     return 0;
 }
