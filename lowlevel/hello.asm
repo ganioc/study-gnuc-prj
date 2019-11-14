@@ -11,6 +11,6 @@ _start:
 	mov rdx, 14
 	syscall
 	
-	mov rax, 60
+	mov rax, 60  ; 'exit' syscall number
 	xor rdi, rdi
 	syscall
