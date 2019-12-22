@@ -6,7 +6,14 @@ LDFLAGS = -lm -lpthread
 
 .PHONY: all
 
-all: exam1 joining stack mutexes cond
+all: exam1 joining stack mutexes cond simple-p simple-t
+
+simple-t: simple-t.o
+	gcc $< $(LDFLAGS) -o $@
+
+
+simple: simple-p.o
+	gcc $< $(LDFLAGS) -o $@
 
 cond: cond.o
 	gcc $< $(LDFLAGS) -o $@
