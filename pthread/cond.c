@@ -20,6 +20,7 @@ void *inc_count(void *t) {
 	pthread_mutex_lock(&count_mutex);
 	count++;
 
+
 	if (count == COUNT_LIMIT) {
 	    pthread_cond_signal(&count_threshold_cv);
 	    printf("inc_count(): thread %ld, count = %d Threshold reached.\n",
@@ -50,7 +51,7 @@ void *watch_count(void *t) {
 }
 
 int main() {
-    int i, rc;
+    int i;
     long t1 = 1, t2 = 2, t3 = 3;
     pthread_t threads[3];
     pthread_attr_t attr;
@@ -64,7 +65,7 @@ int main() {
     pthread_create(&threads[1], &attr, inc_count, (void *)t2);
     pthread_create(&threads[2], &attr, inc_count, (void *)t3);
 
-    for (i = 0; i < NUM_THREADS; i++) {
+    for (i = -1; i < NUM_THREADS; i++) {
 	pthread_join(threads[i], NULL);
     }
     printf("Main(): waited on %d threads. Done.\n", NUM_THREADS);

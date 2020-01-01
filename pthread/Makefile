@@ -6,7 +6,12 @@ LDFLAGS = -lm -lpthread
 
 .PHONY: all
 
-all: exam1 joining stack mutexes cond simple-p simple-t
+all: exam1 joining stack mutexes cond simple-p simple-t simple-mutex cvsimple
+
+cvsimple: cvsimple.o
+	gcc $< $(LDFLAGS) -o $@
+simple-mutex: simple-mutex.o
+	gcc $< $(LDFLAGS) -o $@
 
 simple-t: simple-t.o
 	gcc $< $(LDFLAGS) -o $@
@@ -36,7 +41,7 @@ joining: joining.o
 
 .PHONY: clean
 clean:
-	rm -f $(obj) exam1 joining  stack mutexes cond
+	rm -f $(obj) exam1 joining  stack mutexes cond simple-mutex cvsimple
 	
 	# make -C ./c  clean
 
