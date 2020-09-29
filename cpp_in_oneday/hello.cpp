@@ -1,10 +1,23 @@
 #include <iostream>
+#include "task.hpp"
 
-int main() {
-    using namespace std;
+using namespace std;
+using namespace taskspace;
 
-    cout << "hello world" << endl;
+int main()
+{
+    std::cout << "hello world" << std::endl;
+    cout << "magic number is :" << taskspace::magicNumber << endl;
 
-    // Return a value to the OS
+    Task task("Alice", 14);
+
+    task.Talk("Go go go!");
+    task.IntroduceSelf();
+
+    std::cout << std::endl;
+
+    cout << "magic number is :" << magicNumber << endl;
+
+
     return 0;
 }
