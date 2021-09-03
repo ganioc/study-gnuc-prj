@@ -9,27 +9,27 @@ VPATH := ./src ./include
 
 .PHONY: clean
 
-all: main testcpp testfan testCLI testboost testlib test-leetcode
+all: main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe
 
-test-leetcode: test-leetcode.o
+test-leetcode.exe: test-leetcode.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testlib: testlib.o
+testlib.exe: testlib.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testboost: testboost.o
+testboost.exe: testboost.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testCLI: testCLI.o 
+testCLI.exe: testCLI.o 
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testfan: testfan.o CMessage.o Folder.o
+testfan.exe: testfan.o CMessage.o Folder.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-testcpp: testcpp.o
+testcpp.exe: testcpp.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-main: main.o NameDataSet.o
+main.exe: main.o NameDataSet.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
 %.o: %.cc
