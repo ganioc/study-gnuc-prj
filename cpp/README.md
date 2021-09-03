@@ -1,9 +1,13 @@
 CMessage
-    contents
-    folders
+contents
+folders
 
 Folder
-    msgs
-    
+msgs
 
+## INSTALL
 
+```cpp
+brew install boost
+``
+```

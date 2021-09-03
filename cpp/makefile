@@ -1,7 +1,7 @@
 CC       := g++
 CFLAGS   := -std=gnu++11  -g
 CPPFLAGS := 
-INCLUDES := -I ./include
+INCLUDES := -I ./include ../boost/
 LIBS     :=
 LDFLAGS  := -lstdc++ 
 
@@ -9,7 +9,10 @@ VPATH := ./src ./include
 
 .PHONY: clean
 
-all: main testcpp testfan testCLI testboost testlib
+all: main testcpp testfan testCLI testboost testlib test-leetcode
+
+test-leetcode: test-leetcode.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
 testlib: testlib.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
@@ -34,4 +37,4 @@ main: main.o NameDataSet.o
 
 clean:
 	rm -f *.o
-	rm -f main testcpp testfan testCLI testboost
+	rm -f main testcpp testfan testCLI testboost testlib test-leetcode
