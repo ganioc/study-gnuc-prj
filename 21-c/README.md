@@ -23,6 +23,6 @@ asprintf()
 
 
 ```
-## string字符串
+## string字符串, oO, c
 gcc teststring.c -o str -g -O3 -Wall -std=c99
 
