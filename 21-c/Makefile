@@ -7,12 +7,15 @@ VPATH := ./src ./include
 
 .PHONY: clean hello
 
-all: first unsingvoid
+all: first unsingvoid chapfun
 
 unsingvoid: unsingvoid.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 first: first.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
+
+chapfun: chapfun.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 %.o: %.c 
