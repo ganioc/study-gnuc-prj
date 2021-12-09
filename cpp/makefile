@@ -1,15 +1,34 @@
 CC       := g++
-CFLAGS   := -std=gnu++11  -g
+# LD       := g++
+CFLAGS   := -std=c++11  -g
 CPPFLAGS := 
-INCLUDES := -I ./include ../boost/
+INCLUDES := -I ./include  
+INCLUDES += -I ./include/cpplang/ 
+INCLUDES += -I ../boost/
 LIBS     :=
 LDFLAGS  := -lstdc++ 
 
-VPATH := ./src ./include
+VPATH := ./src/ \
+ 		./src/cpplang  \
+		./include/  \
+		./include/cpplang 
+
+MODULES  := cpplang
+BUILD_DIR:= build
+
 
 .PHONY: clean
 
-all: main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe
+all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang
+
+checkdirs: $(BUILD_DIR)
+	
+
+$(BUILD_DIR):
+	mkdir -p $@
+
+build/cpplang: cpplang.o ZeroEvenOdd.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 test-leetcode.exe: test-leetcode.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
@@ -36,5 +55,5 @@ main.exe: main.o NameDataSet.o
 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c $< 
 
 clean:
-	rm -f *.o
-	rm -f main testcpp testfan testCLI testboost testlib test-leetcode
+	rm -f *.o *.exe *.out
+	rm -f main testcpp testfan testCLI testboost testlib test-leetcode cpplang 

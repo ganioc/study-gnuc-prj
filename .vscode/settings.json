@@ -23,7 +23,8 @@
         "cstdio": "cpp",
         "variant": "cpp",
         "ostream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "thread": "cpp"
     },
     "git.ignoreLimitWarning": true
 }
