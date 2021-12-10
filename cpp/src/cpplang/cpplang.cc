@@ -35,19 +35,19 @@ void lesson(){
     for(auto x: v){
         cout << x << endl;
     }
-    cout << "lesson, please input numbers" << endl;
-    double sum = read_and_sum(3);
-    printf("sum is %f\n", sum);
+    // cout << "lesson, please input numbers" << endl;
+    // double sum = read_and_sum(3);
+    // printf("sum is %f\n", sum);
 }
 
 int main()
 {
     // cout << "Hello cpplang!" << endl;
 
-    // ZeroEvenOdd *mZeroEvenOdd = new ZeroEvenOdd(5);
-    // mZeroEvenOdd->run();
+    ZeroEvenOdd *mZeroEvenOdd = new ZeroEvenOdd(5);
+    mZeroEvenOdd->run();
 
-    lesson();
+    // lesson();
 
     return 0;
 }

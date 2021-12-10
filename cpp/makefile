@@ -6,7 +6,7 @@ INCLUDES := -I ./include
 INCLUDES += -I ./include/cpplang/ 
 INCLUDES += -I ../boost/
 LIBS     :=
-LDFLAGS  := -lstdc++ 
+LDFLAGS  := -lstdc++  -lpthread
 
 VPATH := ./src/ \
  		./src/cpplang  \
