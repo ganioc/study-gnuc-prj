@@ -1,5 +1,4 @@
-#ifndef _GT_H_
-#define _GT_H_
+#pragma once
 
 using namespace std;
 class GT_cls
@@ -15,4 +14,3 @@ class GT_cls
     std::string::size_type bound;
 };
 
-#endif

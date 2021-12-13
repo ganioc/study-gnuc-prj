@@ -7,6 +7,7 @@
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
+#include "CVector.h"
 
 using namespace std;
 
@@ -40,6 +41,10 @@ void lesson(){
     // printf("sum is %f\n", sum);
 }
 
+void hello(){
+    cout << "Hello Concurrent World" << endl;
+}
+
 int main()
 {
     // cout << "Hello cpplang!" << endl;
@@ -48,6 +53,32 @@ int main()
     mZeroEvenOdd->run();
 
     // lesson();
+
+    thread t(hello);
+    t.join();
+
+    CVector v(6);
+    cout << "CVector:";
+    cout << v.size() <<endl;
+
+    Color color = Color::blue;
+    Traffic_light light = Traffic_light::green;
+    // std::bitset<16> xColor(color);
+
+    cout << "Color:";
+    cout << as_integer(color) << endl;
+
+    // std::bitset<16> xLight(light);
+
+    cout << "Traffic_light:";
+    cout << as_integer(light) << endl;
+    ++light;
+    cout << "Traffic_light ++:";
+    cout << as_integer(light) << endl;
+
+    const int speed = 100;
+
+    static_assert(speed < 199, "Can't be that big!");
 
     return 0;
 }

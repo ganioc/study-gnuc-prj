@@ -1,17 +1,18 @@
 CC       := g++
-# LD       := g++
-CFLAGS   := -std=c++11  -g
+LD       := g++
+CFLAGS   := -std=c++11  -g -Wall
+# -Wall -Wc++11-extensions
 CPPFLAGS := 
-INCLUDES := -I ./include  
+INCLUDES := -I ./include/  
 INCLUDES += -I ./include/cpplang/ 
 INCLUDES += -I ../boost/
 LIBS     :=
 LDFLAGS  := -lstdc++  -lpthread
 
 VPATH := ./src/ \
- 		./src/cpplang  \
+ 		./src/cpplang/  \
 		./include/  \
-		./include/cpplang 
+		./include/cpplang/ 
 
 MODULES  := cpplang
 BUILD_DIR:= build
@@ -19,7 +20,7 @@ BUILD_DIR:= build
 
 .PHONY: clean
 
-all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang
+all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang 
 
 checkdirs: $(BUILD_DIR)
 	
@@ -27,7 +28,7 @@ checkdirs: $(BUILD_DIR)
 $(BUILD_DIR):
 	mkdir -p $@
 
-build/cpplang: cpplang.o ZeroEvenOdd.o
+build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 test-leetcode.exe: test-leetcode.o
@@ -51,7 +52,7 @@ testcpp.exe: testcpp.o
 main.exe: main.o NameDataSet.o
 	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) 
 
-%.o: %.cc
+%.o: %.cpp 
 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c $< 
 
 clean:

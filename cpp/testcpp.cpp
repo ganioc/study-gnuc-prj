@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <bitset>
-#include "GT.h"
 #include <functional>
 #include <algorithm>
 #include <cmath>
+
+#include "include/GT.h"
 
 using namespace std;
 

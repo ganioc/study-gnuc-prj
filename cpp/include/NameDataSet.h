@@ -1,5 +1,4 @@
-#ifndef _NAMEDATASET_H_
-#define _NAMEDATASET_H_
+#pragma once
 
 #include <cstring>
 #include <iostream>
@@ -33,4 +32,3 @@ class NameDataSet
     void increaseCredit();
     void decreaseCredit();
 };
-#endif
