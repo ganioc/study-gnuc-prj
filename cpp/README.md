@@ -122,4 +122,71 @@ variadic Templates,
 
 ## chap4 Containers and Algorithms
 
+lib
+
+- runtime language support
+- C standard lib
+- string and I/O streams
+- a framework of containers (vector, map) algorithms (find, sort, merge), STL, 
+- numerical computation, 
+- regular expression matching,
+- concurrent programming, threads, locks,
+- template metaprogramming,, STL-style generic programming,
+- smart pointers, for resource management, (unique_prt, shared_prt)
+- special purpose containers, array, bitset, tuple,
+- 
+
+### iostream
+cin, cout, cerr,
+
+### 容器
+- vector, vector<T>, 更适合顺序查找, 
+- list, 双向链表, 
+    - iterator, 
+    - begin()
+    - end()
+- map, red black tree, key-value, associative array, dictionary, balanced binary tree,
+- unordered_map, 使用了hashed lookup , 替代了comparison using an ordering function ， hashed containers 被称为unordered, 不需要任何的ordering function,
+- forward_list, 单向链表
+- deque<T> , 双向queue,
+- set, 集合
+- multiset, 一个值可以出现多次 
+- map<K,V>, 
+- multimap <K, V>, 一个key可以出现多次
+- unordered_multimap<K,V>,
+- unordered_set<T>
+- unordered_multiset<T>
+- stack, ? 
+
+### 算法
+- sort(),
+- unique_copy(),
+- back_inserter()
+- iterator, 与algorithm捆绑，与container无关,
+    - separation between data storage and algorithm,
+    - ostream_iterator,
+    - istream_iterator, <fstream>
+- find(b,e,x), 
+- find_if(b,e,f)
+- count(b,e,x)
+- count_if(b,e,f)
+- replace(b,e,v,v2)
+- replace_if(b,e,f,v2)
+- copy(b,e,out)
+- copy_if(b,e,out,f)
+- unique_copy(b,e,out)
+- sort(b,e)
+- sort(b,e,f)
+- equal_range(b,e, v)
+- merge(b,e,b2,e2, out)
+
+## chap5 Concurrency and Utilities
+
+
+
+
+
+
+
+
 
