@@ -128,6 +128,28 @@ bool has_c(const string &s, char c)
     else
         return false;
 }
+void f(vector<double>& v){
+    cout << "f is running" << endl;
+};
+struct F{
+    vector<double>& v;
+    F(vector<double>& vv):v{vv}{};
+    void operator()();
+};
+void parallel(){
+    cout << "Test parallelling" << endl;
+    vector<double> some_vec {1,2,3,4,5,6,7,8,9};
+    vector<double> vec2 {10,11,12,13,14};
+
+    std::thread t1([](){
+        // f(_some_vec)
+        cout << "Corn" << endl;
+    });
+    // thread t2 {F{vec2}};
+
+    t1.join();
+    // t2.join();
+}
 
 int main()
 {
@@ -167,7 +189,10 @@ int main()
     string s{"C++ is a general purpose programming language"};
     cout << s << endl;
 
-    container();
+    // container();
+
+    parallel();
+    
 
     return 0;
 }

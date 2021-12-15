@@ -181,11 +181,36 @@ cin, cout, cerr,
 - merge(b,e,b2,e2, out)
 
 ## chap5 Concurrency and Utilities
+资源管理
+- memory
+- locks
+- sockets
+- thread handles
+- file handles,
 
+使用标准库的部件, basic language support for resource management, using constructor/destructor pairs,
 
+Resource Acquisition Is Initialization, RAII,
+- unique_ptr, <memory>, 不使用new, 使用智能指针，不使用raw pointer,
+    - unique_ptr<X>{new X{i}}
+- shared_ptr, shared ownership, copied rather than moved, 当最后一个引用销毁的话，就会被销毁,
 
+### Concurrency,
+标准库的并发,
+- threads
+- mutex
+- lock
+- packaged_task
+- future
 
+建立在操作系统的API之上,
 
+std::thread theObj(<CALLBACK>);
+thread::get_id()
+this_thread::get_id(),
+    thread::detach(),
+    ::joinable()
+    
 
 
 
