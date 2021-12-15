@@ -63,25 +63,23 @@ vector<typename C::iterator> find_all(C &c, V v)
     }
     return res;
 }
-void test_iterator(){
+void test_iterator()
+{
     cout << "Test iterator" << endl;
     string from, to;
     cin >> from >> to;
 
-    ifstream is {from}; // input stream for file "from"
-    istream_iterator<string> ii {is};
-    istream_iterator<string> eos {};
+    ifstream is{from}; // input stream for file "from"
+    istream_iterator<string> ii{is};
+    istream_iterator<string> eos{};
 
     ofstream os{to};
-    ostream_iterator<string> oo {os, "\n"};
+    ostream_iterator<string> oo{os, "\n"};
 
-    vector <string> b {ii, eos};
+    vector<string> b{ii, eos};
     sort(b.begin(), b.end());
 
     unique_copy(b.begin(), b.end(), oo);
-
-
-
 }
 void container()
 {
@@ -102,17 +100,17 @@ void container()
     }
 
     vector<string> vs = {"red", "blue", "green", "green", "orange", "green"};
-    for(auto p: find_all(vs, "green"))
-        if(*p != "green")
+    for (auto p : find_all(vs, "green"))
+        if (*p != "green")
             cerr << "vector bug!\n";
 
-    for(auto p: find_all(vs, "green"))
-        *p="vert";
-    
-    for(auto p = vs.begin(); p!= vs.end(); ++p)
-        cout<< *p << endl;
+    for (auto p : find_all(vs, "green"))
+        *p = "vert";
 
-    ostream_iterator<string> oo {cout};
+    for (auto p = vs.begin(); p != vs.end(); ++p)
+        cout << *p << endl;
+
+    ostream_iterator<string> oo{cout};
 
     *oo = "Hello,";
     ++oo;
@@ -128,27 +126,51 @@ bool has_c(const string &s, char c)
     else
         return false;
 }
-void f(vector<double>& v){
+void f(vector<double> &v, double* res)
+{
     cout << "f is running" << endl;
+    for(auto p=v.begin(); p!=v.end(); ++p){
+        cout << *p << " ";
+    }
+    cout << endl;
+    *res = 1.1;
 };
-struct F{
-    vector<double>& v;
-    F(vector<double>& vv):v{vv}{};
-    void operator()();
+struct F
+{
+    vector<double> &v;
+    double *res;
+    F(vector<double> &vv, double* p) : v{vv},res{p} {};
+    void operator()()
+    {
+        cout << "Parallel World F!\n";
+        for(auto p=v.begin(); p!=v.end(); ++p){
+            cout << *p << " ";
+        }
+        cout << endl;
+        *res = 2.1;
+    };
 };
-void parallel(){
+void parallel()
+{
     cout << "Test parallelling" << endl;
-    vector<double> some_vec {1,2,3,4,5,6,7,8,9};
-    vector<double> vec2 {10,11,12,13,14};
+    vector<double> some_vec{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<double> vec2{10, 11, 12, 13, 14};
+    double res1;
+    double res2;
 
-    std::thread t1([](){
-        // f(_some_vec)
-        cout << "Corn" << endl;
+    thread t1([&]()
+                   {
+                       f(some_vec, &res1);
+                   });
+    thread t2([&](){
+        F f(vec2, &res2);
+        f();
     });
-    // thread t2 {F{vec2}};
 
     t1.join();
-    // t2.join();
+    t2.join();
+    cout << "res1: " << res1 << " ";
+    cout << "res2: " << res2 << endl;
 }
 
 int main()
@@ -192,7 +214,6 @@ int main()
     // container();
 
     parallel();
-    
 
     return 0;
 }
