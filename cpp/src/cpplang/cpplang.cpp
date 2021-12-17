@@ -6,12 +6,14 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <mutex>
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
 #include "CVector.h"
 
 using namespace std;
+using namespace std::chrono;
 
 double read_and_sum(int s)
 {
@@ -126,10 +128,11 @@ bool has_c(const string &s, char c)
     else
         return false;
 }
-void f(vector<double> &v, double* res)
+void f(vector<double> &v, double *res)
 {
     cout << "f is running" << endl;
-    for(auto p=v.begin(); p!=v.end(); ++p){
+    for (auto p = v.begin(); p != v.end(); ++p)
+    {
         cout << *p << " ";
     }
     cout << endl;
@@ -139,11 +142,12 @@ struct F
 {
     vector<double> &v;
     double *res;
-    F(vector<double> &vv, double* p) : v{vv},res{p} {};
+    F(vector<double> &vv, double *p) : v{vv}, res{p} {};
     void operator()()
     {
         cout << "Parallel World F!\n";
-        for(auto p=v.begin(); p!=v.end(); ++p){
+        for (auto p = v.begin(); p != v.end(); ++p)
+        {
             cout << *p << " ";
         }
         cout << endl;
@@ -157,20 +161,30 @@ void parallel()
     vector<double> vec2{10, 11, 12, 13, 14};
     double res1;
     double res2;
+    mutex m;
 
     thread t1([&]()
-                   {
-                       f(some_vec, &res1);
-                   });
-    thread t2([&](){
-        F f(vec2, &res2);
-        f();
-    });
+              {
+                  unique_lock<mutex> lck{m};
+                  f(some_vec, &res1);
+              });
+    thread t2([&]()
+              {
+                  F f(vec2, &res2);
+                  unique_lock<mutex> lck{m};
+                  f();
+              });
 
     t1.join();
     t2.join();
     cout << "res1: " << res1 << " ";
     cout << "res2: " << res2 << endl;
+
+    auto time0 = high_resolution_clock::now();
+    this_thread::sleep_for(milliseconds{20});
+    auto time1 = high_resolution_clock::now();
+    cout << duration_cast<nanoseconds>(time1 - time0).count();
+    cout << " nanoseconds passed." << endl;
 }
 
 int main()
