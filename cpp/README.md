@@ -200,8 +200,15 @@ Resource Acquisition Is Initialization, RAII,
 - threads
 - mutex
 - lock
-- packaged_task
-- future
+    - unique_lock<mutex> lck {m1, defer_lock}
+- packaged_task, launch tasks and connect up the mechanisms for returning a result,
+    - get_future()
+    - future.get(), get the result,
+- future, promise, returning a value from a task spawned on a separate thread,
+- async, launching of a task in a manner very similar to calling a function;
+- condition_variable, 
+    - wait()
+    - notify_one();
 
 建立在操作系统的API之上,
 
@@ -210,7 +217,8 @@ thread::get_id()
 this_thread::get_id(),
     thread::detach(),
     ::joinable()
-    
+
+this_thread 就是当前的thread;
 
 
 
