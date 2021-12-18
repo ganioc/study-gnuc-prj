@@ -1,14 +1,16 @@
 CC := gcc
 CFLAGS := -std=c11 -g
 LIBS := -luv
-LDFLAGS := 
-INCLUDES := -I ./include
-VPATH := ./src ./include
+LDFLAGS := -lm
+INCLUDES := -I./include -I./include/duktape
+VPATH := ./src ./include ./src/duktape ./include/duktape 
 
 .PHONY: clean 
 
-all: hello idle spawn signal childprocess
+all: hello idle spawn signal childprocess dukmain
 
+dukmain: dukmain.o duktape.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 childprocess: childprocess.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
@@ -27,4 +29,4 @@ hello: main.o
 
 clean:
 	rm -f *.o
-	rm hello idle
+	rm hello idle dukmain
