@@ -1,0 +1,90 @@
+{
+    "log": {
+      "error": "",
+      "loglevel": "info",
+      "access": ""
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": false,
+          "auth": "noauth"
+        },
+        "port": "1080"
+      },
+      {
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "timeout": 360
+        },
+        "port": "1087"
+      }
+    ],
+    "outbounds": [
+      {
+        "mux": {
+          "enabled": false,
+          "concurrency": 8
+        },
+        "protocol": "vmess",
+        "streamSettings": {
+          "wsSettings": {
+            "path": "/ray",
+            "headers": {
+              "host": ""
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": true
+          },
+          "security": "tls",
+          "network": "ws"
+        },
+        "tag": "proxy",
+        "settings": {
+          "vnext": [
+            {
+              "address": "boxshell.tech",
+              "users": [
+                {
+                  "id": "6943ba2d-631e-4c30-a81e-6f767854d1e0",
+                  "alterId": 64,
+                  "level": 0,
+                  "security": "none"
+                }
+              ],
+              "port": 443
+            }
+          ]
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "userLevel": 0
+        }
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "none"
+          }
+        }
+      }
+    ],
+    "dns": {},
+    "routing": {
+      "settings": {
+        "domainStrategy": "AsIs",
+        "rules": []
+      }
+    },
+    "transport": {}
+  }

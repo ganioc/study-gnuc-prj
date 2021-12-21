@@ -3,11 +3,21 @@ CFLAGS := -std=c11 -g
 LIBS := -luv
 LDFLAGS := -lm
 INCLUDES := -I./include -I./include/duktape
-VPATH := ./src ./include ./src/duktape ./include/duktape 
+VPATH := ./src ./include ./src/duktape ./src/multi-echo-server ./include/duktape 
 
 .PHONY: clean 
 
-all: hello idle spawn signal childprocess dukmain
+all: hello idle spawn signal childprocess dukmain uvcat echo_main echo_worker
+
+
+echo_worker: echo_worker.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
+
+echo_main: echo_main.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
+
+uvcat: uvcat.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 dukmain: dukmain.o duktape.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
