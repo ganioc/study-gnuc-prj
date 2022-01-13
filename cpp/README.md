@@ -402,5 +402,57 @@ token_stream
 - token, pair, {number, 123.45}
 - ts.get(), ts.current(), current token,
 
+P265,
+error, <errno.h>
+perror()?
+error 让程序以一种非常明显、完全不可能无视的方式报错，提醒用户“有某个地方出错了”
+
+## isspace,
+
+**A Desk Calculator**,
+
+space (0x20, ' ')
+form feed (0x0c, '\f')
+line feed (0x0a, '\n')
+carriage return (0x0d, '\r')
+horizontal tab (0x09, '\t')
+vertical tab (0x0b, '\v')
+
+- isdigit()
+- isalpha()
+- isalnum()
+
+Separate error detection from error recovery.
+
+extern "C"
+
+解释:
+* ts.get(), 返回一个token, 
+* primary, 包含了 ->
+    * number
+    * name  // name is an identifier
+    * name=expression
+    * -primary //   取负值 
+* term:
+    * primary
+    * term/primary
+    * term*primary
+* expression:
+    * expression+term
+    * expression-term
+    * term
+* expr_list:
+    * expression print
+    * expression print expr_list
+* program:
+    * end
+    * expr_list end
+
+ts.get(), 获取下一个; ts.current(), 获取当前的token,
+## evaluate from command-line
+
+
+
+
 
 

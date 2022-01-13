@@ -5,12 +5,21 @@ Token TokenStream::get(){
     // read more characters when needed, 
     // return a Token 
     char ch = 0;
-    *ip >> ch; // skips white space, tabs, newlines
+    // *ip >> ch; // skips white space, tabs, newlines
+
+    do {
+        // skip whitespace except '\n'
+        // reads a single character from input stream into ch
+        if(!ip->get(ch))
+            return ct={Kind::end};
+    } while(ch!='\n' && isspace(ch));
 
     switch(ch){
         case 0:
             return ct={Kind::end};
         case ';':
+        case '\n':
+            return ct={Kind::print};
         case '*':
         case '/':
         case '+':
@@ -36,10 +45,20 @@ Token TokenStream::get(){
             return ct;
         default: // name, name=, or error
             if(isalpha(ch)){
-                ip->putback(ch); // put the 1st character back into the input stream
-                *ip >> ct.string_value;
+                // ip->putback(ch); // put the 1st character back into the input stream
+                // *ip >> ct.string_value;
+                // ct.kind = Kind::name;
+                // return ct;
+
+
+                // string_value;
+                ct.string_value.push_back(ch);
+
+                while(ip->get(ch)&& isalnum(ch))
+                    ct.string_value += ch; // append ch to end of string_value
+                ip->putback(ch);
                 ct.kind = Kind::name;
-                return ct;
+                return ct; // ={Kind::name};
             }
             error("bad token");
             return ct={Kind::print};

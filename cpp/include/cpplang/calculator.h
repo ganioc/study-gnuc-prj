@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 enum class Kind:char{
     name,
     number,
@@ -23,7 +22,12 @@ struct Token
     Kind kind;
     string string_value;
     double number_value;
-    /* data */
 };
 
+double error(const string& s);
+
+extern int no_of_errors;
+double prim(bool get);
+double term(bool get);
+double expr(bool get);
 

@@ -9,7 +9,7 @@ class TokenStream{
         ~TokenStream(){close();}
 
         Token get(); // read and return next token
-        const Token& current(); // most recently read token
+        const Token& current(){ return ct; } // most recently read token
 
         void set_input(istream& s){
             close();
@@ -28,4 +28,4 @@ class TokenStream{
         bool owns;   // does the TokenStream own the istream?
         Token ct {Kind::end}; // current token
 
-}；
+};

@@ -28,7 +28,7 @@ checkdirs: $(BUILD_DIR)
 $(BUILD_DIR):
 	mkdir -p $@
 
-build/calculator: calculator.o 
+build/calculator: calculator.o TokenStream.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o
