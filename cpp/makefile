@@ -20,13 +20,16 @@ BUILD_DIR:= build
 
 .PHONY: clean
 
-all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang 
+all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang build/calculator
 
 checkdirs: $(BUILD_DIR)
 	
 
 $(BUILD_DIR):
 	mkdir -p $@
+
+build/calculator: calculator.o 
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)

@@ -7,6 +7,11 @@
 #include <map>
 #include <fstream>
 #include <mutex>
+#include <regex>
+#include <numeric>
+#include <list>
+#include <random>
+#include <limits>
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
@@ -187,6 +192,70 @@ void parallel()
     cout << " nanoseconds passed." << endl;
 }
 
+void math(){
+    list<double> lst {1,2,3,4,5,99};
+    auto s = accumulate(lst.begin(), lst.end(), 0.0);
+    cout << "Math: " << s << endl;
+
+    // random()
+    // Rand_int rnd{1,10};
+    auto die = bind(uniform_int_distribution<>{1,6}, 
+            default_random_engine{});
+    int x = die();
+    cout << "Generated number x: " << x << endl;
+    int y = die();
+    cout << "Generated number y: " << y << endl;
+
+    static_assert(numeric_limits<char>::is_signed, "unsigned characters!");
+    static_assert(100000 < numeric_limits<int>::max(), "small ints!");
+}
+void declare(){
+    int count{1};
+    const char * name {"Bjarne"};
+    count = 2;
+    name = "Marian";
+
+    enum T { A, B, C, D};
+    int x3 {3};
+    printf("declare: %d\n", x3);
+    vector<int> v1{99,98,97};
+    // nullprt, 
+}
+void pointer(){
+    int n = 2;
+    void* pv;
+    pv = &n;
+    int *pi2 = static_cast<int *>(pv);
+    cout << "pointer: " << *pi2 << endl;
+
+    int *pi = nullptr;
+    double* pd = nullptr;
+
+    cout << "sizeof \"Bohr\":" << sizeof("Bohr") <<endl;
+    char alpha[] = "abcdefg" 
+                    "ABCDEFG";
+    cout << "string alpha:" << alpha << endl;
+
+    cout << R"(\w\\w)" << endl;
+
+    string counts {R"(1
+        22
+        333)"};
+    cout << "counts: " << counts << endl;
+
+}
+template<typename T>
+int byte_diff(T*p, T* q){
+    return reinterpret_cast<char*>(q) - reinterpret_cast<char*>(p);
+}
+void diff_test(){
+    int vi[10];
+    short vs[10];
+    cout << vi << ' ' << &vi[1] << ' ' << &vi[1] - &vi[0] << ' '
+        << byte_diff(&vi[0], &vi[1]) << '\n';
+    cout << vs << ' ' << &vs[1] << ' ' << &vs[1] - &vs[0] << ' '
+        << byte_diff(&vs[0], &vs[1]) << '\n';
+}
 int main()
 {
     // cout << "Hello cpplang!" << endl;
@@ -229,5 +298,23 @@ int main()
 
     parallel();
 
+    tuple<string, int, double> t2("Solid",12,3.14);
+
+    auto tup = make_tuple("Herring", 10 ,1.23);
+    cout << "tuple ";
+    cout << get<0>(tup) << " ";
+    cout << get<1>(tup) << " ";
+    cout << get<2>(tup) << endl;
+
+    regex pat(R"(\w{2}\s*\d{5}(-\d{4})?)");
+    // cout << "pattern: " << pat << endl;
+    math();
+
+    declare();
+
+    pointer();
+
+    diff_test();
+    
     return 0;
 }

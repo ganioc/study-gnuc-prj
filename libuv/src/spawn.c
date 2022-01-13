@@ -16,7 +16,9 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
     
     if (nread > 0) {
         printf("echo_read : %zd\n", nread);
+        printf("---------------------------\n");
         printf("%s\n",buf->base);
+        printf("---------------------------\n");
     }
 
     if (nread < 0) {
@@ -51,7 +53,7 @@ int main()
     uv_pipe_init(loop, &pipe, 0);
 
     child_stdio[0].flags =UV_IGNORE;
-    child_stdio[1].flags = UV_CREATE_PIPE | UV_WRITABLE_PIPE;;
+    child_stdio[1].flags = UV_CREATE_PIPE | UV_WRITABLE_PIPE;
     child_stdio[1].data.stream = (uv_stream_t*)&pipe;
     child_stdio[2].flags = UV_IGNORE;
 

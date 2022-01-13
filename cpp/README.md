@@ -1,3 +1,12 @@
+# Reference Books
+<A Tour of C++ (Second edition)>
+
+<Programming -- Principles and Practice Using C++>
+
+<The Design and Evolution of C++>
+
+
+
 CMessage
 contents
 folders
@@ -190,10 +199,17 @@ cin, cout, cerr,
 
 使用标准库的部件, basic language support for resource management, using constructor/destructor pairs,
 
-Resource Acquisition Is Initialization, RAII,
+Resource Acquisition Is Initialization, **RAII**,
 - unique_ptr, <memory>, 不使用new, 使用智能指针，不使用raw pointer,
     - unique_ptr<X>{new X{i}}
-- shared_ptr, shared ownership, copied rather than moved, 当最后一个引用销毁的话，就会被销毁,
+    - 不要直接去使用 new, no naked new policy, 
+- shared_ptr, **shared ownership**, copied rather than moved, 当最后一个引用销毁的话，就会被销毁,
+
+```c
+mutex m;
+unique_lock<mutex> lck {m};
+
+```
 
 ### Concurrency,
 标准库的并发,
@@ -201,15 +217,27 @@ Resource Acquisition Is Initialization, RAII,
 - mutex
 - lock
     - unique_lock<mutex> lck {m1, defer_lock}
+    - defer_lock, dont yet try to acquire the mutex, 同时获取多个locks
 - packaged_task, launch tasks and connect up the mechanisms for returning a result,
     - get_future()
     - future.get(), get the result,
 - future, promise, returning a value from a task spawned on a separate thread,
 - async, launching of a task in a manner very similar to calling a function;
-- condition_variable, 
+- condition_variable, 一个线程等待另一个线程完成, 
     - wait()
     - notify_one();
+    - 线程通过queue来传送消息 
 
+```c++
+class Message{
+
+}
+queue<Message> mqueue;
+condition_variable mcond;
+mutex mmutex;
+```
+
+### 更高层次上的并行操作
 建立在操作系统的API之上,
 
 std::thread theObj(<CALLBACK>);
@@ -220,6 +248,159 @@ this_thread::get_id(),
 
 this_thread 就是当前的thread;
 
+### 1. future, promise
+在2个任务之间传送value, 而不使用lock, 将value放进promise, 这个值将出现在对应的future里。可以被task launcher读取。返回值，或者exception, 
+### 2. packaged_task
+
+
+### 3. async()
+
+## Small Utility Components
+### Time
+std::chrono,
+
+### Type Functions,
+constexpr float min = numeric_limits<float>::min();
+
+For compile-time computation , metaprogramming, template metaprogramming, 
+
+### iterator_traits
+forward_list, forward iterators,
+
+decltype(*beg) // 获取参数的类型
+
+tag dispatch, 
+
+### type predicates,
+<type_traits>,  std::is_arithmetic<T>::value;
+
+consexpr, 参数值，返回值必须是字面值, 编译期常量,
+
+### pair and tuple
+par<,> // from <utility>
+
+tuple // more than 2 elements, 
+
+make_tuple()
+
+## 正则表达式
+<regex>
+
+regex, smatch, regex_search(line, matches, pat)
+
+## Math
+<numeric>, sqrt(), pow(), 
+
+<complex> 复数
+
+<random> number
+
+<valarray> // vector like template, 
+
+<limits> // numeric limits, 
+
+# Basic Facilities
+C++ built-in types, 如何构造程序out of them. 
+
+## ISO C++ 标准
+implementation-defined
+
+## Structure of Declarations,
+- prefix specifiers, static, virtual, extern, constexpr, 
+    - * , pointer,
+    - *const, constant pointer,
+    - *volatile, volatile pointer,
+    - &, lvalue reference, reference, 
+    - && , rvalue reference
+    - auto
+
+- vector<double> , const int,
+- suffix function specifiers, const, noexcept,
+    - [] , array
+    - (), function,
+    - -> , returns from function,
+- optional initializer, function body
+
+Scope
+- Local scope, block, seciotn of code by {} pair,
+- Class scope, 
+- Namespace scope, 
+- Global scope, ::x (refer to global x)
+- Statement scope, for-, while-, if-, switch-
+- Function scope, 
+
+推理数据类型:
+- auto, from its initializer,
+- decltype(expr), expression,
+
+## Chap 7
+object, its address and type,
+
+deferencing, indirection, 指针就是indirection, 
+
+```c++
+int *pi;         // pointer to integer
+char** ppc;      // pointer to (pointer to char)
+int* ap[15];     // 15 (pointer to int)
+int (*fp)(char *)// pointer to function, which taking a char* argument ,returns an int
+int* f(char*)    // returns a pointer to int
+void*,  // pointer to an address, without type
+        // void* 不能用于函数和类成员;
+nullptr, //可以赋值于任何类型, 如address(0), 
+R(""), // Raw string literal,
+L"xx", // 
+wchar_t [] // 
+// Unicode Literals
+// 6 character literals,
+UTF-8  // 2bytes, 3bytes, 4bytes, u8'\0', u8R""
+UTF-16 // u'\0' u"", uR"()"
+UTF-32 // U'\0', U"", UR"()"
+
+
+```
+- static_cast<>
+
+### Array
+如果要传递指针，和size, 可以使用std:array, 或std::string, std::vector, vector完全可以代替array!!!
+
+### Pointers和const
+* constexpr: Evaluated at compile time,
+* const: dont modify in this scope, interface specification;
+* const pointer, make object const, not the pointer,
+* char *const cp; 指针不可修改
+* const char *const cpc; // 同时不可修改
+
+### reference,
+alias for an object,
+
+rvalue reference, 
+```
+// rvalue reference, 实现一个 destructive read,
+string&& rr2 {f()}
+move() // instread of copy()
+shrink_to_fit()
+clear();
+using ii = int &&;
+
+```
+
+enum class Warning:int { green, yellow}
+
+## Statements,
+
+# chap 9
+statement,  
+
+declarations , 
+
+# chap 10, expressions, 
+- assignment , is an expression,
+- function call,
+- construction of an object
+
+token_stream
+- token, pair, {number, 123.45}
+- ts.get(), ts.current(), current token,
 
 
 
