@@ -62,7 +62,39 @@ P165.
 vs code, codeLLDB plugin,
 
 ## chap12 Data Implementation, 数据的实现
+use std::mem;
 
+- discourage accessing the interanl representation of objects,
+- vector, allocation , at the heap; stack-allocated fixed-size header
+- 
+
+## chap13 Defining Closures, 闭包
+can't capture dynamic environment in a fn item
+
+const, static, 
+
+inline anonymous function, with type inference, a single expression as body, capture of any valid variable,
+
+dyn, ?
+
+## chap14, Using Changeable Strings,
+&str, reference to stringk
+
+expected `str`, found `&str`;  Rust has no string terminators.
+
+&&str, 
+
+str type, [u8; N] type, 
+
+String type, Vec<u8> type, 动态的字符串, 
+
+dynamic strings, String, "he".to_string()
+
+- let s1 = String::new()
+- String::from("")
+- "".to_string()
+- "".to_owned()
+- format!("")
 
 
 
