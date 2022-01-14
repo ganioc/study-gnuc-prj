@@ -40,6 +40,7 @@ Option, result,
 
 ## chap 11 内存分配
 - in processor registers
+    - 不会直接使用,
 - static, determined at compile time,
     - let uses stack allocation
     - explicit spec of the type,
@@ -58,7 +59,9 @@ Option, result,
 
 P165.
 
+vs code, codeLLDB plugin,
 
+## chap12 Data Implementation, 数据的实现
 
 
 
