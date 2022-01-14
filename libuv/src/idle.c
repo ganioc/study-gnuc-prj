@@ -6,7 +6,11 @@ int64_t counter = 0;
 void wait_for_a_while(uv_idle_t* handle){
     counter++;
 
+<<<<<<< HEAD
     if(counter >= 10e6){
+=======
+    if(counter >= 1600){
+>>>>>>> master
         uv_idle_stop(handle);
     }
 }
@@ -20,5 +24,9 @@ int main(){
     uv_run(uv_default_loop(), UV_RUN_DEFAULT);
 
     uv_loop_close(uv_default_loop());
+<<<<<<< HEAD
+=======
+    printf("End %lld\n",counter);
+>>>>>>> master
     return 0;
 }

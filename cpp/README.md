@@ -1,3 +1,12 @@
+# Reference Books
+<A Tour of C++ (Second edition)>
+
+<Programming -- Principles and Practice Using C++>
+
+<The Design and Evolution of C++>
+
+
+
 CMessage
 contents
 folders
@@ -190,10 +199,17 @@ cin, cout, cerr,
 
 使用标准库的部件, basic language support for resource management, using constructor/destructor pairs,
 
-Resource Acquisition Is Initialization, RAII,
+Resource Acquisition Is Initialization, **RAII**,
 - unique_ptr, <memory>, 不使用new, 使用智能指针，不使用raw pointer,
     - unique_ptr<X>{new X{i}}
-- shared_ptr, shared ownership, copied rather than moved, 当最后一个引用销毁的话，就会被销毁,
+    - 不要直接去使用 new, no naked new policy, 
+- shared_ptr, **shared ownership**, copied rather than moved, 当最后一个引用销毁的话，就会被销毁,
+
+```c
+mutex m;
+unique_lock<mutex> lck {m};
+
+```
 
 ### Concurrency,
 标准库的并发,
@@ -201,15 +217,35 @@ Resource Acquisition Is Initialization, RAII,
 - mutex
 - lock
     - unique_lock<mutex> lck {m1, defer_lock}
+
+    - defer_lock, dont yet try to acquire the mutex, 同时获取多个locks
+
 - packaged_task, launch tasks and connect up the mechanisms for returning a result,
     - get_future()
     - future.get(), get the result,
 - future, promise, returning a value from a task spawned on a separate thread,
 - async, launching of a task in a manner very similar to calling a function;
+<<<<<<< HEAD
 - condition_variable, 
     - wait()
     - notify_one();
 
+- condition_variable, 一个线程等待另一个线程完成, 
+    - wait()
+    - notify_one();
+    - 线程通过queue来传送消息 
+
+
+```c++
+class Message{
+
+}
+queue<Message> mqueue;
+condition_variable mcond;
+mutex mmutex;
+```
+
+### 更高层次上的并行操作
 建立在操作系统的API之上,
 
 std::thread theObj(<CALLBACK>);
@@ -219,6 +255,317 @@ this_thread::get_id(),
     ::joinable()
 
 this_thread 就是当前的thread;
+<<<<<<< HEAD
+=======
+
+### 1. future, promise
+在2个任务之间传送value, 而不使用lock, 将value放进promise, 这个值将出现在对应的future里。可以被task launcher读取。返回值，或者exception, 
+### 2. packaged_task
+
+
+### 3. async()
+
+## Small Utility Components
+### Time
+std::chrono,
+
+### Type Functions,
+constexpr float min = numeric_limits<float>::min();
+
+For compile-time computation , metaprogramming, template metaprogramming, 
+
+### iterator_traits
+forward_list, forward iterators,
+
+decltype(*beg) // 获取参数的类型
+
+tag dispatch, 
+
+### type predicates,
+<type_traits>,  std::is_arithmetic<T>::value;
+
+consexpr, 参数值，返回值必须是字面值, 编译期常量,
+
+### pair and tuple
+par<,> // from <utility>
+
+tuple // more than 2 elements, 
+
+make_tuple()
+
+## 正则表达式
+<regex>
+
+regex, smatch, regex_search(line, matches, pat)
+
+## Math
+<numeric>, sqrt(), pow(), 
+
+<complex> 复数
+
+<random> number
+
+<valarray> // vector like template, 
+
+<limits> // numeric limits, 
+
+# Basic Facilities
+C++ built-in types, 如何构造程序out of them. 
+
+## ISO C++ 标准
+implementation-defined
+
+## Structure of Declarations,
+- prefix specifiers, static, virtual, extern, constexpr, 
+    - * , pointer,
+    - *const, constant pointer,
+    - *volatile, volatile pointer,
+    - &, lvalue reference, reference, 
+    - && , rvalue reference
+    - auto
+
+- vector<double> , const int,
+- suffix function specifiers, const, noexcept,
+    - [] , array
+    - (), function,
+    - -> , returns from function,
+- optional initializer, function body
+
+Scope
+- Local scope, block, seciotn of code by {} pair,
+- Class scope, 
+- Namespace scope, 
+- Global scope, ::x (refer to global x)
+- Statement scope, for-, while-, if-, switch-
+- Function scope, 
+
+推理数据类型:
+- auto, from its initializer,
+- decltype(expr), expression,
+
+## Chap 7
+object, its address and type,
+
+deferencing, indirection, 指针就是indirection, 
+
+```c++
+int *pi;         // pointer to integer
+char** ppc;      // pointer to (pointer to char)
+int* ap[15];     // 15 (pointer to int)
+int (*fp)(char *)// pointer to function, which taking a char* argument ,returns an int
+int* f(char*)    // returns a pointer to int
+void*,  // pointer to an address, without type
+        // void* 不能用于函数和类成员;
+nullptr, //可以赋值于任何类型, 如address(0), 
+R(""), // Raw string literal,
+L"xx", // 
+wchar_t [] // 
+// Unicode Literals
+// 6 character literals,
+UTF-8  // 2bytes, 3bytes, 4bytes, u8'\0', u8R""
+UTF-16 // u'\0' u"", uR"()"
+UTF-32 // U'\0', U"", UR"()"
+
+
+```
+- static_cast<>
+
+### Array
+如果要传递指针，和size, 可以使用std:array, 或std::string, std::vector, vector完全可以代替array!!!
+
+### Pointers和const
+* constexpr: Evaluated at compile time,
+* const: dont modify in this scope, interface specification;
+* const pointer, make object const, not the pointer,
+* char *const cp; 指针不可修改
+* const char *const cpc; // 同时不可修改
+
+### reference,
+alias for an object,
+
+rvalue reference, 
+```
+// rvalue reference, 实现一个 destructive read,
+string&& rr2 {f()}
+move() // instread of copy()
+shrink_to_fit()
+clear();
+using ii = int &&;
+
+```
+
+enum class Warning:int { green, yellow}
+
+## Statements,
+
+# chap 9
+statement,  
+
+declarations , 
+
+# chap 10, expressions, 
+- assignment , is an expression,
+- function call,
+- construction of an object
+
+token_stream
+- token, pair, {number, 123.45}
+- ts.get(), ts.current(), current token,
+
+P265,
+error, <errno.h>
+perror()?
+error 让程序以一种非常明显、完全不可能无视的方式报错，提醒用户“有某个地方出错了”
+
+## isspace,
+
+**A Desk Calculator**,
+
+space (0x20, ' ')
+form feed (0x0c, '\f')
+line feed (0x0a, '\n')
+carriage return (0x0d, '\r')
+horizontal tab (0x09, '\t')
+vertical tab (0x0b, '\v')
+
+- isdigit()
+- isalpha()
+- isalnum()
+
+Separate error detection from error recovery.
+
+extern "C"
+
+解释:
+
+BNF格式, 
+
+* ts.get(), 返回一个token, 
+* primary, 包含了 ->
+    * number
+    * name  // name is an identifier
+    * name=expression
+    * -primary //   取负值 
+    * left parensis, right parensis, (expr)
+* term:
+    * primary
+    * term/primary
+    * term*primary
+* expression:
+    * expression+term
+    * expression-term
+    * term
+* expr_list:
+    * expression print
+    * expression print expr_list
+* program:
+    * end
+    * expr_list end, 用一个循环来处理expr_list, 
+
+ts.get(), 获取下一个; ts.current(), 获取当前的token,
+## evaluate from command-line
+istringstream, , get our TokenStream to read from an appropriate istringstream.
+
+stream 从string读取，称为。 库为<sstream>
+
+single step 调试:
+- 
+
+vector.push_back(), 添加
+
+## Operator Summary, 操作符归纳,
+class-name,
+
+decltype(expr), 
+
+noexcept specifier, 
+
+typeid(type|expr)
+
+dynamic_cast<type>(expr)
+
+static_cast<type>(expr)
+
+reinterpret_cast<type>(expr)
+
+const_cast<type>(expr)
+
+sizeof(type)
+
+alignof(type)
+
+delete
+
+delete[] pointer
+
+<< | >>
+
+{expr-list}
+
+throw expr
+
+higher precedence, 优先级,
+
+Max Munch rule,
+
+preprocessor notation, #, ##,
+
+P274,
+代码的层次太清晰了。足见设计的简单，清晰。功力非常！就是根据前面的BNF设计的。
+
+sizeof, size_t, <cstddef>, 
+
+pointer subtraction, signed integral type, ptrdiff_t, <cstddef>
+
+### 运算的优先级别
+short-circuit evaluation, 
+
+```
+== 的优先级高于 &
+临时对象, temporary objects,
+c_str(),  <string>, 
+```
+
+## Constant Expression, 常量表达式,
+constexpr, Evaluate at compile time, 
+
+named constant,
+evaluation is done at compile time, there can be no data races on that object in a multi-threaded system.
+
+evaluating something once at compile time gives isgnificatnly better performance than doing so a million times at run time.
+
+Symbolic Constants, Symnbolic names, 
+
+const与constepxr的不同，const可以被一个不是const的值初始化; 
+
+literal type, class with a constexpr constructor,
+
+## Implicit Type conversion
+narrowing conversion, 
+
+promotions, implicit conversions that preserve values ,
+
+integral promotion, 生成int out of shorter integer types,
+- char, signed char, unsigned char, short int, unsigned short int, converted to int
+- char16_t, char32_t, wchar_t, 可以转换成下面的: int, unsigned int, long, unsigned long, unsigned long long,
+- bit-field converted to int, unsigend int, 
+- bool, converted to int, 0, 1,
+
+floating point promotion, doubles out of floats,
+
+bring operands to the natural size for arithmetic operations,
+
+{}, initializer syntax prevent narrowing,  narrow_cast<>()
+
+throw std::runtime_error{"int to char check failed"};
+
+# chap11, Select Operations, 选择操作
+
+
+
+
+
+>>>>>>> master
 
 
 
