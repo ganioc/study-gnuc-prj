@@ -53,7 +53,6 @@ Token TokenStream::get(){
 
                 // string_value;
                 ct.string_value.push_back(ch);
-
                 while(ip->get(ch)&& isalnum(ch))
                     ct.string_value += ch; // append ch to end of string_value
                 ip->putback(ch);

@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <cctype>
+#include <sstream>
 
 #include "calculator.h"
 #include "TokenStream.h"
@@ -103,9 +104,28 @@ void calculate(){
     }
 }
 
+void test_expr(){
+    constexpr int x2=0;
 
-int main(){
+    constexpr int x3=x2;
+
+    cout << "test_expr()" << endl;
+    cout << x3 << endl;
+
+}
+int main(int argc, char* argv[]){
     cout << "Hello, calculator()" << endl;
+
+    switch(argc){
+        case 1:
+            break;
+        case 2:
+            ts.set_input(new istringstream{argv[1]});
+            break;
+        default:
+            error("too many arguments");
+            return 1;
+    }
 
     table["pi"] = 3.14159265357932385;
     table["e"] = 2.7182818284590452354;
@@ -113,6 +133,8 @@ int main(){
     calculate();
 
     cout << "End of main" << endl;
+
+    test_expr();
     return 0;
 }
 

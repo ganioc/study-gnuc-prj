@@ -427,12 +427,16 @@ Separate error detection from error recovery.
 extern "C"
 
 解释:
+
+BNF格式, 
+
 * ts.get(), 返回一个token, 
 * primary, 包含了 ->
     * number
     * name  // name is an identifier
     * name=expression
     * -primary //   取负值 
+    * left parensis, right parensis, (expr)
 * term:
     * primary
     * term/primary
@@ -446,10 +450,109 @@ extern "C"
     * expression print expr_list
 * program:
     * end
-    * expr_list end
+    * expr_list end, 用一个循环来处理expr_list, 
 
 ts.get(), 获取下一个; ts.current(), 获取当前的token,
 ## evaluate from command-line
+istringstream, , get our TokenStream to read from an appropriate istringstream.
+
+stream 从string读取，称为。 库为<sstream>
+
+single step 调试:
+- 
+
+vector.push_back(), 添加
+
+## Operator Summary, 操作符归纳,
+class-name,
+
+decltype(expr), 
+
+noexcept specifier, 
+
+typeid(type|expr)
+
+dynamic_cast<type>(expr)
+
+static_cast<type>(expr)
+
+reinterpret_cast<type>(expr)
+
+const_cast<type>(expr)
+
+sizeof(type)
+
+alignof(type)
+
+delete
+
+delete[] pointer
+
+<< | >>
+
+{expr-list}
+
+throw expr
+
+higher precedence, 优先级,
+
+Max Munch rule,
+
+preprocessor notation, #, ##,
+
+P274,
+代码的层次太清晰了。足见设计的简单，清晰。功力非常！就是根据前面的BNF设计的。
+
+sizeof, size_t, <cstddef>, 
+
+pointer subtraction, signed integral type, ptrdiff_t, <cstddef>
+
+### 运算的优先级别
+short-circuit evaluation, 
+
+```
+== 的优先级高于 &
+临时对象, temporary objects,
+c_str(),  <string>, 
+```
+
+## Constant Expression, 常量表达式,
+constexpr, Evaluate at compile time, 
+
+named constant,
+evaluation is done at compile time, there can be no data races on that object in a multi-threaded system.
+
+evaluating something once at compile time gives isgnificatnly better performance than doing so a million times at run time.
+
+Symbolic Constants, Symnbolic names, 
+
+const与constepxr的不同，const可以被一个不是const的值初始化; 
+
+literal type, class with a constexpr constructor,
+
+## Implicit Type conversion
+narrowing conversion, 
+
+promotions, implicit conversions that preserve values ,
+
+integral promotion, 生成int out of shorter integer types,
+- char, signed char, unsigned char, short int, unsigned short int, converted to int
+- char16_t, char32_t, wchar_t, 可以转换成下面的: int, unsigned int, long, unsigned long, unsigned long long,
+- bit-field converted to int, unsigend int, 
+- bool, converted to int, 0, 1,
+
+floating point promotion, doubles out of floats,
+
+bring operands to the natural size for arithmetic operations,
+
+{}, initializer syntax prevent narrowing,  narrow_cast<>()
+
+throw std::runtime_error{"int to char check failed"};
+
+# chap11, Select Operations, 选择操作
+
+
+
 
 
 
