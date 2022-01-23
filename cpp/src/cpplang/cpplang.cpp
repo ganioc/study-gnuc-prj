@@ -7,14 +7,12 @@
 #include <map>
 #include <fstream>
 #include <mutex>
-<<<<<<< HEAD
-=======
+
 #include <regex>
 #include <numeric>
 #include <list>
 #include <random>
 #include <limits>
->>>>>>> master
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
@@ -193,8 +191,6 @@ void parallel()
     auto time1 = high_resolution_clock::now();
     cout << duration_cast<nanoseconds>(time1 - time0).count();
     cout << " nanoseconds passed." << endl;
-<<<<<<< HEAD
-=======
 }
 
 void math(){
@@ -225,7 +221,7 @@ void declare(){
     printf("declare: %d\n", x3);
     vector<int> v1{99,98,97};
     // nullprt, 
->>>>>>> master
+
 }
 void pointer(){
     int n = 2;
