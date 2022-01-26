@@ -103,6 +103,17 @@ string concatenation:
 ## chap15 Ranges and Slices,
 
 ## chap16 Iterators
+as_bytes() , bytes(),  
+
+iterator is a type specification, that has a next method returning an Option<T> value.
+
+mutating iterator, iter_mut()
+
+iterator adapter: filter, map, any, all, count, sum, min, max, collect, 
+
+# chap17 I/O and Error Handling
+
+
 
 
 

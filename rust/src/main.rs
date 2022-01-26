@@ -63,7 +63,7 @@ fn chap13(){
         s_string.push('a');
     }
 }
-void m_slice(){
+fn m_slice(){
     let arr = [55,22,33,44,66,7,8];
     let v = vec![55,22,33,4,55,77,88];
     let sr1 = &arr[2..5];
@@ -75,6 +75,87 @@ void m_slice(){
         &sr1[1..2],
         &sr2[1]);
     
+}
+fn print_nth_char(s: &str, n: u32){
+    let mut iter: std::str::Chars = s.chars();
+    let mut times = n;
+    println!("n is : {}", times);
+    loop{
+        let item: Option<char> = iter.next();
+        match item {
+            Some(c) => if times==1 {
+                println!("{}", c);
+                break;
+            },
+            None => { break;}
+        }
+        times = times - 1;
+    }
+}
+fn print_codes(s:&str){
+    let mut iter = s.chars();
+    loop{
+        match iter.next(){
+            Some(c) => {
+                println!("{}: {}",c, c as u32);
+            },
+            None => {break; },
+        }
+    }
+}
+fn m_iterator(){
+    let s = "abc012";
+    for i in 0..s.len(){
+        println!("{}: {}", i, s.as_bytes()[i]);
+    }
+    print_nth_char("abcdefg",2);
+    print_codes("啊呀");
+
+    let string: &str = "aaλαψ";
+    let string_it: std::str::Bytes = string.bytes();
+    for byte in string_it {
+        print!("{} ", byte);
+    }
+    println!("");
+    for item_ref in (&[11u8,22,33]).iter(){
+        print!("{} ", *item_ref);
+    }
+    println!("");
+    for item_ref in vec!['a','b','c'].iter(){
+        print!("{} ", *item_ref);
+    }
+    let slice: &[u8] = &[11u8,22,23];
+    let slice_it: std::slice::Iter<u8> = slice.iter();
+    for item_ref in slice_it{
+        print!("{} ", *item_ref);
+    }
+
+    let slice = &mut[3,4,5,6];
+    {
+        let iterator = slice.iter_mut();
+        for item_ref in iterator{
+            *item_ref += 1;
+        }
+    }
+    println!("{:?}", slice);
+
+    let arr = [66, -90, -20, 223, 34 , 0, 32];
+    for n in arr.iter().filter(|x| **x < 0){
+        print!("{} ", n);
+    }
+    println!("");
+    for n in arr.iter().map(|x| *x * 2){
+        print!("{} ", n);
+    }
+    println!("");
+    for (i,ch) in arr.iter().enumerate() {
+        print!("{} {}, ", i, *ch);
+    }
+    println!("");
+    match arr.iter().min(){
+        Some(n) => println!("{}", n),
+        _ => (),
+    }
 }
 fn main(){
     let a = 123;
@@ -145,6 +226,8 @@ fn main(){
     chap13();
 
     m_slice();
+
+    m_iterator();
     
     println!("");
 }
