@@ -257,6 +257,40 @@ void diff_test(){
         << byte_diff(&vi[0], &vi[1]) << '\n';
     cout << vs << ' ' << &vs[1] << ' ' << &vs[1] - &vs[0] << ' '
         << byte_diff(&vs[0], &vs[1]) << '\n';
+    
+}
+int high_value(initializer_list<int> val){
+    int high = numeric_limits<int>::lowest();
+    if(val.size() == 0){
+        return high;
+    } 
+
+    for(auto x: val){
+        if(x> high)
+            high = x;
+    }
+    return high;
+}
+void print_modulo(const vector<int>&v, ostream& os, int m){
+    for_each(begin(v), end(v), 
+        [&os, m](int x){
+            if(x%m == 0){
+                os << x << '\n';
+            }
+        });
+}
+void select_operation(){
+    int v1 = high_value({1,2,3,4,5,6,7});
+    int v2 = high_value({-1,2,v1,4,-9,20});
+    cout << "v1: " << v1 << endl;
+    cout << "v2: " << v2 << endl;
+
+    auto x0={1};
+    auto x4 = { 1,2,0};
+    vector<int>vec = {1,2,3,4,5,6,7,8,9};
+    print_modulo(vec, cout , 2);
+
+    double(*p1)(double) = [](double a){ return sqrt(a);};
 }
 int main()
 {
@@ -317,6 +351,8 @@ int main()
     pointer();
 
     diff_test();
+
+    select_operation();
     
     return 0;
 }

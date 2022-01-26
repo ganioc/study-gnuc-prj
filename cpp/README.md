@@ -255,7 +255,6 @@ this_thread::get_id(),
     ::joinable()
 
 this_thread 就是当前的thread;
-<<<<<<< HEAD
 =======
 
 ### 1. future, promise
@@ -560,12 +559,79 @@ bring operands to the natural size for arithmetic operations,
 throw std::runtime_error{"int to char check failed"};
 
 # chap11, Select Operations, 选择操作
+free store 会带来的问题，有3类:
+* Leaked objects,  使用了new, 忘记delete,
+* Premature deletion, delete, 后面又使用指针
+* Double deletion, 删除了2次，触发两次destructur,
+
+如何避免这些问题:
+* 不要将对象放在free store上, prefer scoped variables;
+* 使用manager object, (handle, 带有destructor,),如string, vector, RAII (Resource Acquisition Is Initialization)从而避免resource leaks, handling using exceptions simple and safe.
+* unique_ptr, shared_ptr,manager object作为一个scoped variable, 
+
+## Array of objects:
+new, delete, <new> header, 
+
+new[], delete[],
+
+new operator不会保证成功，不会throw error, upon memory exhaustion; 
+
+placement syntax, size_t as 1st argument,
+
+nothrow new,
+- int *p = new(nothrow) int[n], operator delete(nothrow,p)
+- nothrow, nothrow_t, 
+- bad_alloc, nullptr,
+
+## Lists,
+T{...}, initialized by , initializer_list, 
+
+- qualified lists,
+- unqualified lists, 
+    - function argument
+    - return value
+    - right hand operand of an assignment operator
+    - subscript
+
+numeric_limits<int>::lowest();
+
+## lambda Expressions,
+* [], possibly empty capture list, 
+* (), optional parameter list, 
+* mutable specifier, 改变copies of variables captured,
+* optional noexcept specifier,
+* -> , optional return type 
+* body, code to be executed, 
+* [&], 引用
+* [=], 拷贝
+& reference, 否则就只是一个 copy, 
+
+closure object, or simply a closure, 
+
+lifetime, to outlive its caller, make sure taht all local information is copied into the closure object, 
+- namespace variable, 不需要 capture, 
+- this, members are accessed through this, this和=是不兼容的,
+
+## 显式的类型转换
+* const_cast, getting write access to sth. declared const
+    * between const and volatile qualifiers
+* static_cast, reversing a well-defined implicit conversion, you know the type to be casted; with truncated value, 
+    * same class hierarchy, 
+* reinterpret_cast, changing the meaning of bit patterns, for C style conversion, Named Casts,
+    * reinterpret_cast<IO_device*>(0xff00);
+    * between unrelated types, 不做任何保证, 
+    * 对函数指针操作, 
+* dynamic_cast, dynamically checked class hierarchy navigation, run-time checked, 
+    * run-time checking version, in a class hierarchy,
+* narrow_cast, 改变2个标量, will throw error,
+
+static_assert() // 
+
+using Print=int *;
+
+# chap12 Functions
 
 
-
-
-
->>>>>>> master
 
 
 
