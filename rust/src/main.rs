@@ -1,6 +1,6 @@
 use std::mem;
 use std::cmp::Ordering;
-
+use std::io::Write;
 
 
 fn desc(a: &i32, b: &i32) -> Ordering {
@@ -157,6 +157,81 @@ fn m_iterator(){
         _ => (),
     }
 }
+fn test_io(){
+    let command_line:std::env::Args = std::env::args();
+    // arguments in command line, 
+    for argument in command_line {
+        println!("[{}]", argument);
+    }
+    // for var in std::env::vars() {
+    //     println!("[{}]=[{}]", var.0, var.1);
+    // }
+    std::env::set_var("abcd", "This is the value.");
+    println!("[{:?}]",std::env::var("abcd"));
+
+    println!("{}",
+        if std::env::var("abcd").is_ok(){
+            "Already defined"
+        }else{
+            "Undefined"
+        });
+    println!("{}.", match std::env::var("abcd"){
+        Ok(value) => value,
+        Err(err) => format!("Still undefined: {}",err),
+    });
+
+    // let mut line= String::new();
+    // println!("{:?}", std::io::stdin().read_line(&mut line));
+    // println!("[{}]", line);
+/*
+    let mut text = format!("First: ");
+    let inp = std::io::stdin();
+    inp.read_line(&mut text).unwrap();
+    text.push_str("Second: ");
+    inp.read_line(&mut text).unwrap();
+    println!("{}: {} bytes", text, text.len());
+*/
+
+}
+fn f1(x: i32) -> Result<i32, String>{
+    if x == 1 {
+        Err(format!("Err.1"))
+    }else{
+        Ok(x)
+    }
+}
+fn f2(x: i32) -> Result<i32, String>{
+    if x == 2 {
+        Err(format!("Err.2"))
+    }else{
+        Ok(x)
+    }
+}
+fn f3(x: i32) -> Result<i32, String>{
+    if x == 3 {
+        Err(format!("Err.3"))
+    }else{
+        Ok(x)
+    }
+}
+fn test_error(x: i32) -> Result<i32, String>{
+    let result = f1(x);
+    if result.is_err() { return result; }
+    f1(result.unwrap())
+}
+fn test_io_write(){
+    std::io::stdout().write("Hi".as_bytes()).unwrap();
+
+    //std::io::stdout().write("Hello ".as_bytes()).unwrap();
+    std::io::stdout().write(String::from("world").as_bytes()).unwrap();
+
+    let int_str: String = 45.to_string();
+    let float_str: String = 4.5.to_string();
+    let bool_str: String =  true.to_string();
+
+    print!("{} {} {}\n", int_str, float_str, bool_str);
+    
+}
 fn main(){
     let a = 123;
     print!("hello main\n");
@@ -228,6 +303,12 @@ fn main(){
     m_slice();
 
     m_iterator();
-    
+
+    // test_io();
+    let result = test_error(2);
+    println!("{}", result.is_ok());
+
+    test_io_write();
+
     println!("");
 }

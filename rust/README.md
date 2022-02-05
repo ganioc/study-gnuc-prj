@@ -112,6 +112,27 @@ mutating iterator, iter_mut()
 iterator adapter: filter, map, any, all, count, sum, min, max, collect, 
 
 # chap17 I/O and Error Handling
+std::env::args()
+
+std::process:exit(107); // 回到launching process ,
+
+环境变量: std::env::vars()
+
+Reading from the console, std::io::stdin().read_line(&mut line)
+
+错误处理, Result type, match statement,
+
+输出: std::io.Write(), use std::io::Write;
+
+# chap 18 Traits,
+
+
+
+
+
+
+
+
 
 
 
