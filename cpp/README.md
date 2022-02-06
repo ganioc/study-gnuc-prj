@@ -630,8 +630,56 @@ static_assert() //
 using Print=int *;
 
 # chap12 Functions
+Break computational tasks into comprehensible chunks. represented as functions an dclasses
+函数, structuring mechanism, 
 
+member function be required:
+- virtual, can be overridden in a derived class,
+- override, must be overriding a virtual function from a base class,
+- final, can not be overrided in a derived class
+- static, not associated with a particular object,
+- const, may not modify its object
 
+[noreturn] virtual inline auto f(const unsigned long int *const) ->
+    void const noexcept;
+
+declaration,
+
+definition,
+
+decltype, 
+
+* constexpr, at compile time, evaluated, pure function, allows
+    recursion and conditional expressions, 
+* std::initializer_list<T>,
+* overload,
+    * Exact match, same name, array name to pointer,
+    * Match using promotions, bool to int, char to int, float to double,
+    * Match using standard conversions, int to double, 
+    * Match using user-defined conversions, double to complex<double>
+    * Match using ellipsis ...,
+
+caller,
+implementer,
+
+宏, macro, ##
+    #, 参数的名称，参数,
+    __VA_ARGS__, 表示了arguments, passed as a string, 
+
+Predefined Macros:
+    __cplusplus, 201103L,
+    __DATE__j
+    __TIME__,
+    __FILE__
+    __LINE__,
+    __FUNC__, current funciton, 
+    __STDC_HOSTED__,
+    __STDC__,
+    __STDC_MB_MIGHT_NEQ_WC__, 1, wchar_t, 
+    __STDCPP_STRICT_POINTER_SAFETY__, 1,
+    __STDCPP_THREAADS__, 1,
+
+# chap 13 Exception Handling
 
 
 
