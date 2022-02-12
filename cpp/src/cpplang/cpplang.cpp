@@ -17,6 +17,7 @@
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
 #include "CVector.h"
+#include "SimpleVector.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -292,6 +293,31 @@ void select_operation(){
 
     double(*p1)(double) = [](double a){ return sqrt(a);};
 }
+// class Range_error: std::runtime_error{
+//     const char* what() const noexcept{
+//         return "Range_error";
+//     }
+// };
+void f_except(int n) {
+    if(n<0|| 10<n) {
+        throw std::runtime_error{"I give up!"};
+    }
+}
+void except(){
+    try{
+        f_except(-2);
+    }catch(std::exception &e){
+        cout << "Caught range_error"<<endl;
+        cerr << e.what() << '\n';
+    }
+    cout << "No error" << endl;
+}
+
+void simple_vector(){
+    // to discuss exception safety, avoidance of resource leaks,
+    cout << "simple vector" << endl;
+
+}
 int main()
 {
     // cout << "Hello cpplang!" << endl;
@@ -353,6 +379,10 @@ int main()
     diff_test();
 
     select_operation();
+
+    except();
+
+    simple_vector();
     
     return 0;
 }

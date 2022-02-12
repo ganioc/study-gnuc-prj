@@ -1,7 +1,8 @@
 use std::mem;
 use std::cmp::Ordering;
 use std::io::Write;
-
+// use std::num;
+use std::num;
 
 fn desc(a: &i32, b: &i32) -> Ordering {
     if a < b { Ordering::Greater }
@@ -232,6 +233,90 @@ fn test_io_write(){
     print!("{} {} {}\n", int_str, float_str, bool_str);
     
 }
+trait HasSquareRoot {
+    fn sq_root(self) -> Self;
+}
+impl HasSquareRoot for f32{
+    fn sq_root(self) -> Self { f32::sqrt(self) }
+}
+impl HasSquareRoot for f64{
+    fn sq_root(self) -> Self{ f64::sqrt(self) }
+}
+fn quartic_root<Number> (x: Number) -> Number
+where Number: HasSquareRoot{
+    x.sq_root().sq_root()
+}
+fn test_traits(){
+    println!("{} {}", quartic_root(100f64), quartic_root(100f32));
+    println!("test traits.");
+    println!("{}", f64::sqrt(100.0));
+
+    println!("{},", "abcd".to_string());
+    println!("{},", [1,2,3].len());
+    let mut v1 = vec![0u8; 0];
+    v1.push(7u8);
+    print!("{:?};", v1);
+
+}
+fn _f1<T> (a:T) -> T {a}
+fn _f2<T> (a: T) -> T {
+    let b: T = a;
+    let mut c = b;
+    c = _f1(c);
+    c
+}
+fn test_oo(){
+    trait Tr{
+        fn f1(a: u32)-> bool;
+        fn f2(&self, b:u16) -> Self;
+
+    }
+    struct Stru{
+        x: u16,
+        y: u16,
+    }
+    impl Tr for Stru{
+        fn f1(a: u32) -> bool{
+            a == 0
+        }
+        fn f2(&self, b: u16) -> Self{
+            if b == self.x || b == self.y {
+                Stru {
+                    x: self.x +1,
+                    y: self.y + 1,
+                }
+            }else{
+                Stru {
+                    x: self.x -1,
+                    y: self.y -1,
+                }
+            }
+        }
+    }
+    let s = Stru{ x:23, y: 456};
+    println!("{} {}", Stru::f1(500_000), s.f2(456).x);
+
+    enum Continent{
+        Afica,
+        America,
+        Asia,
+        Europe,
+        Oceania,
+    }
+    impl Continent{
+        fn name(&self) -> &str {
+            match *self {
+                Continent::Afica => "Africa",
+                Continent::America => "America",
+                Continent::Asia => "Asia",
+                Continent::Europe => "Europe",
+                Continent::Oceania => "Oceania",
+            }
+        }
+    }
+    println!("{}", Continent::Asia.name());
+
+}
 fn main(){
     let a = 123;
     print!("hello main\n");
@@ -309,6 +394,10 @@ fn main(){
     println!("{}", result.is_ok());
 
     test_io_write();
+
+    test_traits();
+
+    test_oo();
 
     println!("");
 }

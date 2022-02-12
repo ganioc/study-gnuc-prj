@@ -680,7 +680,107 @@ Predefined Macros:
     __STDCPP_THREAADS__, 1,
 
 # chap 13 Exception Handling
+Error Handling,
+错误的处理不是local的,  error-handling into different parts of a program,
+library, 房子库里面, a library designer can not know什么程序会调用,
+库作者可以检测错误，但是不知道应该怎么处理,
+库的使用者知道如何处理运行时错误，但是不知道如何检测错误,
 
+alternative:    传统的处理方式
+    * 终止程序, exit(1); abort();
+    * 返回一个错误代码 ， error value, 
+    * 返回一个legal value, leave program in error state,如 C的errno,
+    * 调用一个错误处理函数, error-hanlder function, 弹出对话框等,
+complete: handle all errores deteted by ordinary code,
+将错误处理代码和正常代码分开:
+more rugular style of error handling,
+
+exception是一个对象，thrown to represent an error,
+use only user-defined types
+
+Asynchronous Events, 异步事件,
+    不是exceptions, signals, 来处理异步事件, system-dependent,
+
+不能使用exception的场景:
+    time-critical component, 
+    a large old program , naked pointers, 
+
+Hierarchical Error Handling:
+    * fault-tolerant systems, are multilevel, 
+    * noexcept 提供了一个简单的escape for errors,
+
+关于效率，
+   * C语言不用exception throwing, 
+   * new , bad_alloc, atexit(), qsort(), 
+
+exception safe,
+    * basic guarantee for all operations, 
+    * strong guarantee, push_back(), insert(), uninitialized_copy(),
+    * nothrow guarantee, swap(), pop_back()
+
+避免resource leaks,
+    * 出了问题时, 回到well-defined states, 保证所有的资源释放,然后throw exception
+    * 任何从系统的另一个部分获取的东西都是资源，需要进行释放,
+    * Files, locks, network conn, threads, mutex, 
+
+RAII, Resource Acquisiiton Is Initialization, $13.3, 
+    using loal objects, 
+    实际上发生错误时，假定会有上层的程序来处理, 
+    std::unique_lock, 
+    unique_ptr,
+    shared_ptr, to avoid leaks,
+
+finally,
+    对类添加了一层包裹, 
+
+preconditions failure,
+    assertion, assert(), <cassert>, 
+    NDEBUG, at run time, 
+    static_assert(A, message), at compile time, 
+
+destrutor should not throw,
+stack unwinding, 向上传, 
+
+std::runtime_error,
+
+noexcept,
+    std::terminate()
+    std::bad_alloc
+    定义函数为noexcept的
+
+rethrown, 就是throw, 不用任何的operand,
+
+什么时候终止程序呢？terminate()
+    * no suitable handler found, for the thrown exception,
+    * a noexcept funciton tries to exit with a throw
+    * a destrcutor invoked during stak unwiding
+    * statically allocated or thread-local object try to exit with throw
+    * a function, atexit()
+    * std::set_terminate(), <exception>, 
+
+thread, exception没有捕捉，就会退出。
+    packaged_task, 来处理user code 's exception,
+
+### A simple vector,
+数理天地，数学月报, 中学生数学,
+explicit, 不能进行隐式的类型转换, 
+=delete, // no copy operations
+T&& // 这个是什么意思呢？右值饮用拷贝, 
+std::uninitialized_fill()
+std::uninitialized_fill_n()
+std::uninitialized_copy()
+swap(), transfer ownership of any memory allocated for elements,
+copy(), 
+destroy(),
+
+assignment,  old value must be taken care of, 
+
+### change vector's size
+v.push_back(), 不但添加到尾部，而且改变vector的大小;
+reserve(), 增加capacity(, ), 增加容量，然后切换owner,
+resize(), 
+
+# chap 14 Namespaces,
 
 
 

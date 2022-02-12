@@ -31,7 +31,7 @@ $(BUILD_DIR):
 build/calculator: calculator.o TokenStream.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
-build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o
+build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o SimpleVector.o 
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 test-leetcode.exe: test-leetcode.o

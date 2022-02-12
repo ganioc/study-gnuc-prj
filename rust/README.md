@@ -1,3 +1,6 @@
+books:
+<Beginning Rust from novice to professional 2018 Apress>
+
 ## How to learn rust?
 rustc 1.55.0
 
@@ -122,9 +125,34 @@ Reading from the console, std::io::stdin().read_line(&mut line)
 
 错误处理, Result type, match statement,
 
+
+
 输出: std::io.Write(), use std::io::Write;
 
 # chap 18 Traits,
+ (number as f64).sqrt() as i64
+f64::sqrt, 可以, traits 对不同的type，调用不同的接口函数,
+trait, impl, 
+
+- self,
+- Self,
+- std::fmt::Display standard library trait,
+- type, 
+
+# chap 19 OOP, Object Oriented Programming
+Stru,
+    - namespace containing, Stru::f1()
+    - instance,
+
+struct Stru{}
+impl Stru{}
+
+fn new() -> Number { }
+fn from()
+
+composition instead of inheritance, 
+
+# chap 20, Standard Library Collections,
 
 
 
