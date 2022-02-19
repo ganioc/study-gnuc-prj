@@ -1,7 +1,7 @@
 CC       := rustc
 VPATH    := ./hello  ./src 
 BUILD_DIR:= build
-
+CFLAGS   := -g
 
 .PHONY: clean
 
@@ -13,10 +13,10 @@ $(BUILD_DIR):
 	mkdir -p $@
 
 build/hello: hello.rs
-	$(CC) $^ -o $@
+	$(CC) $^ $(CFLAGS) -o $@
 
 build/main: main.rs
-	$(CC) $^ -g -o $@
+	$(CC) $^  $(CFLAGS) -o $@
 
 clean:
 	rm -f ./build/hello

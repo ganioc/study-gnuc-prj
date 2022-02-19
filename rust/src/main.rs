@@ -3,6 +3,7 @@ use std::cmp::Ordering;
 use std::io::Write;
 // use std::num;
 use std::num;
+use std::time::Instant;
 
 fn desc(a: &i32, b: &i32) -> Ordering {
     if a < b { Ordering::Greater }
@@ -317,6 +318,168 @@ fn test_oo(){
     println!("{}", Continent::Asia.name());
 
 }
+fn elapsed_ms(t1:Instant, t2: Instant) -> f64{
+    let t = t2 - t1;
+    t.as_secs() as f64 * 1000.
+        + t.subsec_nanos() as f64/1e6
+}
+fn test_collection_vec(){
+    println!("vec");
+    const SIZE:usize = 100_000_000;
+    let t0 = Instant::now();
+    let mut v = Vec::<usize>::with_capacity(SIZE);
+    let t1 = Instant::now();
+    for i in 0..SIZE {
+        v.push(i);
+    }
+    let t2 = Instant::now();
+    for _ in 0..SIZE {
+        v.pop();
+    }
+    let t3 = Instant::now();
+    print!("{} {} {}", elapsed_ms(t0,t1),
+        elapsed_ms(t1,t2),
+        elapsed_ms(t2,t3));
+    println!("");
+}
+fn test_collection_vec2 (){
+    println!("vec 2");
+    const SIZE:usize = 100_000_000;
+    let t0 = Instant::now();
+    let mut v = Vec::<usize>::with_capacity(SIZE);
+    let t1 = Instant::now();
+    for i in 0..SIZE {
+        v.insert(0,i);
+    }
+    let t2 = Instant::now();
+    for _ in 0..SIZE {
+        v.remove(0);
+    }
+    let t3 = Instant::now();
+    print!("{} {} {}", elapsed_ms(t0,t1),
+        elapsed_ms(t1,t2),
+        elapsed_ms(t2,t3));
+    println!("");
+}
+fn test_collection_que(){
+    println!("que");
+    const SIZE: usize = 40_000;
+    let t0 = Instant::now();
+    let mut v = Vec::<usize>::new();
+    for i in 0..SIZE {
+        v.push(i);
+        v.push(SIZE + i);
+        v.remove(0);
+        v.push(SIZE*2 + i);
+        v.remove(0);
+    }
+    let t1 = Instant::now();
+    while v.len() > 0 {
+        v.remove(0);
+    }
+    let t2 = Instant::now();
+    println!("{} {}", elapsed_ms(t0,t1),elapsed_ms(t1,t2));
+
+}
+fn test_collection_que2(){
+    println!("que2");
+    const SIZE: usize = 40_000;
+    let t0 = Instant::now();
+    let mut v = std::collections::VecDeque::<usize>::new();
+    for i in 0..SIZE {
+        v.push_back(i);
+        v.push_back(SIZE + i);
+        v.pop_front();
+        v.push_back(SIZE*2 + i);
+        v.pop_front();
+    }
+    let t1 = Instant::now();
+    while v.len() > 0 {
+        v.pop_front();
+    }
+    let t2 = Instant::now();
+    println!("{} {}", elapsed_ms(t0,t1),elapsed_ms(t1,t2));
+    
+}
+fn add(v: &mut Vec<i32>, a: i32){
+    v.push(a);
+    v.sort();
+}
+fn extract(v: &mut Vec<i32>) -> Option<i32>{
+    v.sort();
+    v.pop()
+}
+fn test_collection_binaryheap(){
+
+    println!("collection binaryheap");
+    let a = [48,18,20,35,17,13,39,12,42,33,29,27,50,16];
+    let mut v = Vec::<i32>::new();
+    for i in 0..a.len()/2 {
+        add(&mut v, a[i*2]);
+        add(&mut v, a[i*2 + 1]);
+        print!("{} ", v.pop().unwrap());
+    }
+    while !v.is_empty() {
+        print!("{} ", v.pop().unwrap());
+    }
+    println!("");
+}
+fn test_collection_binaryheap2(){
+
+    println!("collection binaryheap2");
+    let a = [48,18,20,35,17,13,39,12,42,33,29,27,50,16];
+    let mut v = Vec::<i32>::new();
+    for i in 0..a.len()/2 {
+        add(&mut v, a[i*2]);
+        add(&mut v, a[i*2 + 1]);
+        print!("{} ", extract(&mut v).unwrap());
+    }
+    while !v.is_empty() {
+        print!("{} ", extract(&mut v).unwrap());
+    }
+    println!("");
+}
+fn test_collection(){
+    println!("Spend on test collection {}", "TV");
+    let time0 = Instant::now();
+    for i in 0..10_000 {
+        println!("{}", i);
+    }
+
+    let time1 = Instant::now();
+    println!("{} ms",elapsed_ms(time0, time1));
+    test_collection_vec();
+    // test_collection_vec2();
+    test_collection_que();
+    test_collection_que2();
+    test_collection_binaryheap();
+    test_collection_binaryheap2();
+}
+fn test_assign(){
+    let v1 = vec![11,22,33];
+    let v2 = v1;
+    // println!("{}", v1.len());
+    println!("test assign");
+
+    struct S{}
+    impl Clone for S {
+        fn clone(&self)-> Self{
+            Self{}
+        }
+    }
+    impl Copy for S{
+
+    }
+    let s = S{};
+    let t = s.clone();
+    let u = s;
+
+    let mut a = 12;
+    
+    let _c = &mut a;
+    // let _b = &mut a;
+    *_c = 11;
+}
 fn main(){
     let a = 123;
     print!("hello main\n");
@@ -398,6 +561,10 @@ fn main(){
     test_traits();
 
     test_oo();
+
+    test_collection();
+
+    test_assign();
 
     println!("");
 }

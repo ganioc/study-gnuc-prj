@@ -153,24 +153,101 @@ fn from()
 composition instead of inheritance, 
 
 # chap 20, Standard Library Collections,
+measure the time spent,
+collections,
+    * arrays,
+    * vectors, index based, push,pop,
+    * structs,
+    * tuple-structs,
+    * tuples,
+    * enums,
+    * VecDeque<T>, push_front, push_back, pop_front, pop_back
+    * LinkedList<T>, 频繁地插入删除, 
+    * BinaryHeap<T>, 可以有优先级, priority_queue   
+    * BTreeSet<T>,无重复, sorted, 
+    * BTreeMap<K,V>, Dictionary sorted, 
+    * HashSet<T>, 无重复, unsorted,
+    * HashMap<K,V>,
 
+detour,
+use std::time::Instant;
 
+performance comparision:
+- 0.033382 479.957913 97.185783 , linear vec, 
+-  , insert and remove at index 0, 
 
+vector-like double-ended queue, 
 
+# chap21 Drops moves and copies
+ownership of objects
 
+Boxed objects, Box::new, 
+deallocation, 自动发生，无须处理 ， 
+- 临时表达式，statement ends,
+- varialbes, arrays, scope ends,
+- function, closure arguments, block ends,
+- Boxed objects, declarations ends,
+- chars, removed from the string,
+- itmes removed from collection,
 
+c++ heap deallocation, deterministic, explicit,
+rust, ownership,
 
+vector, header, data buffer, 
+rust, 每一个对象任何时刻都只能有一个owner,
+destructors, 
+    Drop,drop, 
+assignment语义,
+    share semantics, 只复制header, Java, gc languages,
+    copy semantics, C++, v1.clone();
+    move semantics, v1 cannot be used any more, Rust, 
+Box::new();
 
+cloneable,
+copyable,
 
+enum, struct, tuple,默认不支持copy或clone,
 
+# chap22 Borrowing and Lifetimes
+borrow checker,
+- borrowing,
+- mutable borrowing,
+- immmutable borrowing, 
+- signature of the function is valid,
+- body of the function is valid,
 
+lifetime specifiers, returning references,
+- scope, to compile-time variables, not runtime objects
+- runtime bojects, named lifetime, 
+- decoration of a funciton signature , 允许borrow checker,
 
+referable mulit, own only;
 
+use after change by an Alias,
+use after drop,
 
+temporary mutable borrowing, 
 
+function invocation and lifetime,
+- 在函数内，只能访问object owned by arguments,
+- local variables,
+- temporary objects, dynamic string expression,
+- static objects,
+- borrowed by arguments,
 
+返回时，不能索引
+- argument,
+- local variable,
+- temporary object,
 
+<'a>, lifetime specifier is sued, prefixed single quote,
 
+# chap 23 More About Lifetimes,
+lifetime specifiers needed for structs , tuple-stucts, enums,
+
+lifetime elision, 省略,
+
+OK, 总算读过一遍了。
 
 
 
