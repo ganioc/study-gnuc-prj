@@ -781,6 +781,67 @@ reserve(), 增加capacity(, ), 增加容量，然后切换owner,
 resize(), 
 
 # chap 14 Namespaces,
+namespace XXX {
+
+}
+XXX::Text_lib,  namespace-name::member-name, notation,
+先定义，
+然后再分开来实现 ； P408,
+::f(), 表示global function,
+classes也是namespace,
+using std::string;
+
+ADL, argument-dependent lookup,
+namespace是开放的，可以放在不同的文件里面，
+
+c++， c code， linkage and pointers to functions,
+* typedef, C++ linkage,
+* extern "C" {}, C linkage,
+
+Header Files,
+* Single-Header organization, 
+* using 只是方便在.cpp文件里面使用,
+* 在头文件里面定义extern 变量，这样避免重复包含在.cpp文件中,
+* 在大项目中，单头文件方法，in conventional file-based development environment, 就不适用了
+    * 公共的头文件里的一点变化会导致整个项目的编译，触发，
+    * 有可能会带来错误，引发错误，
+* multiple-Header organization, 多头文件的组织方式,
+    * 每个逻辑模块,logical module, 有自己的头文件定义, 
+    * .cpp文件包含自己的.h文件，和其它模块的.h文件, 从其它模块需要什么呢?
+
+初始化，非重入的, 
+建议使用constant expressions,
+using expressions without side effects,
+single-threaded startup phase of computation
+use some form of mutual exclusion,
+
+program termination,
+* returning from main(),
+* exit(), local variables of calling function and its caller will not have detructors invoked,
+    * without giving caller a chance to deal with the problem,
+* abort()
+* throwing an uncaught exception,  local objects are properly destroyed, 这个是推荐的,
+* noexcept, violating noexcept,
+* quick_exit(), does not invoke any destructors, at_quick_exit(), <cstdlib>, 
+
+C标准库的atexit()提供了在程序退出时，执行一些代码。做cleanup.
+C language workaround, 
+
+# Part III , Abstraction Mechanisms,
+如何定义和使用新的类型, new types, object-oriented programming, generic programing, 用了14章来阐述这个问题
+
+# Chap 16 Classes,
+abstract, concrete; 抽象，具体;
+
+- A class is a user-defined type,
+- consists of a set of members, data, functions,
+- member functions, define meaning of initialization, copy, move, cleanup(destruction)
+- . , -> , +, !, [], 
+- struct is a class, members are default public,
+
+data memebers last to emphasize the functions providing the public user interface,
+
+P473,
 
 
 
