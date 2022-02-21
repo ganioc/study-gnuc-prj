@@ -842,6 +842,33 @@ abstract, concrete; 抽象，具体;
 data memebers last to emphasize the functions providing the public user interface,
 
 P473,
+初始化{}
+explicit constructor, 不能进行隐式转换, direct initialization, 
+default arguments, 
+in-class definition, 
+
+const object
+cost T&, 引用，不可改变，
+()const, // 表明不会改变类的状态
+const(), // 表明返回值不可被改变
+physical constness,
+logical constness,
+const_cast, 强制转换,
+mutable member variable;
+const 对于成员的指针或引用无效,
+self reference, return *this; XXX & 
+this 是一个 rvalue, 
+member class, nested class, 
+
+concrete types,
+concrete classes, 与builtin type类似，不带类继承的类, value types, value-oriented programming,
+    To do a single, relatively simple thing, well and efficiently, 
+    not to display run-time polymorphic behavior,
+    
+static_cast<XXX>m,
+overloaded operators, 操作符重载, 
+
+# chap 17 Construction, Cleanup, Copy and Move
 
 
 

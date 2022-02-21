@@ -6,13 +6,16 @@ CPPFLAGS :=
 INCLUDES := -I ./include/  
 INCLUDES += -I ./include/cpplang/ 
 INCLUDES += -I ../boost/
+INCLUDES += -I ./include/concurrency/
 LIBS     :=
 LDFLAGS  := -lstdc++  -lpthread
 
 VPATH := ./src/ \
  		./src/cpplang/  \
+		./src/concurrency/ \
 		./include/  \
-		./include/cpplang/ 
+		./include/cpplang/  \
+		./include/concurrency 
 
 MODULES  := cpplang
 BUILD_DIR:= build
@@ -20,13 +23,16 @@ BUILD_DIR:= build
 
 .PHONY: clean
 
-all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang build/calculator
+all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang build/calculator build/concurr
 
 checkdirs: $(BUILD_DIR)
 	
 
 $(BUILD_DIR):
 	mkdir -p $@
+
+build/concurr : concurr.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 build/calculator: calculator.o TokenStream.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
