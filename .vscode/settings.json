@@ -80,7 +80,8 @@
         "tuple": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "filesystem": "cpp"
     },
     "git.ignoreLimitWarning": true
 }

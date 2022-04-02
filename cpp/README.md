@@ -5,7 +5,10 @@
 
 <The Design and Evolution of C++>
 
-
+一些c++项目的例子:
+- https://github.com/DeadSix27/waifu2x-converter-cpp
+    * 支持多平台，使用CMake, CMakeList.txt,
+    * 
 
 CMessage
 contents
@@ -869,6 +872,17 @@ static_cast<XXX>m,
 overloaded operators, 操作符重载, 
 
 # chap 17 Construction, Cleanup, Copy and Move
+construction,
+copy constructor, &,
+move constructor,  &&, 
+destructor of strings,
+X()
+X(const X&)
+X(X&&), move
+X& operator= (const X&)
+X& operator = (X&&),
+
+P498,
 
 
 

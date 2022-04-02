@@ -6,7 +6,8 @@ CFLAGS   := -std=c++11  -g -Wall
 CPPFLAGS := 
 INCLUDES := -I ./include/  
 LIBS     :=
-LDFLAGS  := -lstdc++  -lpthread
+LDFLAGS  := -lstdc++  -lpthread 
+# -lstdc++fs
 
 VPATH := ./src/ \
 		./include/  
