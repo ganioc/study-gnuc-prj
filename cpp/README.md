@@ -883,6 +883,12 @@ X& operator= (const X&)
 X& operator = (X&&),
 
 P498,
+讨论对象的生命周期, 
 
+安装Boost库, 
+sudo apt install libboost-all-dev
+ostream_iterator was not declared in this scope!
+    #include <iterator>
+O_EXCL was not declared in this scope,
 
 

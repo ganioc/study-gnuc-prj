@@ -5,7 +5,7 @@
 using namespace std;
 
 enum class Color { red, blue, green};
-enum class Traffic_light { green , yellow, red};
+enum class Traffic_light { green , yellow, red, white};
 
 Traffic_light & operator++(Traffic_light & t){
     switch(t){
@@ -13,6 +13,7 @@ Traffic_light & operator++(Traffic_light & t){
         case Traffic_light::yellow: return t=Traffic_light::red;
         case Traffic_light::red: return t=Traffic_light::green;
     }
+    return t=Traffic_light::white;
 }
 
 template <typename Enumeration>

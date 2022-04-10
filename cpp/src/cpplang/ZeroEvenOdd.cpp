@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <unistd.h>
+#include <fcntl.h>
 
 #include "ZeroEvenOdd.h"
 

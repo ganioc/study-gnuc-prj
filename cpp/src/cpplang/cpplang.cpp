@@ -13,11 +13,13 @@
 #include <list>
 #include <random>
 #include <limits>
+#include <functional>
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
 #include "CVector.h"
 #include "SimpleVector.h"
+
 
 using namespace std;
 using namespace std::chrono;
@@ -318,6 +320,10 @@ void simple_vector(){
     cout << "simple vector" << endl;
 
 }
+void construction(){
+    cout << "Construction , life cycle " << endl;
+    
+}
 int main()
 {
     // cout << "Hello cpplang!" << endl;
@@ -383,6 +389,8 @@ int main()
     except();
 
     simple_vector();
+
+    construction();
     
     return 0;
 }
