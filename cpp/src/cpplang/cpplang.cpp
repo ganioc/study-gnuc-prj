@@ -320,10 +320,30 @@ void simple_vector(){
     cout << "simple vector" << endl;
 
 }
+string ident(string arg){
+    return arg;
+}
+struct Tracer{
+    string mess;
+    Tracer(const string& s): mess{s} { clog << mess; }
+    ~Tracer() { clog << "~" << mess; }
+};
+void f(const vector<int>& v){
+    Tracer tr {"in f()\n"};
+    // for(auto x: v){
+    //     Tracer tr {string{"v loop "} + to <string>(x) + '\n'};
+    // }
+}
 void construction(){
     cout << "Construction , life cycle " << endl;
+    string s1 {"Adams"};
+    s1=ident(s1);
+    string s2 {"Pratchett"};
+    s1 = s2;
+    Tracer tr {" in f()\n"};
     
 }
+
 int main()
 {
     // cout << "Hello cpplang!" << endl;

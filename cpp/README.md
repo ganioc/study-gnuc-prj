@@ -879,8 +879,16 @@ destructor of strings,
 X()
 X(const X&)
 X(X&&), move
-X& operator= (const X&)
-X& operator = (X&&),
+X& operator= (const X&) // copy assignment , clean up target and copy
+X& operator = (X&&), // move , clean up target and move
+~X(), // destructor, clean up, 
+
+## object的5种情况
+- source of an assignment
+- object initializer,
+- function argument,
+- function return value
+- an exception
 
 P498,
 讨论对象的生命周期, 
@@ -890,5 +898,89 @@ sudo apt install libboost-all-dev
 ostream_iterator was not declared in this scope!
     #include <iterator>
 O_EXCL was not declared in this scope,
+
+copy,source , dest 都在,
+move,  sourcing will not be used again,
+
+clog是什么呢？
+cerr, 
+P484, pagd 484, $25.2.5.1, 
+
+constructor, 和class同名,
+    失败的话, std::bad_alloc(), thrown by new, 
+这种资源管理方式被称为RAIL (Resource Acquisition Is Initialization)
+需要判断一个类, 的对象是否可以被copy or move
+placement new, new(p) X{a}
+为了使destructor不能被随便, =delete, or private, 
+virtual Destructors, for a class with a virtual function,
+Buf buf2{}; // {}是一个initializer,
+    memberwise initialization, or initializer-list initialization
+    constructor initialization, (), 
+default constructor, ()空的构造函数,
+copy constructor, 
+
+<initializer_list>
+std::initializer_list, 
+
+direct initialization,
+copy initialization,
+Member and Base Initialization,
+delegating constructor,
+forwarding constructor,
+in-class initializers,
+static member initialization, definition outside the class;
+static const int c1 = 7;
+constexpr,
+
+copy constructor: X(const X&)
+copy assignment:  X& operator=(const X&)
+
+move constructor:
+uninitialized_copy(), 
+swap(tmp,*this); // swap representation with this's
+
+copy is Equivalence and Independence;
+shallow-copy, copy pointers,
+deep-copy, copy the complete state of an object,
+更好的做法是使用move, 
+shared_ptr<int>p; // garbage collection,
+copy-on-write, 
+Doesn't need indepencdence until a shared state is written to.
+slicing: only copy base class, 如何避免呢?
+    - delete the copy operations,
+    - make the base class a private or protected base,
+move , std::move(), swap(a, b), rvalue reference to x,
+pair()
+unique_ptr()
+insert()
+push_back(), // versions take rvalue references,
+不要假设moved-from pointer , set to nullptr 自动的;
+throw std::runtime_error("unequal Matrix sizes")
+
+default operations:
+X();
+X(const X&); // copy constructor,
+X& operator=(const X&); // copy assignment
+X(X&&) // move constructor
+X& operator=(X&&) // move assignment,
+destructor, ~X();
+
+Explicit Defaults:
+getting back a default,  =default,
+Default Operations: P520
+
+Resource Invariants,
+Partially specified Invariants,
+deleted Functions, =delete,
+
+## 18 Operator Overloading,
+
+
+
+
+
+
+
+
 
 
