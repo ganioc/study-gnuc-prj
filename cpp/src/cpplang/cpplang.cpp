@@ -19,6 +19,7 @@
 #include "ZeroEvenOdd.h"
 #include "CVector.h"
 #include "SimpleVector.h"
+#include "Assoc.h"
 
 
 using namespace std;
@@ -341,7 +342,21 @@ void construction(){
     string s2 {"Pratchett"};
     s1 = s2;
     Tracer tr {" in f()\n"};
+
+
+    cout <<"Subscripting" << endl;
+    Assoc values;
+    string buf;
     
+    // string operator""SS(const char* p);
+    // string s12= "one two"SS;
+    // string s13=13SS;
+    char a[10], b[10];
+    std::istringstream iss("one \n \t two");
+    iss >> std::noskipws;
+    iss >> a >> std::ws >> b;
+    cout << "Print out:" << a <<", " << b << "\n";
+
 }
 
 int main()

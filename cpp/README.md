@@ -971,16 +971,142 @@ Default Operations: P520
 
 Resource Invariants,
 Partially specified Invariants,
-deleted Functions, =delete,
+deleted Functions, =delete, 不使用默认的copy, move, defined meanings be deleted.
 
 ## 18 Operator Overloading,
+b.operator+(c), 操作符的重载, 
+sizeof()
+alignof()
+typeid, type_info() of an object,
+syntactic subterfuge,
+draconian, 残忍的, 
+unary, single operand,
+binary, 
+ternary, ? :
+
+operator=, [], (), -> 必须是non-static functions,
+&&, ||, 也可以自己定义,
+P531
+
+你能在字里行间内感觉到他的那种游刃有余, 处理各种情况，易如反掌．
+举手投足间，以轻驭重，化腐朽为神奇的能力．
+C++让你觉得这是一門本质上非常简单的语言，只是你对他的使用要随心所欲，才能
+发挥出这门武器的真正威力．
+
+Arguments, Pass-by-value,
+    Pass-by-reference, (larger objects),
+
+如果不想constructor()进行隐式的转换，则定义为explicit,
+
+throw Bad_range();
+throw Invalid_unique_ptr{};
+user define operator;
+user defined conversion;
+
+## Chap 19 Special Operators,
+[]
+(),
+->, arrow operator, unary post-fix operator, dereferencing operator, 
+    ->()
+    for creating smart pointers, 
+    unique_ptr, shared_ptr(), 
+    提供了一个clean, direct, efficient way of representing indirection in a program. 
+++,
+--,
+new,
+    calling operator new(), 
+    
+delete,
+    operator delete(), 
+
+map,
+unordered_map, associative array with less naive implementations,
+function call, 
+function call operator, application operator?
+function-like object, function object, 
+for_each(vec.begin(), vec.end(), Add{2,3}), the last argument , applies () to
+
+```cpp
+template <typename Iter, typename Fct>
+Fct for_each(Iter b, Iter e, Fct f){
+    while(b!=e) f(*b++);
+    return f;
+}
+
+```
+operator()() must be a non-static member function,
+
+User-defined Literals:
+123,
+1.2,
+1.2F,
+'a',
+1ULL
+0xD0,
+"as",
+
+literal operator,
+operator""
+```c++
+// compile-time evaluation,
+constexpr complex<double> operator""i(long double d){
+    return {0,d};
+}
+std::string operator""s(const char*p, size_t n){
+    return string{p, n}; 
+}
+```
+用户可使用的literal:
+interger literal,
+floating point literal, 
+string literal,
+character literal, char , wchar_t, char16_t, char32_t,
+
+template literal operator,
+template<char...>
+constexpr int operator""_b3();
+variadic template techniques,
+在编译时，分配nonstandard meanings to digits,
 
 
+class String,
+Return C style string , c_str(),
+String grows by doubling its allocation,
+capacity() is the amount of space available,
+throw std::out_of_range("String::at()")
+copy_from()
+move_from()
+anonymous union, 
+3 ancillary funcitons,  less duplication of code, better design, improved maintainability.
+    * char* epxand(const char* prt, int n),不会访问String representation里的任何东西，所以不会make it a member,
+    * void String::copy_from(), 根据大小，增加存储空间，返回
+    * String::move_from(String &x), 使用x的存储, x本身回收掉　
+memcpy();
+成员函数:
+    - =
+    - move_from, copy_from, 
+Helper Functions:
+    - stream I/O, <<,  
+        ostream& operator <<(ostream&os, const String&s)
+    - is>>ws; // skip whitespace, is.get(ch), isspace(ch), char ch='';
+    - range-for loops, 增加.begin(), .end(), x.c_str(),
+    - comparison, ==, !=, compare byte by byte,
+    - concatenation,
+    - _s as a string literal suffix, 
 
+member function的３个特性:
+    1. 可以访问private part of the class declaration,
+    2. function is in the scope of the class,
+    3. must be invoked on an object, has a this pointer,
 
+static, 有1., 2.,
+friend, 只有1., guaranteed to access it's private member functions,
+    定义时，使用了namespace N{ class C2{}; void f2(){} }, 
+    判断member function的作用范围? Does it really need access?
+    Member functions can only be invoked for objects of their class;
 
-
-
+## chap 20 Derived Classes
+类的继承, 派生类, 从Simula学习了类和类的派生的概念, 
 
 
 
