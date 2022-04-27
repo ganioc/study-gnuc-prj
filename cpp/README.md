@@ -1107,6 +1107,17 @@ friend, 只有1., guaranteed to access it's private member functions,
 
 ## chap 20 Derived Classes
 类的继承, 派生类, 从Simula学习了类和类的派生的概念, 
+表示Class之间的关系,
+    共同点,commonality, 
+    Implementation inheritance, 实现承         
+    Interface inheritance,  run time polymorphism, dynamic polymorphism,
+    templates, compile time polymorphism, or static polymorphism,
+
+### Derived Classes,
+P594
+
+
+
 
 
 
