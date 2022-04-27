@@ -1115,6 +1115,60 @@ friend, 只有1., guaranteed to access it's private member functions,
 
 ### Derived Classes,
 P594
+Superclass, Subclass,(holds more data and provides more functions)
+static_cast<> // brute force, 
+dynamic_cast<> //
+确定pointer of type Base*的指向的方法:
+    - Ensure only objects of a single type are pointed to,
+    - Place a type field in the base class for the functions to inspect,
+    - Use dynamic_case 
+    - Use virtual functions,
+To build heterogeneous lists, lists of objects of several different types.
+type-field , typically best avoided, 我以前就是这么去做的;
+    缺点，不能被compiler来检查, 
+    增加新的派生类，需要修改基类，添加新的类型
+    基类存储了太多的信息，undersirable, global variables of the hierarchy, 
+    For clean design and simpler maintenance, keep separate issues spearate, avoid mutual dependencies,
+virtual functions, compiler and linker will guarantee correct correspondence,
+    between objects and functions applied to them,
+    选择most appropriate for the object for which it is called,
+    A degree of stability to an evolving program,
+    polymorphism, a type with virtual functions, -> polymorphic type, run-time polymorphic type,
+    当直接操作一个对象的话，extact type is known by compiler, 
+    virtual, override, 
+    To call the right version of the virtual function , a pointer, virtual funciton table,
+    vtbl, 
+    * virtual, maybe overrided the function,
+    * =0, must be virtual and must be overridden,
+    * override, the function is meant to override something in a base class, contextual keyword, 
+    * final, not meant to be overridden, 不能再派生了, 
+
+非常容易的生成一个interface class, struct Node{}, virtual xx x()=0;
+using Base::f; // bring all fs from Base, 
+covariant return rule, 
+    smart pointers, such as unique_str, 
+abstract class, 
+Using classes as building blocks,
+Access Control:
+    private,
+    protected,
+    public,
+ nullptr, ->*, .*, name stored in a pointer to member,
+indirectly refer to, member function pointer,
+    using Pst_mem= void (Std_interface::*)();
+    Pst_mem s = & Std_interface::suspend;
+    p->*s(); // call through pointer to member,
+        offset, 不依赖于object的location in memory, 
+    static memmber, 是ordinary function pointer, 
+    using Pm = const char* C::*; // pointer to char* data member of C
+contravariance,
+    可以将基类成员的指针赋给派生类成员的指针 ，不能反过来弄,
+
+## Chap 21 Class Hierarchies,
+Abstraction is selective ignorance,
+
+
+
 
 
 
