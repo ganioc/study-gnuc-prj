@@ -1216,6 +1216,10 @@ implementation,
 mixin class, 只实现了部分virtual base class的implementation, 
 
 ## chap 22 Run-Time Type Information,
-
+class lattice, class hierarchy,  
+how to get information about , the interface provided by a base class,
+在系统和应用之间, commonly referred to as widgets or controls,
+we lose informaiton about the type of objects passed to the system and later returned to us,
+a pointer or fererence of a suitabl etype for the object.
 
 
