@@ -1166,12 +1166,56 @@ contravariance,
 
 ## Chap 21 Class Hierarchies,
 Abstraction is selective ignorance,
+Implementation inheritance,
+Interface Inheritance,
+    UI systems should hide implementation detail from users,
+    lval_box class contain no data,
+```
+1. lval_box as a pure interface,
+class lval_box {
+public:
+    virtual int get_value()=0;
+    virtual ~lval_box(){}
+}
+// The data is gone , simplistic implementations of the member functions, gone,
+a virtual destructor to ensure proper cleanup of the data, 
 
+```
+being explicit can help minimize confusion,
+C++ is a heavy sword. Very powerful.
+2.abstract class design,
+application-oriented conceptual hierarchy,
+这种解决方法是: 展现给用户的是一个系统, a hierarchy of abstract classes, classical hierarchy,
+- 使用abstract class来支持interface inheritance,
+- 使用base classes with implementations of virtual functions to support implementation inheritance,
+生成对象的类, 这个被称为factory, 它的函数被称为virtual constructor, (生成对象的方法必须使用implementation-specific names, 我们希望减少使用特殊的命名，所以一个简单的方法就是再次使用indirection,)
+接口函数接受一个派生类，虽然定义时用的是基类，会自动调用派生类的构造函数;
 
+### 多重继承, Multiple Inheritance,
+- shared interfaces, leading to less replication of code using classes, run-time polymorphism or interface inheritance,
+- shared implementation, less code, more uniform implementation code, impoementation inheritance,
 
+combining and accessing features from multiple base classes,
+虚拟函数, virtual function的应用 ，
+使用多重继承来将两个不相关的类glue在一起，作为第3个类的实现,
+A technique doesn't have to be clever to be useful??
+2个基类的同名virtual functions, 
+    Explicit disambiguation is messy,
+    virtual的作用是有同样的effect,不论使用interface,来寻找function,
+    Use qualified name, Telstar::draw, 
+Virtual 基类,
+    holds no data of its own, 
+    [1] Make the data nonlocal, outside the class as a global or namespace variable,
+    [2] Put the ata in a base class,
+    [3] Allocate an object somewhere and give eahc of the two classes a pointer,
+Virtual Base,
+    constructing virtual bases, 只被执行一次，  
+    描述了一下如何初始化,各层的基类，父类, 
+interface,
+implementation,
+mixin class, 只实现了部分virtual base class的implementation, 
 
-
-
+## chap 22 Run-Time Type Information,
 
 
 
