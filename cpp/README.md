@@ -1222,4 +1222,51 @@ how to get information about , the interface provided by a base class,
 we lose informaiton about the type of objects passed to the system and later returned to us,
 a pointer or fererence of a suitabl etype for the object.
 
+dynamic_cast<T*>(p); or nullptr, 
+downcast, 向派生类方向，
+upcast, 向基类方向,
+P660,
+只能使用pointer, 
+bad_cast exception is thrown, 
+可以使用dynamic referencer cast吗? 
+从多态virtual base class to a derived class or a sibling class, run-tyime checked,
+static_cast<>(); // 不会检查the object it casts from, so it can not,
+
+在非polymorphic object是不存在这些类型信息的, to find the objects for which it represents a base. 
+run time type identification includes the information needed to implement the dynamic_cast,
+    Asking an object if it provides a given interface, virtual function 给对象提供了一个可以使用，操作的接口;抽象类实际上是一个操作用的接口,
+const_cast<>();
+reinterpret_cast<>();
+unique_prt<lo_obj> p {get_obj(ss)};
+using Io_circle=Io<Circle>;
+这里构造了一个object I/O system, 使用了RTTI, 
+typeid(); 
+dynamic dispatch;
+
+如何增加virtual function to class hierarchy, without modifying the base classes that provides the interface, ?
+在vectors, graphs, pointers to objects of polymorphic types, 一个对象的实际类型贺卡以通过观察base class提供的接口来确定．
+
+### Double Dispatch:
+选择对象的合适的函数，
+Shape的例子，需要修改所有的类，才能够正确处理intersect()
+double dispatch method is highly intrusive,
+bounding box, 
+Stroustrup, 1994,
+Strustroup,
+### Visitors pattern,
+To the exponential growth of virtual fucntions and overriders and the unpleasent intrusiveness of the simple double-dispatch technique.
+寻找正确的操作方法对应正确的节点,
+Solodkyy, 2012?
+### Type Identification,
+typeid(expr);  throw std::bad_typeid,
+type_index{typeid(*p)}
+<typeinfo>
+type_index,是一个标准库, for comparing and hashiong type_info objects,
+push_back();
+pop_back();
+template, template argument, enables static type checking,
+
+## chap 23 Templates,
+
+
 

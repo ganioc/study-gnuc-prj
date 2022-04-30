@@ -20,7 +20,7 @@
 #include "CVector.h"
 #include "SimpleVector.h"
 #include "Assoc.h"
-
+#include "Shape.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -358,7 +358,18 @@ void construction(){
     cout << "Print out:" << a <<", " << b << "\n";
 
 }
-
+void test_shape(){
+    cout << "test_shape()" << endl;
+    Triangle t;
+    Circle c;
+    vector<pair<Shape*,Shape*>> vs {{&t, &t},
+        {&t, &c},
+        {&c, &t},
+        {&c, &c}};
+    for(auto p: vs){
+        p.first->intersect(*p.second);
+    }
+}
 int main()
 {
     // cout << "Hello cpplang!" << endl;
@@ -426,6 +437,8 @@ int main()
     simple_vector();
 
     construction();
+
+    test_shape();
     
     return 0;
 }
