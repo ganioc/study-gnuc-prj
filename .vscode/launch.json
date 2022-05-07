@@ -4,21 +4,46 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-  {
-
-    "type": "lldb",
-    "request": "launch",
-    "name": "Rust Launch",
-    "program": "${workspaceFolder}/rust/build/main",
-    "args": [],
-    "cwd": "${workspaceFolder}"
-  },
+    {
+      "name": "(gdb) 启动",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "输入程序名称，例如 ${workspaceFolder}/a.out",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "为 gdb 启用整齐打印",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "将反汇编风格设置为 Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Rust Launch",
+      "program": "${workspaceFolder}/rust/build/main",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
     {
       "name": "(lldb) cpp calculator",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/cpp/build/calculator",
-      "args": ["10+5"],
+      "args": [
+        "10+5"
+      ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
@@ -26,7 +51,7 @@
       "MIMode": "lldb"
     },
     {
-      "name": "(lldb) Launch",
+      "name": "test-leetcode",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/cpp/test-leetcode",
@@ -48,6 +73,18 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
-    }
+    },
+    {
+      "name": "test-cpptest",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/cpp/build/test",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb"
+    },
   ]
 }

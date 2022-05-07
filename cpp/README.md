@@ -1267,6 +1267,68 @@ pop_back();
 template, template argument, enables static type checking,
 
 ## chap 23 Templates,
+generic programming, using types as parameters,
+C++ template  
+mechanism,                                                                                            
+允许一个type, value, to be 参数，在定义class, function, type alias的时候,
+genral concepts, simple way to combine them, 
+可以匹配，多种情况, general code, in run-time efficiency, space efficiency,
+with flexible and type-safe initialization, subscription and submatrices,
+
+### Simple String Template,
+Template Instantiation,              
+Type Checking, 
+Container<T>(), 必须含有, [], size(), value_type,
+C is a strongly type, weakly checked language,
+Template argument requirements is checked in the compilation process,
+using uchar=unsigned char;
+Error Detection, 
+the first point of instantiation, 
+### Class Template Members,
+Data members,
+Member functions, 
+Member type aliases,  using ,or typedef,  to provide common names for types in different classes, and class templates with common semantics. associated types, value_type, iterator, 
+static Members, 
+Member types, 
+Member Templates, 
+
+A member template can not be virtual.
+Use of Nesting, 
+
+Avoid nested types in templates. 除非确实依赖于template parameter,
+
+Friends,
+<>说明这是一个template function, 
+如同member function, a friend function is instantiated only if it is used,
+class templates 可以designate other classes as friends,
+代表了一个small clusters of closely related concepts, 如果太复杂的话，那么肯定是犯了一些设计上的错误,
+
+
+函数模板, Function Templates,
+vector, continuous memory location, can change size, like aary,
+    fast to add to end, remove from head or middle,
+    thread-safe, synchronized,
+    只需从尾部添加，删除较慢
+list, non-contiguous memory,
+    not thread-safe, not synchronized,
+    add to middle and head, very fast,
+    删除会非常迅速,
+map, dictionary like order, 
+
+std::sort()
+std::swap()
+std::reverse()
+iterators, unidirection, bidirection,  forward, backward,
+
+一个排序算法, Shell sort , Knuth, Vol 3, pg, 84,
+
+Reference Deduction,
+
+
+
+
+
+
 
 
 

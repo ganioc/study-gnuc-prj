@@ -23,13 +23,16 @@ BUILD_DIR:= build
 
 .PHONY: clean
 
-all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang build/calculator build/concurr
+all: checkdirs main.exe testcpp.exe testfan.exe testCLI.exe testboost.exe testlib.exe test-leetcode.exe build/cpplang build/calculator build/concurr build/test
 
 checkdirs: $(BUILD_DIR)
 	
 
 $(BUILD_DIR):
 	mkdir -p $@
+
+build/test: test.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 build/concurr : concurr.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
@@ -67,3 +70,5 @@ main.exe: main.o NameDataSet.o
 clean:
 	rm -f *.o *.exe *.out
 	rm -f main testcpp testfan testCLI testboost testlib test-leetcode cpplang 
+
+
