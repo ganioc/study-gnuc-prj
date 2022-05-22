@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/mnt/android/github-prj/study-gnuc-prj'
+gcc   -std=gnu99 -fprofile-arcs -ftest-coverage -c main.c 
+gcc  main.o -o main   -fprofile-arcs -ftest-coverage
+make: Leaving directory `/mnt/android/github-prj/study-gnuc-prj'
+ 

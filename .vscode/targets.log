@@ -1,0 +1,423 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for x86_64-unknown-linux-gnu
+
+# Make data base, printed on Sun May 22 21:04:43 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+REPO_URL = https://mirrors.tuna.tsinghua.edu.cn/git/git-repo
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+NVM_INC = /home/yango/.nvm/versions/node/v10.24.0/include/node
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `makefile', line 4)
+CPPFLAGS := -std=gnu99
+# makefile (from `makefile', line 5)
+INCLUDES := 
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=fcitx
+# makefile
+CURDIR := /mnt/android/github-prj/study-gnuc-prj
+# makefile
+SHELL = /bin/sh
+# environment
+JRE_HOME = /usr/lib/jvm/java-8-openjdk-amd64/jre
+# environment
+CHEZSCHEMELIBDIRS = /home/yango/chez-lib:
+# environment
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/home/yango/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/home/yango/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/home/yango/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/yango/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /usr/local/bin/make
+# makefile (from `makefile', line 3)
+CFLAGS := 
+# environment
+JOURNAL_STREAM = 8:33680
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# makefile (from `makefile', line 1)
+MAKEFILE_LIST :=  makefile
+# automatic
+@F = $(notdir $@)
+# environment
+IM_CONFIG_PHASE = 1
+# environment
+USERNAME = yango
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+MANAGERPID = 1278
+# environment
+CLUTTER_IM_MODULE = fcitx
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f3159f95-dbe3-449a-b1d7-071ba327a877.sock
+# environment
+LC_NAME = zh_CN.UTF-8
+# environment
+VSCODE_CWD = /home/yango
+# environment
+PATH = /home/yango/bin:/home/yango/miniconda3/bin:/home/yango/miniconda3/condabin:/usr/local/cuda/bin:/home/yango/bin:/usr/lib/jvm/java-8-openjdk-amd64/bin:/home/yango/.nvm/versions/node/v10.24.0/bin:/home/yango/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/yango-D:@/tmp/.ICE-unix/2456,unix/yango-D:/tmp/.ICE-unix/2456
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+NVM_BIN = /home/yango/.nvm/versions/node/v10.24.0/bin
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = d74aedadf8044a44aa8dfc2267306a01
+# makefile (from `makefile', line 7)
+LDFLAGS := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 132222
+# environment
+LFS = /mnt/lfs
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+CONDA_EXE = /home/yango/miniconda3/bin/conda
+# environment
+GTK_IM_MODULE = fcitx
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /mnt/android/github-prj/study-gnuc-prj
+# environment
+SSH_AGENT_PID = 2246
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+CHEZSCHEMELIBEXTS = .sc::.so:
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/yango
+# makefile (from `makefile', line 2)
+OPTFLAGS := -fprofile-arcs -ftest-coverage
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/yango/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = yango
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+CONDA_PROMPT_MODIFIER = (base) 
+# environment
+NVM_CD_FLAGS = 
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+LC_TIME = zh_CN.UTF-8
+# environment
+CONDA_DEFAULT_ENV = base
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = fcitx
+# environment
+SHLVL = 0
+# makefile (from `makefile', line 1)
+CC := gcc
+# environment
+JAVA_HOME = /usr/lib/jvm/java-8-openjdk-amd64
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = yango
+# environment
+LC_MONETARY = zh_CN.UTF-8
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
+# environment
+CLASSPATH = .:/usr/lib/jvm/java-8-openjdk-amd64/lib:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+LC_TELEPHONE = zh_CN.UTF-8
+# environment
+PROJ_LIB = /home/yango/miniconda3/share/proj
+# environment
+CONDA_SHLVL = 1
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+OPENEMS = /home/yango/opt/openEMS
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-ae831643-1.67.2-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+NVM_DIR = /home/yango/.nvm
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# environment
+LC_PAPER = zh_CN.UTF-8
+# environment
+LC_IDENTIFICATION = zh_CN.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = zh_CN.UTF-8
+# automatic
+<F = $(notdir $<)
+# environment
+LC_MEASUREMENT = zh_CN.UTF-8
+# environment
+GCC_COLORS = auto
+# environment
+LC_ALL = C
+# environment
+CONDA_PYTHON_EXE = /home/yango/miniconda3/bin/python
+# environment
+QT4_IM_MODULE = fcitx
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# makefile (from `makefile', line 6)
+LIBS := 
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+_CE_M = 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+MAKELEVEL := 0
+# environment
+LC_ADDRESS = zh_CN.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# environment
+CONDA_PREFIX = /home/yango/miniconda3
+# environment
+VSCODE_PID = 132222
+# environment
+_CE_CONDA = 
+# environment
+LANG = C
+# variable set hash-table stats:
+# Load=134/1024=13%, Rehash=0, Collisions=12/169=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2081, inode 8274241): 33 files, no impossibilities.
+
+# 33 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+%.o: %.c
+#  commands to execute (from `makefile', line 16):
+	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) $(OPTFLAGS) -c $< 
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+ 
+
+# Files
+
+all: main
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+.PHONY: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-02 21:59:21.850687574
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+main.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-02 21:59:21.850687574
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `makefile', line 18):
+	rm -f *.o
+	rm -f main
+	rm -f *.gcno
+	rm -f *.gcda
+	
+
+main: main.o main.h
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  commands to execute (from `makefile', line 13):
+	$(CC)  $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS) $(OPTFLAGS)
+	
+
+main.o: main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := main.o
+# automatic
+# % := 
+# automatic
+# * := main
+# automatic
+# + := main.c
+# automatic
+# | := 
+# automatic
+# < := main.c
+# automatic
+# ^ := main.c
+# automatic
+# ? := main.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  commands to execute (from `makefile', line 16):
+	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) $(OPTFLAGS) -c $< 
+	
+
+# files hash-table stats:
+# Load=10/1024=1%, Rehash=0, Collisions=0/29=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Sun May 22 21:04:43 2022
+
+ 
