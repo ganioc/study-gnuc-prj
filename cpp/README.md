@@ -1322,8 +1322,14 @@ iterators, unidirection, bidirection,  forward, backward,
 
 一个排序算法, Shell sort , Knuth, Vol 3, pg, 84,
 
-Reference Deduction,
+### Reference Deduction,
+T&& r, move r into ,
+& , pointer to ,
 
+incomplete type is not allowed  C/C++(70);
+include <sstream>
+
+make_unique() is not part of the standard library,
 
 
 

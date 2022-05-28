@@ -14,6 +14,7 @@
 #include <random>
 #include <limits>
 #include <functional>
+#include <sstream>
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
@@ -21,6 +22,7 @@
 #include "SimpleVector.h"
 #include "Assoc.h"
 #include "Shape.h"
+#include "Xref.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -352,7 +354,8 @@ void construction(){
     // string s12= "one two"SS;
     // string s13=13SS;
     char a[10], b[10];
-    std::istringstream iss("one \n \t two");
+    std::string stringvalues= "one \n \t two";
+    std::istringstream iss(stringvalues);
     iss >> std::noskipws;
     iss >> a >> std::ws >> b;
     cout << "Print out:" << a <<", " << b << "\n";
@@ -369,6 +372,13 @@ void test_shape(){
     for(auto p: vs){
         p.first->intersect(*p.second);
     }
+}
+void test_Xref(){
+    string x{"There and back again"};
+
+    Xref<string> r1 {7, x};
+    Xref<string> r2 {3, new string{"Two three"}};
+    Xref<string> r3 {9, "here are you"};
 }
 int main()
 {
@@ -439,6 +449,8 @@ int main()
     construction();
 
     test_shape();
+
+    test_Xref();
     
     return 0;
 }
