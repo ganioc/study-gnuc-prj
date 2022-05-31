@@ -20,3 +20,14 @@ class Xref{
     T* elem;
     bool owned;
 };
+
+// template<typename T>
+// T max(T,T);
+// (T a,T b){
+//     if(a < b){
+//         return b;
+//     }else{
+//         return a;
+//     }
+// }
+

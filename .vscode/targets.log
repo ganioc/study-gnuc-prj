@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for x86_64-unknown-linux-gnu
 
-# Make data base, printed on Sun May 22 21:04:43 2022
+# Make data base, printed on Tue May 31 17:50:20 2022
 
 # Variables
 
@@ -56,7 +56,7 @@ _ = /usr/local/bin/make
 # makefile (from `makefile', line 3)
 CFLAGS := 
 # environment
-JOURNAL_STREAM = 8:33680
+JOURNAL_STREAM = 8:42699
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -76,11 +76,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1278
+MANAGERPID = 1268
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f3159f95-dbe3-449a-b1d7-071ba327a877.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-41b30bfa-0cd5-4d54-a50e-bf7a144c5a86.sock
 # environment
 LC_NAME = zh_CN.UTF-8
 # environment
@@ -90,7 +90,7 @@ PATH = /home/yango/bin:/home/yango/miniconda3/bin:/home/yango/miniconda3/condabi
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/yango-D:@/tmp/.ICE-unix/2456,unix/yango-D:/tmp/.ICE-unix/2456
+SESSION_MANAGER = local/yango-D:@/tmp/.ICE-unix/2438,unix/yango-D:/tmp/.ICE-unix/2438
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # automatic
@@ -104,7 +104,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = d74aedadf8044a44aa8dfc2267306a01
+INVOCATION_ID = fbabc12a7f2e437794c100d6b7809ed7
 # makefile (from `makefile', line 7)
 LDFLAGS := 
 # default
@@ -116,7 +116,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 132222
+GIO_LAUNCHED_DESKTOP_FILE_PID = 34122
 # environment
 LFS = /mnt/lfs
 # automatic
@@ -132,7 +132,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /mnt/android/github-prj/study-gnuc-prj
 # environment
-SSH_AGENT_PID = 2246
+SSH_AGENT_PID = 2228
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -274,7 +274,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 CONDA_PREFIX = /home/yango/miniconda3
 # environment
-VSCODE_PID = 132222
+VSCODE_PID = 34122
 # environment
 _CE_CONDA = 
 # environment
@@ -282,6 +282,7 @@ LANG = C
 # variable set hash-table stats:
 # Load=134/1024=13%, Rehash=0, Collisions=12/169=7%
 
+ 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
@@ -300,7 +301,6 @@ LANG = C
 	
 
 # 1 implicit rules, 0 (0.0%) terminal.
- 
 
 # Files
 
@@ -418,6 +418,6 @@ main.o: main.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun May 22 21:04:43 2022
+# Finished Make data base on Tue May 31 17:50:20 2022
 
  

@@ -379,6 +379,10 @@ void test_Xref(){
     Xref<string> r1 {7, x};
     Xref<string> r2 {3, new string{"Two three"}};
     Xref<string> r3 {9, "here are you"};
+
+    const int s = 7;
+    // max(1,2);
+
 }
 int main()
 {

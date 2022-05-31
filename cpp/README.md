@@ -1332,16 +1332,27 @@ include <sstream>
 make_unique() is not part of the standard library,
 
 几条原则:
-[1]
-[2]
-[3]
-[4]
-[5]
+[1] 优先考虑参与重载的函数模板, template参数, 如果没有其它的函数模板，或同名函数的话;
+[2] 如果２个函数模板可以被调用的话，如果1个比另一个更专门的话，则采用更专门的函数模板;
+[3] 重载判断, 上述函数，再加上普通函数．如果一个函数模板的参数也使用了模板参数推导，这个参数不能够同时包含promotions, 标准的类型转换，或者用户定义的类型转换．参数无需转换的函数模板优先级高于需要转换的函数模板;
+[4] 如果一个函数和一个specialization同时满足的话,优先选取函数, 而不是模板特化;
+[5] 如果无法找到对应模板的话，调用报错．如果同时有２个或多个同样的匹配的函数模板的话，调用含糊，也会报错;
+
+Explicit specialization of the template,
+
+#### Argument Substitution Failure
+SFINAE (Substitution Failure Is Not An Error)
 
 
+Template Aliases,
+using syntax,
+typedef syntax,
+
+using Cvec=vector<char>;
 
 
-
+### Source Code Organization,
+使用模板来组织源代码,
 
 
 
