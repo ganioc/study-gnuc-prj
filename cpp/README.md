@@ -1274,6 +1274,9 @@ mechanism,
 genral concepts, simple way to combine them, 
 可以匹配，多种情况, general code, in run-time efficiency, space efficiency,
 with flexible and type-safe initialization, subscription and submatrices,
+### 23.1 Type Equivalence,
+通过模板，我们可以模板参数来生成类型。
+
 
 ### Simple String Template,
 Template Instantiation,              

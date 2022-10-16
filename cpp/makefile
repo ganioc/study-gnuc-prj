@@ -40,7 +40,7 @@ build/concurr : concurr.o
 build/calculator: calculator.o TokenStream.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
-build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o SimpleVector.o Shape.o Xref.o
+build/cpplang: cpplang.o ZeroEvenOdd.o Vector.o CVector.o SimpleVector.o Shape.o Xref.o template.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 test-leetcode.exe: test-leetcode.o

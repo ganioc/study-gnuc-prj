@@ -23,6 +23,8 @@
 #include "Assoc.h"
 #include "Shape.h"
 #include "Xref.h"
+#include "template.h"
+
 
 using namespace std;
 using namespace std::chrono;
@@ -455,6 +457,8 @@ int main()
     test_shape();
 
     test_Xref();
-    
+
+    template_main();
+
     return 0;
 }
