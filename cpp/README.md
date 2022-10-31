@@ -1287,7 +1287,7 @@ Template argument requirements is checked in the compilation process,
 using uchar=unsigned char;
 Error Detection, 
 the first point of instantiation, 
-### Class Template Members,
+### 23.4 Class Template Members,
 Data members,
 Member functions, 
 Member type aliases,  using ,or typedef,  to provide common names for types in different classes, and class templates with common semantics. associated types, value_type, iterator, 
@@ -1307,7 +1307,7 @@ class templates 可以designate other classes as friends,
 代表了一个small clusters of closely related concepts, 如果太复杂的话，那么肯定是犯了一些设计上的错误,
 
 
-函数模板, Function Templates,
+### 函数模板, Function Templates,
 vector, continuous memory location, can change size, like aary,
     fast to add to end, remove from head or middle,
     thread-safe, synchronized,
@@ -1324,6 +1324,11 @@ std::reverse()
 iterators, unidirection, bidirection,  forward, backward,
 
 一个排序算法, Shell sort , Knuth, Vol 3, pg, 84,
+
+### 23.5.1 Function Template Arguments,
+
+### 23.5.3 Function Template Overloading,
+
 
 ### Reference Deduction,
 T&& r, move r into ,
@@ -1352,6 +1357,8 @@ using syntax,
 typedef syntax,
 
 using Cvec=vector<char>;
+
+#### 23.5.3.3 Overloading and Derivation,
 
 
 ### Source Code Organization,
