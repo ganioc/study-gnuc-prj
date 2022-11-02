@@ -5,10 +5,22 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "(lldb) leetcode cpp",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/leetcode-cn/cpp-dir/build/main",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    },
+    {
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
-      "program": "输入程序名称，例如 ${workspaceFolder}/a.out",
+      "program": "${workspaceFolder}/leetcode-cn/cpp-dir/build/main",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
