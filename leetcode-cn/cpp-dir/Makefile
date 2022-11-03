@@ -8,20 +8,24 @@ LIBS     :=
 LDFLAGS  := -lstdc++ -lpthread
 
 VPATH    := ./src/ \
-			./include/ 
+			./include/ \
+			./test 
 
 BUILD_DIR := build
 
 .PHONY : clean
 
-all : checkdirs build/main
+all : checkdirs build/main build/test
 
 checkdirs: $(BUILD_DIR)
 
 $(BUILD_DIR):
 	mkdir -p $@
 
-build/main: main.o
+build/main: main.o Solution.o
+	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
+
+build/test: test.o Solution.o
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 %.o: %.cpp 

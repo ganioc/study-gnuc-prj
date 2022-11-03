@@ -18,10 +18,7 @@ int main(){
     cout << endl;
 
     // prices,
-    cout << "Test profits --> " << endl;
-    vector<int> prices = {1,2,3,4,5};
-    int profit = solution->maxProfit(prices);
-    cout << "profit: " << profit << endl;
+    // solution->testMaxProfit();
     
     return 0;
 }

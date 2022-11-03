@@ -4,4 +4,6 @@ bootst_1_67_0.tar.gz
 boost/
 a.out
 *.o
+doctest/
+
 
