@@ -1364,5 +1364,32 @@ using Cvec=vector<char>;
 ### Source Code Organization,
 使用模板来组织源代码,
 
+### 33.1.2 Iterator Categories,
+5 kinds of iterators:
+- Input iterator,
+- Output iterator, 
+- Forward iterator,
+- bidirectional iterator, list, map, set
+- random-access iterator, vector, 
+
+## 33.2 Iterator Adaptors,
+- reverse_iterator
+- back_insert_iterator
+- front_insert_iterator
+- insert_iterator
+- move_iterator
+- raw_storage_iterator,
+
+```cpp
+iterator<Iterator_category<Iter>,
+        Value_type<Iter>,
+        Difference_type<Iter>,
+        Pointer<Iter>,
+        Reference<Iter>>
+// Every Iterator will define 5 properties
+```
+P962,
+
+
 
 
