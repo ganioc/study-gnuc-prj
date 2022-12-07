@@ -1390,6 +1390,7 @@ iterator<Iterator_category<Iter>,
 ```
 P962,
 
+## 33.2 Iterator Adaptors,
 
 
 
