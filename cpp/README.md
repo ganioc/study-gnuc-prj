@@ -1391,6 +1391,11 @@ iterator<Iterator_category<Iter>,
 P962,
 
 ## 33.2 Iterator Adaptors,
+$ [b:e) $ ,  $&*(reverse_iterator(p))==&*(p-1$
+
+v.rbegin(), 指向最后一个元素, v[v.size() - 1]
+
+end()是最后一个虚拟的元素,
 
 
 
