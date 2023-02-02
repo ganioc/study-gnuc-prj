@@ -1397,5 +1397,39 @@ v.rbegin(), 指向最后一个元素, v[v.size() - 1]
 
 end()是最后一个虚拟的元素,
 
+**decltype, **
 
+编译时类型推导， 类似于auto, 不是通过变量声明的初始化表达式来获得变量类型，而是以一个普通表达式来作为参数。C++11的新类型。
+
+
+### 33.2.2 Insert Iterators
+
+### 33.2.3 Move Iterator,
+
+## 33.3 Range Access Functions
+
+## 33.4 Function Objects,
+- predicates, 逻辑运算
+- Arithmetic, 算术运算
+
+
+## 33.5 Function Adaptors,
+bind(), arguments binding, placeholders: _1, _2, _3 ...
+
+mem_fn(), 生成一个函数对象, 
+
+not1()
+
+not2()
+
+reference_wrapper<T>
+
+ref(), pass references, 
+
+function<R(Argtypes...)>, 
+    allocator_arg_t,
+    nullptr_t,
+    nullptr,
+
+# Chap 34 Memory and Resources,
 
