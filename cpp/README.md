@@ -1432,4 +1432,15 @@ function<R(Argtypes...)>,
     nullptr,
 
 # Chap 34 Memory and Resources,
+Almost Containers,
+
+* T[N], Built-in array, fixed-size, 
+* array<T,N> , sixed size continuously allocated sequence of N elems
+* bitset<N>, fixed size of N bits,
+* vector<bool> , sequence of bits,
+* pair<T,U>, Two elements of type T and U
+* tuple<T...>, a sequence of arbitrary number of elements of arbitrary types,
+* basic_string<C>, a sequence fo characters of type C,提供string operations
+* valarray<T>, array of numeric values of type T, 提供数值操作 ，
+
 
