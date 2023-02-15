@@ -1443,4 +1443,8 @@ Almost Containers,
 * basic_string<C>, a sequence fo characters of type C,提供string operations
 * valarray<T>, array of numeric values of type T, 提供数值操作 ，
 
+标准库为什么提供这些containers?呢, 
+
+### 34.2.1 array,
+fixed-size sequence of elements, given type, number of elements specified at compile time.
 
