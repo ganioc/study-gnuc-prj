@@ -1448,3 +1448,42 @@ Almost Containers,
 ### 34.2.1 array,
 fixed-size sequence of elements, given type, number of elements specified at compile time.
 
+constexpr, 在编译时是常量,
+
+array 更加不灵活，简单，与vector相比的话。这使它的性能会好一些。
+
+```
+tuple_size<array<T,N>>::value,
+tuple_element<S, array<T,N>>::type,
+
+```
+
+noexcept: 表明函数中不会发生异常，也就是不会throw,
+
+decltype(a), 
+
+### 34.2.2 bitset
+bitset<N>, on a sequence of N bits [0:N), N is known at compile time,
+set, bit-field?
+
+array of N bits. <bitsets>, fixed size, 
+
+size(), ==, I/O, 
+
+### 34.2.3 vector<bool>
+可以改变大小。
+
+### 34.2.4 Tuples，
+grouping values of arbitrary types into a single object,
+* pair, holds two values
+* tuple , hold zero or more values,
+
+定义一个class, 再定义一堆关于类的Helper函数,
+
+make_pair()
+
+### 34.2.4.2 tuple
+template<typename... Types>
+
+
+
