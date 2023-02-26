@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-    - * , pointer,
+  - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -1604,3 +1604,103 @@ Have no idea who is supposed to delete the object pointed to.
 - weak_ptr,  break loops in circular shared data structures,
 
 page 990
+
+weak_ptr, 允许访问其它人拥有的对象, lock(),
+
+sp , shared pointer,
+
+## 34.4 Allocators
+
+STL containers, string, 是资源的句柄, allocators, de-allocator,
+
+### 34.4.2 Allocator Traits
+
+allocator_traits, type aliases, allocator functions,
+
+### 34.4.3 Pointer Traits
+
+pointer_traits, 确定properties of pointers and proxy types for pointers.
+
+### 34.4.4 Scoped Allocators
+
+using containers, and user-defined allocators,
+
+vector, string,
+
+## 34.5 The Garbage Collection Interface
+
+Recycling of unreferenced regions of memory, as a panacea.
+
+Examples: file handles, thread handles, locks. I see garbage collection as a convenient last resort after the usual techniques for preventing leaks hae been exhausted.
+
+- resource handles, string, vector, unordered_map, thread, lock_guard ...
+- unique_ptr,
+- shared_ptr,
+
+从最基本的哲学上来讲，C++可以不需l垃圾回收。垃h回收需要显示地安装和激活。
+But good free and commercial collectors are available.
+
+safely derived pointer, disguised pointers,
+
+declare no pointers() 可以使b变得非常高效，声明很多内存无需考虑垃圾回收。
+
+class pointer_safety,
+
+## 34.6 Uninitialized Memroy
+
+writing memory allocators, implementing containers, dealing directly with hardware, direct use of uninitialized memory, known as raw memory,
+
+<memory>, fill* family of functions, reserve(),resize(),
+
+### 34.6.1 Temporary Buffers
+
+temporary space best allocated in one operatoin but not initialized until a particular location is actually needed.
+
+get_temporary_buffer() is low-level and likely to be optimized for managing temporary buffers.
+
+new, allocator::allocate(), for obtaining longer-term storage.
+
+### 34.6.2 raw_storage_iterator
+
+# 35 Utilities
+
+The time you enjoy wasting is not wasted time. - Bertrand Russell
+
+## 35.1 Introduction
+
+标准库提供了很多Utility components, not easily classified as part of some major standard-library component.
+
+## 35.2 Time
+
+<chrono>, dealing with time durations and time points.
+std::chrono, 标准库mutexes, locks, 提供option for thread to wait for a period of time, a duration or to wait until a given point in time, time_point,
+
+- system_clock
+- steady_clock
+- high_resolution_clock,
+
+auto t = steady_clock::now()
+
+<ratio>, siN implementation-defined signed integer type of at least N bits.
+
+### 35.2.3 Clocks
+
+ultimately obtained from hardware clocks. class system_clock{}, real-time clock;
+
+steady_clock, time moves steadily forward, time does not go backward , time between clock ticks is constant,
+
+high_resolution_clock, A clock with the shortest time increment on a system.
+
+### 35.2.4 Time Traits
+
+time traits, floating point, or integral,
+
+duration_values<Rep>,
+
+## 35.3 Compile-Time Rational Arithmetic
+
+## 35.4 Type Functions
+
+<type_traits>,  used at compile time to support simple, not so simple metaprogramming.
+
+### 35.4.1 Type Traits
