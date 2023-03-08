@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-  - * , pointer,
+    - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -1706,73 +1706,83 @@ duration_values<Rep>,
 ### 35.4.1 Type Traits
 
 ## 35.5 Minor Utilities
-move(), rvalue(), a cast to an rvalue, to steal the representation of an object with a move operation, marks x for destruction so that move(x) should be used with car. 
 
-forward(), 生成一个rvalue from an rvalue, perfect forwarding of an argument from one function to another, forward(x) is safe, 
+move(), rvalue(), a cast to an rvalue, to steal the representation of an object with a move operation, marks x for destruction so that move(x) should be used with car.
 
-remove_reference<T>& t, 
+forward(), 生成一个rvalue from an rvalue, perfect forwarding of an argument from one function to another, forward(x) is safe,
+
+remove_reference<T>& t,
 
 static_cast<T &&>(t),
 
-swap(), <utility>, 
+swap(), <utility>,
 
 ### 35.5.3 Relational Operators
-std::rel_ops, 
 
-### 35.5.4 Comparing and Hashing type_info,
-<typeindexe>, type_index, 
+std::rel_ops,
+
+### 35.5.4 Comparing and Hashing type_info
+
+<typeindexe>, type_index,
 
 hash_code()?
 
-name(), 
+name(),
 
-# 36 Strings,
+# 36 Strings
+
 标准库提供了字符 classification 操作<cctype>
     辨别字符, isspace(),islower(), isalnum(), iscntrl(),isgraph(), not space,
 
 <cwctype>
 
-<string>， struct char_traits<char>, 
-    char, char16_t, char32_t, wchar_t, 
+<string>， struct char_traits<char>,
+    char, char16_t, char32_t, wchar_t,
 
 <regex> 正则表达式 ，
 
-<cstring> C-style strings, 
+<cstring> C-style strings,
 
-locale, 不同的字符集，编码，conventions, 
+locale, 不同的字符集，编码，conventions,
 
-POD, plain old data, 直接与C库二进制交互的类型 ， 
+POD, plain old data, 直接与C库二进制交互的类型 ，
 
-## 36.3 Strings, basic_string,
+## 36.3 Strings, basic_string
+
 char_traits, allocator<C>, 将所有的数据类型定义统一的接口。
 
-wchar, 
+wchar,
 
-### 36.3.1 string vs. C-Style Strings,
+### 36.3.1 string vs. C-Style Strings
 
-### 36.3.2 Constructors,
-allocator, 
+### 36.3.2 Constructors
+
+allocator,
 
 string::npos, end to string,
 
 substring notation, (position, length),
 
-### 36.3.3 Fundamental Operations,
+### 36.3.3 Fundamental Operations
+
 std::length_error,
 
-### 36.3.4 String I/O,
+### 36.3.4 String I/O
 
-### 36.3.5 Numeric Conversions,
-string, wstring, 
+### 36.3.5 Numeric Conversions
+
+string, wstring,
 
 stoi(), stol(), stoul(), stoll(), stoull()
 
-### 36.3.6 STL-like Operations,
-find, string::npos, not a position, 
+### 36.3.6 STL-like Operations
+
+find, string::npos, not a position,
 
 substrings, s.substr(pos, n);
 
 # 37 Regular Expressions, 正则表达式
+
 regex_match()
 
 regex_search()
@@ -1789,6 +1799,8 @@ regex library, ECMA standard, ECMAScript,  the syntax of regular expressions, ba
 
 Page 1069,
 
+ECMA-262 reg rules,
 
+POSIX sed notation,
 
-
+## 37.3 Regular Expression Functions
