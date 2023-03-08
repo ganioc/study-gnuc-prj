@@ -1773,6 +1773,22 @@ find, string::npos, not a position,
 substrings, s.substr(pos, n);
 
 # 37 Regular Expressions, 正则表达式
+regex_match()
+
+regex_search()
+
+regex_replace()
+
+regex_iterator(), over matches and submatches,
+
+regex_token_iterator, over non-matches,
+
+compilation state machine, at run time,
+
+regex library, ECMA standard, ECMAScript,  the syntax of regular expressions, based on characters with special meaning.
+
+Page 1069,
+
 
 
 
