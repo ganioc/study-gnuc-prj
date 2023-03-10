@@ -1804,3 +1804,29 @@ ECMA-262 reg rules,
 POSIX sed notation,
 
 ## 37.3 Regular Expression Functions
+regex_search(), regex_replace(), 
+$&, for the match
+
+$2, for the second submatch,
+
+## 37.4 Regular Expression Iterators
+regex_iterator, bidirectional iterator, 
+
+### 37.4.2 regex_token_iterator,
+iterates over submatches of the match_results found,
+
+### 37.5 regex_traits,
+
+# 38 I/O Streams
+I/O stream, File streams, String stream, Error Handling, I/O operations,
+
+Input Operations, Output Operations , Manipulators, Stream State, Formatting,
+
+Stream Iterators,
+
+Buffering, Output streams, Buffers, Input Streams and Buffers, Buffer Iterators
+
+## 38.1 Intro,
+
+
+
