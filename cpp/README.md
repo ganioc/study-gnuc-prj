@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-    - * , pointer,
+  - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -1804,20 +1804,24 @@ ECMA-262 reg rules,
 POSIX sed notation,
 
 ## 37.3 Regular Expression Functions
-regex_search(), regex_replace(), 
+
+regex_search(), regex_replace(),
 $&, for the match
 
 $2, for the second submatch,
 
 ## 37.4 Regular Expression Iterators
-regex_iterator, bidirectional iterator, 
 
-### 37.4.2 regex_token_iterator,
+regex_iterator, bidirectional iterator,
+
+### 37.4.2 regex_token_iterator
+
 iterates over submatches of the match_results found,
 
-### 37.5 regex_traits,
+### 37.5 regex_traits
 
 # 38 I/O Streams
+
 I/O stream, File streams, String stream, Error Handling, I/O operations,
 
 Input Operations, Output Operations , Manipulators, Stream State, Formatting,
@@ -1826,7 +1830,178 @@ Stream Iterators,
 
 Buffering, Output streams, Buffers, Input Streams and Buffers, Buffer Iterators
 
-## 38.1 Intro,
+## 38.1 Intro
 
+I/O stream library, 提供了格式化，和g格式化的带缓冲的I/O, 包含了文本数据、二进制数据。<istream>, <ostream>, 一个是输入、一个是输出。
 
+istream, 将格式化的数据放在stream buffer里转换成其它的数据，file, memory, device,
 
+ostream, 也是处理格式化的数据，也就是包含数x信息的数据格式，
+
+iostream,
+
+I/O stream operations:
+
+- type safe and type sensitive,
+- extensible, 可扩展性, 设计新的类型，匹配I/O stream的操作。
+- locale sensitive
+- efficient,
+- interoperable with C-style stdio,
+- include formatted, unformatted, character-level operations,
+
+标准I/O stream:
+
+- cout,
+- cin,
+- cerr,  unbuffered,
+- clog,  buffered, character error output,
+
+wcin, wcout, wcerr, wclog,
+
+<iosfwd>, forward declarations for stream types and stream objects,
+
+### 38.2.1 File Streams
+
+fstream, 有6种
+
+- ifstream,
+- wifstream,
+- ofstream
+- wofstream
+- fstream
+- wfstream
+
+打开文件的模式, mode:
+
+- ios_base::app, append to the end of the file,
+- ios_base::ate, at end,
+- ::binary,
+- ::in, only for reading
+- ::out, for writing,
+- ::trunc,  truncate the file to 0 length,
+
+bad() state,
+
+### 38.2.2 String Streams
+
+<sstream>, to and from a string,
+
+- istringstreams, reading from a string,
+- ostringstream,
+- stringstream, read and write to a string
+
+## 38.3 Error Handling
+
+状态basic_ios, <ios>,
+
+Stream States:
+
+- good(), previous iostream operations succeeded,
+- eof(),
+- fail(), unexpected happended,
+- bad(), something serious happended, disk read error,
+
+Use exceptions to handle iostream errors. dont expect to be able to recover from. bad() exceptions.
+
+## 38.4 I/O operations
+
+### 38.4.1 Input Operations
+
+cin>>x,
+
+cin.operator>>(x), operator>>(cin,x), 必须是定义过的类型;
+
+cin>>pf, pf(cin), pf是a function,
+
+noskipws, skipping of whitespace,
+
+#### 38.4.1.2 Unformatted Input
+
+- in.get(c)
+- in.getline(p, n, t),
+- in.putback(c),
+- in.unget(), back up in's stream buffer by one,
+- in.ignore(n,d)
+
+### 34.8.2 Output Operations
+
+<ostream>, 除了writing out a string, in <string>,
+
+#### 34.8.2.1 Virtual Output Functions
+
+double dispatch,
+
+manipulator,
+
+### 38.4 Stream State
+
+basic_ios:
+- mapping between a stream and its buffers
+- formatting options
+- use of locale
+- Error Handling,
+- Connections to other streams and stdio,
+
+这个类是标准库里最复杂的类　, class,
+
+class ios_base,
+    *fmtflags, // all bitmask types, bitwise logical operations
+        &, |, int, bitset,
+    * iostate,
+    *openmode,
+    * seekdir
+    *class failure,
+    * class Init, initialize standard iostreams,
+
+iostate, member constants,
+    * badbit,
+    * failbit,
+    *eofbit, we hit end-of-input, end-of-file,
+    * goodbit,
+
+ios_base Mode, openmode,
+    * app,
+    * ate
+    *binary,
+    * in
+    *out
+    * trunc,
+
+### 38.4.5
+
+formating of stream I/O, a combination of object type,
+    *stream state,
+    * format state,
+    *locale information,
+    * explicit operations, manipulators,
+
+#### 38.4.5.2 Standard Manipulators
+
+manipulators, varoius format states, state changes, 标准的manipulators, <ios> <istream> <iomanip>,
+
+- boolalpha, true, false
+- noboolalpha
+- showbase, 0, 0x,
+- noshowbase
+- showpoint, show decimal point,
+- noshowpoint, ios_base::showpoint,
+- showpos, show + for positive numbers,
+- uppercase,
+- unitbuf, flush after each output operation,
+- nounitbuf,
+- internal, pad where marked in formatting pattern,
+- left, pad after value
+- right
+- dec
+- hex
+- oct
+- fixed, dddd.dd
+- scientific, d.ddddEdd
+- hexfloat
+- defaultfloat
+- skipws, skip whitespace,
+- noskipws,
+
+os<<endl; os<<ends;  os << flush;
+
+#### 38.4.5.3 User Defined Manipulators
