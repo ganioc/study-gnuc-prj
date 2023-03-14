@@ -2005,3 +2005,76 @@ manipulators, varoius format states, state changes, 标准的manipulators, <ios>
 os<<endl; os<<ends;  os << flush;
 
 #### 38.4.5.3 User Defined Manipulators
+Formatting controlled by a confusing multitude of separate functions.
+
+## 38.5 Stream Iterators,
+<iterator> allow input , output streams to be viewed as sequences , input-begin: end-of-input,
+
+## 38.6 Buffering,
+output stream puts characters into a buffer.  <streambuf>,
+
+不同的streambuf, 实现了不同的buffering 策略。一般情况下, streambuf在一个队列里存储字符，当overflow时，强制将字符写入真正的目的地。
+
+istream 与之类似。只不过方向不同; 
+
+非缓冲的I/O, 不会将字符放入缓冲区, 
+
+basic_streambuf,
+
+- overflow()
+- underflow()
+- unflow(), 
+
+### 38.6.1 Output Streams and Buffers,
+basic_ostream, 
+
+### 38.6.2 Input Streams and Buffers,
+istream, 
+
+pos_type, 
+
+### 38.6.3 Buffer Iterators,
+<iterator>, istreambuf_iterator, ostreambuf_iterator, iterate over the contents of a stream buffer,
+
+# 39 Locales,
+处理Cultural Differences,
+
+locale, 邮政编码,电话号码, 控制写入ostream的信息，从istream读出的数据的格式,
+
+facet,  control individual aspects, 
+    character used for punctuation, in the output of floating-point value,
+    locale::facet, 
+    locale as a container of facets,
+
+locale影响I/O stream, 
+
+internationalization, 多个国家的文字，国际化, 在多个国家使用,
+
+localization, adaptation of a program to local conditions,
+
+switch is ugly and hard to maintain.
+
+use_facet<Facet>(loc) notation, 
+
+facet categories:
+* collate,
+* ctype
+* numeric, num_put, num_get, numpunct,
+* monetary, money_put, money_get, moneypunct,
+* time, time_put, time_get,
+* messages, messages,
+
+每一个istream, ostream都有自己的locale, by default 为global locale, 
+
+设置locale of stream, imbue() 操作, 
+
+拷贝locale of stream, getloc(), 操作,
+
+### 39.2.1 Named locale
+所有的操作系统都有方法来设置program的缺省的locale, 通常是通过环境变量来设置的，
+
+- LC_ALL
+- LC_COLLATE
+- LANG,
+
+
