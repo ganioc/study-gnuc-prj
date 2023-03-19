@@ -1936,6 +1936,7 @@ manipulator,
 ### 38.4 Stream State
 
 basic_ios:
+
 - mapping between a stream and its buffers
 - formatting options
 - use of locale
@@ -1954,13 +1955,13 @@ class ios_base,
     * class Init, initialize standard iostreams,
 
 iostate, member constants,
-    * badbit,
+    *badbit,
     * failbit,
     *eofbit, we hit end-of-input, end-of-file,
     * goodbit,
 
 ios_base Mode, openmode,
-    * app,
+    *app,
     * ate
     *binary,
     * in
@@ -2005,48 +2006,55 @@ manipulators, varoius format states, state changes, 标准的manipulators, <ios>
 os<<endl; os<<ends;  os << flush;
 
 #### 38.4.5.3 User Defined Manipulators
+
 Formatting controlled by a confusing multitude of separate functions.
 
-## 38.5 Stream Iterators,
+## 38.5 Stream Iterators
+
 <iterator> allow input , output streams to be viewed as sequences , input-begin: end-of-input,
 
-## 38.6 Buffering,
+## 38.6 Buffering
+
 output stream puts characters into a buffer.  <streambuf>,
 
 不同的streambuf, 实现了不同的buffering 策略。一般情况下, streambuf在一个队列里存储字符，当overflow时，强制将字符写入真正的目的地。
 
-istream 与之类似。只不过方向不同; 
+istream 与之类似。只不过方向不同;
 
-非缓冲的I/O, 不会将字符放入缓冲区, 
+非缓冲的I/O, 不会将字符放入缓冲区,
 
 basic_streambuf,
 
 - overflow()
 - underflow()
-- unflow(), 
+- unflow(),
 
-### 38.6.1 Output Streams and Buffers,
-basic_ostream, 
+### 38.6.1 Output Streams and Buffers
 
-### 38.6.2 Input Streams and Buffers,
-istream, 
+basic_ostream,
 
-pos_type, 
+### 38.6.2 Input Streams and Buffers
 
-### 38.6.3 Buffer Iterators,
+istream,
+
+pos_type,
+
+### 38.6.3 Buffer Iterators
+
 <iterator>, istreambuf_iterator, ostreambuf_iterator, iterate over the contents of a stream buffer,
 
-# 39 Locales,
+# 39 Locales
+
 处理Cultural Differences,
 
 locale, 邮政编码,电话号码, 控制写入ostream的信息，从istream读出的数据的格式,
 
-facet,  control individual aspects, 
+facet,  control individual aspects,
     character used for punctuation, in the output of floating-point value,
-    locale::facet, 
+    locale::facet,
     locale as a container of facets,
 
-locale影响I/O stream, 
+locale影响I/O stream,
 
 internationalization, 多个国家的文字，国际化, 在多个国家使用,
 
@@ -2054,27 +2062,60 @@ localization, adaptation of a program to local conditions,
 
 switch is ugly and hard to maintain.
 
-use_facet<Facet>(loc) notation, 
+use_facet<Facet>(loc) notation,
 
 facet categories:
-* collate,
-* ctype
-* numeric, num_put, num_get, numpunct,
-* monetary, money_put, money_get, moneypunct,
-* time, time_put, time_get,
-* messages, messages,
 
-每一个istream, ostream都有自己的locale, by default 为global locale, 
+- collate,
+- ctype
+- numeric, num_put, num_get, numpunct,
+- monetary, money_put, money_get, moneypunct,
+- time, time_put, time_get,
+- messages, messages,
 
-设置locale of stream, imbue() 操作, 
+每一个istream, ostream都有自己的locale, by default 为global locale,
+
+设置locale of stream, imbue() 操作,
 
 拷贝locale of stream, getloc(), 操作,
 
 ### 39.2.1 Named locale
+
 所有的操作系统都有方法来设置program的缺省的locale, 通常是通过环境变量来设置的，
 
 - LC_ALL
 - LC_COLLATE
 - LANG,
 
+locale name string,
 
+在Linux系统里，保存locales in 目录/usr/share/locale,
+
+生成新的locales,
+
+There is no way of modifying a locale. locale is immutable.
+
+### 39.2.2 比较字符串
+
+根据locale, 来比较两个字符串,
+
+## 39.3 Class facet
+
+locale is a collection of facets.
+
+- how a number is represented on output,num_put,
+- how a date is read from input, time_get,
+- how characters are stored in a file, codecvt,
+
+标准库的facets, std::locale::facet, <locale>
+
+```
+f=use_facet<F>(loc)
+has_facet<F>(loc)
+facet::id
+
+```
+
+### 39.3.3 Uses of locales and facets
+
+### 39,4,1 string Comparison

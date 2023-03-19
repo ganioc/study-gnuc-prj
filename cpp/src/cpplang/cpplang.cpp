@@ -15,6 +15,7 @@
 #include <limits>
 #include <functional>
 #include <sstream>
+#include <locale>
 
 #include "cpplang.h"
 #include "ZeroEvenOdd.h"
@@ -24,7 +25,6 @@
 #include "Shape.h"
 #include "Xref.h"
 #include "template.h"
-
 
 using namespace std;
 using namespace std::chrono;
@@ -180,14 +180,12 @@ void parallel()
     thread t1([&]()
               {
                   unique_lock<mutex> lck{m};
-                  f(some_vec, &res1);
-              });
+                  f(some_vec, &res1); });
     thread t2([&]()
               {
                   F f(vec2, &res2);
                   unique_lock<mutex> lck{m};
-                  f();
-              });
+                  f(); });
 
     t1.join();
     t2.join();
@@ -201,15 +199,16 @@ void parallel()
     cout << " nanoseconds passed." << endl;
 }
 
-void math(){
-    list<double> lst {1,2,3,4,5,99};
+void math()
+{
+    list<double> lst{1, 2, 3, 4, 5, 99};
     auto s = accumulate(lst.begin(), lst.end(), 0.0);
     cout << "Math: " << s << endl;
 
     // random()
     // Rand_int rnd{1,10};
-    auto die = bind(uniform_int_distribution<>{1,6}, 
-            default_random_engine{});
+    auto die = bind(uniform_int_distribution<>{1, 6},
+                    default_random_engine{});
     int x = die();
     cout << "Generated number x: " << x << endl;
     int y = die();
@@ -218,173 +217,198 @@ void math(){
     static_assert(numeric_limits<char>::is_signed, "unsigned characters!");
     static_assert(100000 < numeric_limits<int>::max(), "small ints!");
 }
-void declare(){
+void declare()
+{
     int count{1};
-    const char * name {"Bjarne"};
+    const char *name{"Bjarne"};
     count = 2;
     name = "Marian";
 
-    enum T { A, B, C, D};
-    int x3 {3};
+    enum T
+    {
+        A,
+        B,
+        C,
+        D
+    };
+    int x3{3};
     printf("declare: %d\n", x3);
-    vector<int> v1{99,98,97};
-    // nullprt, 
-
+    vector<int> v1{99, 98, 97};
+    // nullprt,
 }
-void pointer(){
+void pointer()
+{
     int n = 2;
-    void* pv;
+    void *pv;
     pv = &n;
     int *pi2 = static_cast<int *>(pv);
     cout << "pointer: " << *pi2 << endl;
 
     int *pi = nullptr;
-    double* pd = nullptr;
+    double *pd = nullptr;
 
-    cout << "sizeof \"Bohr\":" << sizeof("Bohr") <<endl;
-    char alpha[] = "abcdefg" 
-                    "ABCDEFG";
+    cout << "sizeof \"Bohr\":" << sizeof("Bohr") << endl;
+    char alpha[] = "abcdefg"
+                   "ABCDEFG";
     cout << "string alpha:" << alpha << endl;
 
     cout << R"(\w\\w)" << endl;
 
-    string counts {R"(1
+    string counts{R"(1
         22
         333)"};
     cout << "counts: " << counts << endl;
-
 }
-template<typename T>
-int byte_diff(T*p, T* q){
-    return reinterpret_cast<char*>(q) - reinterpret_cast<char*>(p);
+template <typename T>
+int byte_diff(T *p, T *q)
+{
+    return reinterpret_cast<char *>(q) - reinterpret_cast<char *>(p);
 }
-void diff_test(){
+void diff_test()
+{
     int vi[10];
     short vs[10];
     cout << vi << ' ' << &vi[1] << ' ' << &vi[1] - &vi[0] << ' '
-        << byte_diff(&vi[0], &vi[1]) << '\n';
+         << byte_diff(&vi[0], &vi[1]) << '\n';
     cout << vs << ' ' << &vs[1] << ' ' << &vs[1] - &vs[0] << ' '
-        << byte_diff(&vs[0], &vs[1]) << '\n';
-    
+         << byte_diff(&vs[0], &vs[1]) << '\n';
 }
-int high_value(initializer_list<int> val){
+int high_value(initializer_list<int> val)
+{
     int high = numeric_limits<int>::lowest();
-    if(val.size() == 0){
+    if (val.size() == 0)
+    {
         return high;
-    } 
+    }
 
-    for(auto x: val){
-        if(x> high)
+    for (auto x : val)
+    {
+        if (x > high)
             high = x;
     }
     return high;
 }
-void print_modulo(const vector<int>&v, ostream& os, int m){
-    for_each(begin(v), end(v), 
-        [&os, m](int x){
-            if(x%m == 0){
-                os << x << '\n';
-            }
-        });
+void print_modulo(const vector<int> &v, ostream &os, int m)
+{
+    for_each(begin(v), end(v),
+             [&os, m](int x)
+             {
+                 if (x % m == 0)
+                 {
+                     os << x << '\n';
+                 }
+             });
 }
-void select_operation(){
-    int v1 = high_value({1,2,3,4,5,6,7});
-    int v2 = high_value({-1,2,v1,4,-9,20});
+void select_operation()
+{
+    int v1 = high_value({1, 2, 3, 4, 5, 6, 7});
+    int v2 = high_value({-1, 2, v1, 4, -9, 20});
     cout << "v1: " << v1 << endl;
     cout << "v2: " << v2 << endl;
 
-    auto x0={1};
-    auto x4 = { 1,2,0};
-    vector<int>vec = {1,2,3,4,5,6,7,8,9};
-    print_modulo(vec, cout , 2);
+    auto x0 = {1};
+    auto x4 = {1, 2, 0};
+    vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    print_modulo(vec, cout, 2);
 
-    double(*p1)(double) = [](double a){ return sqrt(a);};
+    double (*p1)(double) = [](double a)
+    { return sqrt(a); };
 }
 // class Range_error: std::runtime_error{
 //     const char* what() const noexcept{
 //         return "Range_error";
 //     }
 // };
-void f_except(int n) {
-    if(n<0|| 10<n) {
+void f_except(int n)
+{
+    if (n < 0 || 10 < n)
+    {
         throw std::runtime_error{"I give up!"};
     }
 }
-void except(){
-    try{
+void except()
+{
+    try
+    {
         f_except(-2);
-    }catch(std::exception &e){
-        cout << "Caught range_error"<<endl;
+    }
+    catch (std::exception &e)
+    {
+        cout << "Caught range_error" << endl;
         cerr << e.what() << '\n';
     }
     cout << "No error" << endl;
 }
 
-void simple_vector(){
+void simple_vector()
+{
     // to discuss exception safety, avoidance of resource leaks,
     cout << "simple vector" << endl;
-
 }
-string ident(string arg){
+string ident(string arg)
+{
     return arg;
 }
-struct Tracer{
+struct Tracer
+{
     string mess;
-    Tracer(const string& s): mess{s} { clog << mess; }
+    Tracer(const string &s) : mess{s} { clog << mess; }
     ~Tracer() { clog << "~" << mess; }
 };
-void f(const vector<int>& v){
-    Tracer tr {"in f()\n"};
+void f(const vector<int> &v)
+{
+    Tracer tr{"in f()\n"};
     // for(auto x: v){
     //     Tracer tr {string{"v loop "} + to <string>(x) + '\n'};
     // }
 }
-void construction(){
+void construction()
+{
     cout << "Construction , life cycle " << endl;
-    string s1 {"Adams"};
-    s1=ident(s1);
-    string s2 {"Pratchett"};
+    string s1{"Adams"};
+    s1 = ident(s1);
+    string s2{"Pratchett"};
     s1 = s2;
-    Tracer tr {" in f()\n"};
+    Tracer tr{" in f()\n"};
 
-
-    cout <<"Subscripting" << endl;
+    cout << "Subscripting" << endl;
     Assoc values;
     string buf;
-    
+
     // string operator""SS(const char* p);
     // string s12= "one two"SS;
     // string s13=13SS;
     char a[10], b[10];
-    std::string stringvalues= "one \n \t two";
+    std::string stringvalues = "one \n \t two";
     std::istringstream iss(stringvalues);
     iss >> std::noskipws;
     iss >> a >> std::ws >> b;
-    cout << "Print out:" << a <<", " << b << "\n";
-
+    cout << "Print out:" << a << ", " << b << "\n";
 }
-void test_shape(){
+void test_shape()
+{
     cout << "test_shape()" << endl;
     Triangle t;
     Circle c;
-    vector<pair<Shape*,Shape*>> vs {{&t, &t},
-        {&t, &c},
-        {&c, &t},
-        {&c, &c}};
-    for(auto p: vs){
+    vector<pair<Shape *, Shape *>> vs{{&t, &t},
+                                      {&t, &c},
+                                      {&c, &t},
+                                      {&c, &c}};
+    for (auto p : vs)
+    {
         p.first->intersect(*p.second);
     }
 }
-void test_Xref(){
+void test_Xref()
+{
     string x{"There and back again"};
 
-    Xref<string> r1 {7, x};
-    Xref<string> r2 {3, new string{"Two three"}};
-    Xref<string> r3 {9, "here are you"};
+    Xref<string> r1{7, x};
+    Xref<string> r2{3, new string{"Two three"}};
+    Xref<string> r3{9, "here are you"};
 
     const int s = 7;
     // max(1,2);
-
 }
 int main()
 {
@@ -428,9 +452,9 @@ int main()
 
     parallel();
 
-    tuple<string, int, double> t2("Solid",12,3.14);
+    tuple<string, int, double> t2("Solid", 12, 3.14);
 
-    auto tup = make_tuple("Herring", 10 ,1.23);
+    auto tup = make_tuple("Herring", 10, 1.23);
     cout << "tuple ";
     cout << get<0>(tup) << " ";
     cout << get<1>(tup) << " ";
@@ -460,7 +484,9 @@ int main()
 
     template_main();
 
-    
+    cout << "Test locale" << endl;
+    locale loc("");
+    cout << loc.name() << '\n';
 
     return 0;
 }
