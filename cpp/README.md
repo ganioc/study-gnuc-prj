@@ -2119,3 +2119,65 @@ facet::id
 ### 39.3.3 Uses of locales and facets
 
 ### 39,4,1 string Comparison
+
+### 39.4.2 Numeric Formatting
+num_put,
+
+num_get, 
+
+numpunct facet, numerical punctuation,
+
+- decimal_point()
+- thousands_sep()
+- grouping()
+- truename()
+- falsename()
+
+ostreambuf_iterator<C>, 
+
+sentry_guard()
+
+* badbit,
+* eofbit,
+* failbit,
+
+sentry, to ensure that the stream's prefix and suffix operations are performed. 
+
+### 39.4.3 Money Formatting
+frac_digits(),Number of digits ater ".",
+
+money_get(), money_put(), 
+
+Moneypunct, 
+
+symbol, space, sign, none, value,
+
+ISO-4217, 货币的三个字符的标准, 
+
+### 39.4.4 Date and Time Formatting,
+time_put(), strftime() format, 
+
+- dateorder
+- weekday
+- monthname,
+
+
+tm, year zero for 1900, +1900,
+
+### 39.4.5 Character Classification
+字符类别，不同的character sets, He is Danish.
+
+ctype_base, 
+
+### 39.4.6 Character Code Conversion
+codecvt facet, 
+
+JIS <=> Unicode, 
+
+ok, partial, error, noconv,
+
+### 39.4.7 Messages,
+
+#### 39.4.7.1 Using Messages from Other facets
+
+
