@@ -2180,4 +2180,13 @@ ok, partial, error, noconv,
 
 #### 39.4.7.1 Using Messages from Other facets
 
+## 39.5 Convenience Interfaces,
+locale facilites can be complicated to use. 简化notation, 减少mistakes.
+
+### 39.5.4 Buffer Conversions,
+
+# 40 Numerics,
+
+## 40.1 Introduction
+
 
