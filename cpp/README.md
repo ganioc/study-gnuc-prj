@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-  - * , pointer,
+    - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -2121,9 +2121,10 @@ facet::id
 ### 39,4,1 string Comparison
 
 ### 39.4.2 Numeric Formatting
+
 num_put,
 
-num_get, 
+num_get,
 
 numpunct facet, numerical punctuation,
 
@@ -2133,60 +2134,127 @@ numpunct facet, numerical punctuation,
 - truename()
 - falsename()
 
-ostreambuf_iterator<C>, 
+ostreambuf_iterator<C>,
 
 sentry_guard()
 
-* badbit,
-* eofbit,
-* failbit,
+- badbit,
+- eofbit,
+- failbit,
 
-sentry, to ensure that the stream's prefix and suffix operations are performed. 
+sentry, to ensure that the stream's prefix and suffix operations are performed.
 
 ### 39.4.3 Money Formatting
+
 frac_digits(),Number of digits ater ".",
 
-money_get(), money_put(), 
+money_get(), money_put(),
 
-Moneypunct, 
+Moneypunct,
 
 symbol, space, sign, none, value,
 
-ISO-4217, 货币的三个字符的标准, 
+ISO-4217, 货币的三个字符的标准,
 
-### 39.4.4 Date and Time Formatting,
-time_put(), strftime() format, 
+### 39.4.4 Date and Time Formatting
+
+time_put(), strftime() format,
 
 - dateorder
 - weekday
 - monthname,
 
-
 tm, year zero for 1900, +1900,
 
 ### 39.4.5 Character Classification
+
 字符类别，不同的character sets, He is Danish.
 
-ctype_base, 
+ctype_base,
 
 ### 39.4.6 Character Code Conversion
-codecvt facet, 
 
-JIS <=> Unicode, 
+codecvt facet,
+
+JIS <=> Unicode,
 
 ok, partial, error, noconv,
 
-### 39.4.7 Messages,
+### 39.4.7 Messages
 
 #### 39.4.7.1 Using Messages from Other facets
 
-## 39.5 Convenience Interfaces,
+## 39.5 Convenience Interfaces
+
 locale facilites can be complicated to use. 简化notation, 减少mistakes.
 
-### 39.5.4 Buffer Conversions,
+### 39.5.4 Buffer Conversions
 
-# 40 Numerics,
+# 40 Numerics
 
 ## 40.1 Introduction
 
+C++不是为了数值计算而设计的。然而在某些应用中，C++非常吸引人。
 
+- database access
+- networking
+- instrument control
+- graphics
+- simulation
+- financial analysis
+
+数值方法，numerical methods,
+
+<limits>, numeric_limits template,
+
+constants, constexpr functions,
+
+mantissa? 尾数,
+
+### 40.2.1 Limit Macros
+
+<climits>, Integer Limit Macros,
+
+```
+CHAR_BIT
+CHAR_MIN
+CHAR_MAX
+INT_MIN
+LONG_MAX
+```
+
+<cfloat>, <float.h>
+
+```
+FLT_MIN
+FLT_MAX
+FLOT_DIG  // Number of decimal digits of precision of a float
+FLT_MAX_10_EXP
+DBL_MIN
+DBL_MAX
+DBL_EPSILON
+```
+
+## 40.3 Standard Mathematical Functions
+
+<cstdlib>, <cmath>,
+
+## 40.4 Complex Numbers
+
+complex<float>, complex<double>, complex<long double>,
+
+## 40.5 Numerical Array: valarray
+
+single-dimensional vectos of floating point values,
+
+For high-performance machine architecture, libraries relying on such vectors are in wide use. very aggresive optimization of code.
+
+slice
+
+gslice, generalized slice,
+
+## 40.6 Generalized Numerical Algorithms
+
+<numeric>,  <algorithm>,  general versions of common operations on sequences of numerical values,
+
+page 1177
