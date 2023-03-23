@@ -2258,3 +2258,44 @@ gslice, generalized slice,
 <numeric>,  <algorithm>,  general versions of common operations on sequences of numerical values,
 
 page 1177
+
+- accumulate
+- reduce
+- reduction,
+- fold
+
+inner_product()
+
+partial_sum(),
+
+adjacent_difference(),
+
+iota(),
+
+## 40.7 Random Numbers
+
+<random>, unguessable , truly random numbers, radio active decay, solar radiation. a random_device,
+
+- uniform random number generator, equal probability,
+- random number engine,  E{}, seed E{s} with a state, 状态,
+- random number engine adaptor (an adaptor), with different randomness properties
+- random number distribution,
+
+随机数产生器,engine + distribution,  normal distribution -> default_random_engien,  生成一个正则分布。
+
+用于sampling algorithms, 采样算法，从一个更大的样本群中选择一g规模的样本，抽样吧。　algorithm R,
+
+[b,e),
+
+### 40.7.2 Random Device
+
+d=rd.entropy(),
+
+D::result_type, D::param_type,
+
+- Bernoulli Distribution, {true,false}
+- binomial Distribution,  [0:无穷),
+- geometric Distribution,
+- negative binomial distribution,
+
+Poisson distribution, 柏松分布,
