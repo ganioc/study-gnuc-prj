@@ -2299,3 +2299,51 @@ D::result_type, D::param_type,
 - negative binomial distribution,
 
 Poisson distribution, 柏松分布,
+
+
+### 40.7.4 C-style Random Numbers,
+<cstdlib>, <stdlib.h>, 
+
+srand(s), start a new sequence of random numbers from the seed ,s ,在实际，为了使程序不可预测，seed通常选取环境中的一个变量，比如实时时钟，will make a good seed, 再加上温度，等等传感器的数据。
+
+# chap 41 Concurrency
+并行。 同时运行多个任务, widely used to imporve throughput. 使用多个处理器进行一个计算。提高响应的敏捷性，允许程序的一部分运行，另一部分等待响应。 
+
+thread.
+
+所有的线程访问memroy, in a sensible manner. 标准库支持的并行包括:
+* memory model, 保证同时访问memory不会出问题;
+* programming without locks, fine-grained low-level mechanisms for avoiding data races
+* thread library, 支持传统的threads-and-locks-style system level concurrent programming, 包括: thread ,condition_variable, mutex,
+* task support library: task-level concurrent programming:
+    - future
+    - promise,
+    - packaged_task
+    - async()
+
+对于程序员来说, prefer a future over a mutex for exchanging informaiton ,
+
+prefer muxtex over atomic for anything but simple counters , 
+
+尽可能地使用标准库来处理复杂性,
+
+processes, thread of execution in their own address spaces and communicating through inter-process communication. 
+
+local data, don't pass pointers of local data to other threads.
+
+deal with concurrency at the system level,
+standard提供的concurrent facilities,
+介绍基本使用, threads-and-locks level 
+
+没有介绍relaxed memory model, lock-free programming,
+advanced concurrent programming and design techniques,
+
+与POSIX threads相比，标准库的实现是
+type-safe: mess around with macros or void**, pass information among threads.
+
+futures 可以传送exceptions. 
+
+type safety, standard exception-based error-handling strategy, 
+
+## 41.2 Memory Model
+
