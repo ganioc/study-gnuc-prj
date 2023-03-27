@@ -2347,3 +2347,214 @@ type safety, standard exception-based error-handling strategy,
 
 ## 41.2 Memory Model
 
+
+
+## 41.3 Atomics
+Lock free programming是一些不使用explicit locks来编写concurrent programs的技巧。 依赖机器的原始操作来避免数据竞争, 
+
+Atomic operations,不会有数据竞争问题, data races, 
+
+lock-free technqiues 会比 lock-based alternatives快很多。
+
+依赖于汇编语言，或system-specific primitives. 
+
+同步操作： thread sees the effects of another thread, 在同步操作之间，编译器和处理器可以自由地 reorder code.同步操作可以是一个consume, acquire, release, .
+
+* acquire, other processors will see its effect before any subsequent operation's effect,
+* release, other processors will see every preceding operations' effect before the effect of the operation itself,
+* consume, weaker form of acquire, 
+
+enum memory_order,
+    memory_order_relaxed,
+    memory_order_consume,
+    memroy_order_acquire,
+    memory_order_release,
+    memory_order_acq_rel,
+    memory_order_seq_cst, sequentially consistent, 
+
+
+[[carries_dependency]], for transmitting memory order dependencies across function calls.
+
+C++ memory model,
+
+### 41.3.1 atomic Types,
+atomic template, performed by a single thread without interference from other threads.
+
+操作: load, store, swapping, incrementing, on a simple object, usually a single memory location. 
+
+compare-and-exchange operation, 
+
+compare-and-swap loop, CAS operation? Compare and Swap, 
+
+ABA problem? subtle and hard to detect,  subtleties of lock-free programming.
+
+they use compare-and-swap hardware operations; 
+
+double-checked locking idiom. 
+
+* optimisitc design
+* transactional memory,
+
+or atomic increment,
+
+RAII? Resource Management, 
+
+double-checked locking idiom, once_flag, call_once(), 标准库支持atomic 指针。
+
+### 41.3.2 Flags and Fences,
+标准库提供了两个低级的同步方法: atomic flags and fences.
+
+lowest-level atomic facilites, spinlocks, atomic types.
+
+Only lock-free mechanisms , 保证支持所有的实现，implementation, 虽然所有的大的平台都支持atomic types.
+
+ 与machine architects有关的额才会使用flags、fences.
+
+atomic_flag, a single bit of information, 其它的atomic类型都可以用atomic_flag来实现。
+
+ATOMIC_FLAG_INIT是唯一的可移植的、可靠的方法来初始化一个atomic_flag, 可以理解为一个非常简单的spin lock; 
+
+
+fence, 是memory barrier, that restricts operation erordering according to some specified memory ordering. 限制操作的重新顺序改变。slowing down a program to a safe speed, allowing a memroy hierarchy to reach a reasonably well-defined state.
+
+atomic_thread_fence(order)
+
+atomic_signal_fence(order),
+
+## 41.4 volatile
+to indicate that an object can be modified by something external to the thread of control. 
+
+volatile const long clock_register;
+
+Not to optimize away apparently redundant reads and writes.
+
+只在底层的代码，直接与硬件打交道的部分使用volatile.
+
+# 42 Threads and Tasks,
+Threads, avoiding data races, task-based concurrency,
+
+## 42.1 intro
+concurrency, 同时执行多个任务，用来提高throughput, 使用多个处理器来进行一个计算，或允许程序的一部分运行，另一部分在等待响应，从而提高响应能力。
+
+A thread可以执行一个任务, task. thread可以和其它的thread来共享地址空间。一个地址空间的所有threads都可以访问同样的内存位置。并行系统的的中心问题在于，确保threads可以一种可控的方式来访问内存。
+
+All threads 运行在同样的地址空间。如果需要hardware protection against data races, 使用了notion of a process. Stacks are not shared between threads, local variables are not subject to data races. 
+
+blocked, asleep, 当thread无法执行时。
+
+this_thread
+
+```
+id, // 唯一的标识符,t.get_id(),
+native_handle_type,
+t=move(t2)
+t.swap(t2)
+t.joinable()
+t.join()
+t.detach), 
+x=t.get_id(), 
+x=t.native_handle(), 
+n=hardware_concurrency(), n is the number of hardware processing units, 0, don't know
+swap(t,t2)
+```
+
+thread 代表了一个系统资源，a system thread, possibly even with dedicated hardware.
+thread可以被移动，但是不能被拷贝。
+
+作者使用two-core laptop, reports four hardware threads. using what is called hypter-threading.
+
+after detach(), 系统thread还是有一个id, hash<thread::id>, 
+
+生成多个task, link together, communicate through message queues.
+- queue, put(), get(), 实现without data races,
+- Consumer, Producer, 
+- worker[i] = move(worker_tmp)
+
+### 42.2.4 join()
+t.join() will block the current thread execution. 
+
+struct guarded_thread, 
+
+system thread, daemon, t.detach(),
+
+将thread作为程序的一个main module, access them through unique_ptr, shared_ptr, or place them in a container, vector<thread>, to avoid losing track of them.
+
+Dont pass a pointer to a local object out of its scope. 
+
+### 42.2.6 Namespace this_thread
+- get_id()
+- yield()
+- sleep_until(tp), put the current thread to sleep until time_point tp
+- sleep_for(d), put the current thread to sleep for duration d,
+
+这里又涉及到了操作系统的接口调用。
+
+timed_mutex, 
+
+### 42.2.7 Killing a thread,
+
+### 42.2.8 thread_local data,
+objects local, on the stack, is preferable to having them shared. 
+
+thread storage duration, 
+
+each thread has its own copy of its thread_local variables. destroyed on thread exit.
+
+nonlocal memory is a problem for concurrent programming, often nontrivial to determine if it is shared , a possible source of data races. 
+
+static, one-per-class values used to be popular. 包括了default values, use counters, caches, free lists, answers to frequently asked questions, many obscure uses. 
+
+## 42.3 避免Data Races,
+Avoiding attempts to simultaneously access data. dont require locking and lead to maximally efficient programs. 然而lots of data needs to be shared, use some form of locking:
+
+* Mutexes, mutual exclusion variable, acquire, access, release,
+* Condition variables,  used by a thread to wait for an event generated by another thread or a timer,
+
+条件变量并不能防止data races, 只是使我们避免引入共享变量.
+
+### 42.3.1 Mutexes,
+- mutex, 
+- recursive_mutex, repeatedly acquired by a single thread, 
+- timed_mutex, a nonrecursive mutex with operations to try to acquire the mutex for only a specified time
+- recursive_timed_mutex, 
+- lock_guard<M>, a guard for mutex M
+- unique_lock<M>, a lock for mutex M,
+
+critical section, a section of code protected by  lock, 
+
+为了使代码运行，不受， free of problems related to locking, 最好减少critical section的范围，
+
+标准库的mutexes, 提供了exclusive ownership semantics. 
+
+lock, try_lock, unlock, m.native_handle(), system handle for the mutex m,
+
+mutex不能被拷贝和移动，转换所有权, 是资源，而不是资源的句柄. 
+
+死锁，deadlock, 等待一个永远不会被释放的锁。
+
+lock_guard, 这个会处理mutex的unlock, in it's destructor, a resource handler,
+
+unique_lock, carries a small cost, 
+
+### 42.3.2 Multiple Locks,
+获取2个locks, 会带来死锁, 
+
+### 42.3.3 call_once()
+call_once(fl, f, args), 
+
+once_flag fl {}
+
+### 42.3.4 Condition Variables,
+threads之间的通讯, wait block on a condition_value, until some event, happen.
+
+```
+cv.notify_one()
+cv.notify_all()
+cv.wait(lck), lck must be owned by the calling thread, atomically calls lck.unlock() and blocks,
+cv.wait_until(lck, tp), 
+
+```
+## 42.4 Task-Based Concurrency
+
+
+
