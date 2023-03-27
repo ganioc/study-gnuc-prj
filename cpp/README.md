@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-  - * , pointer,
+    - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -2598,6 +2598,22 @@ enum memory_order,
 
 C++ memory model,
 
+ISO C++ standard, contract between implementers and programmers to ensure that 一般的大众程序员、也就是编程语言的使用者不必去思考现代计算机硬件的细节。内存中对一个对象的操作，并不是直接作用于内存，而是register, 寄存器、缓存之上。
+
+### 41.2.1 Memroy Location
+
+Bit-fields give access to parts of a word. 除s使f非常昂贵的locking,
+
+A memory location是数字类d对象z指针，最大的sequence fo adjacent bit-fields all having非零的宽度。
+
+Instruction Reordering,
+
+Memory Order,
+
+sequentially consistent, memory order,
+
+atomic operation, a consistent view of a memory location,  a simple read or write does not impose an order,
+
 ### 41.3.1 atomic Types
 
 atomic template, performed by a single thread without interference from other threads.
@@ -2790,19 +2806,3 @@ cv.wait_until(lck, tp),
 ```
 
 ## 42.4 Task-Based Concurrency
-
-ISO C++ standard, contract between implementers and programmers to ensure that 一般的大众程序员、也就是编程语言的使用者不必去思考现代计算机硬件的细节。内存中对一个对象的操作，并不是直接作用于内存，而是register, 寄存器、缓存之上。
-
-### 41.2.1 Memroy Location
-
-Bit-fields give access to parts of a word. 除s使f非常昂贵的locking,
-
-A memory location是数字类d对象z指针，最大的sequence fo adjacent bit-fields all having非零的宽度。
-
-Instruction Reordering,
-
-Memory Order,
-
-sequentially consistent, memory order,
-
-atomic operation, a consistent view of a memory location,  a simple read or write does not impose an order,
