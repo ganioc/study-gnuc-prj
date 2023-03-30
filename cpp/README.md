@@ -2806,3 +2806,38 @@ cv.wait_until(lck, tp),
 ```
 
 ## 42.4 Task-Based Concurrency
+
+launching polices:
+
+- async, execute the task as if a new thread was created to do so
+- deferred, execute the task at the point of a get() for the task's future,
+
+recycled thread, a thread from a collection of threads( a thread pool)
+
+system threads, can drastically lower the cost of executing a task on a thread,
+
+[=], pass by value, capture by value, not by reference,
+
+### 42.4.7 Parallel find(）例子
+
+[1] Create a number of tasks to run
+[2] Run tasks in parallel
+[3] Merge the results
+
+map-reduce,
+
+# 43 The C standard library
+
+C语z证明z自己在各种上下q情况d的能力，如low-level programming.
+
+Kernighan and Ritchie's C textnook,
+
+## 43.2 Files
+
+<stdio>,  fopen(s,m), flcose(f), close file stream,
+
+printf(), iostreams, type-safe and extensible,
+
+C style String,
+
+## 43.6 Date and Time
