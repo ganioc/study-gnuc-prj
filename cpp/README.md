@@ -2841,3 +2841,35 @@ printf(), iostreams, type-safe and extensible,
 C style String,
 
 ## 43.6 Date and Time
+
+# 44 Compatibility
+
+C++ 11 Extensions,
+
+standard c++, ISO/IEC 14882-2011, 11 c++,
+
+ISO/IEC 14882-1998
+
+standard C , ISO/IEC 9899-2011,
+
+2014,
+
+2017, => this one,
+
+2020, 不知道添加s什么新的特性?
+
+建议使xb版本，建y依赖标准库，使用classes, templates, exceptions,
+
+2023年应s使n哪个版d的C++呢？
+
+使用Boost library,
+
+RTTI, Runtime Type Identification,
+
+extern "C" link to C code,
+
+__cplusplus, macro,
+
+<tgmath.h>, _Copmplex, <complex.h>, <complex>
+
+<stdbool.h>, _Bool, bool,
