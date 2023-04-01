@@ -345,7 +345,7 @@ implementation-defined
 ## Structure of Declarations
 
 - prefix specifiers, static, virtual, extern, constexpr,
-    - * , pointer,
+  - * , pointer,
   - *const, constant pointer,
   - *volatile, volatile pointer,
   - &, lvalue reference, reference,
@@ -2806,6 +2806,86 @@ cv.wait_until(lck, tp),
 ```
 
 ## 42.4 Task-Based Concurrency
+
+<<<<<<< HEAD
+Task Support,
+
+```
+packaged_task<F>, package a callable object of type F to run as task
+promise<T>, a type of object to put one result of type T,
+future<T>, a type of object from which to move one result of type T,
+shared_future<T>, a future from which to read a result of type T several times,
+x = async(policy, f, args), launch f(args)
+x = async(f, args), launch with default policy, 
+```
+
+Simplicity to programmer.
+
+并行的版本, auto handle=async(task, args);
+    res = handle.get(), 什么时候会回来呢？
+
+tasks之间的通讯使用future/promise pair, 一个任务将结果放入promise, 另一个任务通过future来获得结果result,
+
+value, shared state, 包含了信息，使两个线程可以安全地交换信息。
+- value of appropriate type or an exception,
+- ready bit,
+- launched by async() with the lauch policy deferred,
+- use count, shared state can be destroyed  when and only when its last potential user relinquishes access.
+- some mutual exclusion data to enable unblocking of any thread that might be waiting, condition_variable,
+
+实现将 take actions on 共享状态:
+- Construct, 使用用户提供的allocator,
+- Make ready, 设置ready bit, unblock any waiting threads,
+- Release, decrease user count, destroy the shared state if it's the last user,
+- Abandon, it becomes impossible for a value or exception to be put into the shared state by a promise, a future_error exception with the error condition broken_promise is stored in the shared state.
+
+### 42.4.2 promise
+
+promise is the handle to a shared state. 可以将结果result, deposit to future.
+
+```
+promise pr{}
+
+pr.set_value(x)
+pr.set_value()
+pr.set_exception(p),
+pr.set_value_at_thread_exit(x)
+pr.set_exception_at_thread_exit(p)
+pr.get_future(), 
+
+```
+
+no copy operations for a promise. future_error, 结果result moved into and out of the shared state,而不是拷贝，这样我们可以廉价地传递一组对象。
+
+### 42.4.3 packaged_task
+
+package_task, future可以在不同的thread里面。
+
+### 42.4.4 future
+
+task可以检索、取回promise放入的结果result.
+
+```
+future fu{}
+fu.get(), // can only be called once, 要读出多次的话，使用shared_future,
+fu.valid()
+fu.wait(), block until a value arrives,
+fs=fu.wait_for(d), fs tells if a value is ready, a timeout occurred, execution is deferred,
+fs=fu.wait_until(tp), 
+```
+
+future_errc::no_state,
+
+wait_for_all(args), until every future in args has a value,
+wait_for_any(args), wait until one future in args has a value,
+
+steady_clock::duration,
+
+### 42.4.5 shared_future
+
+shared_future, 可以被多个reader读取,
+
+Without too much worrying about threads. a thread is something you give a task to run. 我们还是需要考虑要使用多少个线程thread, 当前的任务是运行在当前thread,还是其它thread.
 
 launching polices:
 
