@@ -2884,9 +2884,6 @@ Without too much worrying about threads. a thread is something you give a task t
 
 
 
-
-=======
-
 launching polices:
 
 - async, execute the task as if a new thread was created to do so
@@ -2921,4 +2918,33 @@ printf(), iostreams, type-safe and extensible,
 C style String,
 
 ## 43.6 Date and Time
->>>>>>> temp
+<ctime>, 
+clock_t, arithmetic type for holding short time intervals, a few minutes,
+
+time_t, an arithmetic type for holding long time intervals, centuries,
+
+tm, a struct holding the time of a date, since year 1900
+
+t = clock(), 返回clock_t
+
+t = time(pt), t is current calendar time, pt is time_t 或nullptr, pull null uull, bull,
+
+p=asctime(ptm), time_t, asc格式的字符串, 
+
+ctime(t), =asctime(localtime(t)),
+
+localtime(pt), pt==nullptr, 
+
+strftime(p,max,fmt,ptm), 
+
+<chrono>, 
+
+获取运行时间间隔, clock()-clock(),  double(t2 - t1)/CLOCKS_PER_SEC,
+
+
+## 43.7 Etc.
+<cstdlib>, 
+
+```
+
+```
