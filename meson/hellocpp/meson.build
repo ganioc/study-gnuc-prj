@@ -8,8 +8,11 @@ subdir('lib')
 
 incdir = ['lib']
 
+zlib_dep = dependency('zlib')
+
 executable('hellocpp',
     srcs,
     include_directories: incdir,
-    link_with: greeter_lib)
+    link_with: greeter_lib,
+    dependencies: zlib_dep)
 
