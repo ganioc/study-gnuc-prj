@@ -2,7 +2,7 @@
 
 CC       := g++
 LD       := g++
-CFLAGS   := -std=c++11  -g -Wall
+CFLAGS   := -std=c++17  -g -Wall
 CPPFLAGS := 
 INCLUDES := -I ./include/  
 LIBS     :=

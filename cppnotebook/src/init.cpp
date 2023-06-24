@@ -1,8 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>  // to use exit() funciton
+#include <algorithm>
+
 // #include <experimental/filesystem>
 #include "init.h"
+
 
 using namespace std;
 

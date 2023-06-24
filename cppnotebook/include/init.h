@@ -5,7 +5,7 @@ using std::string;
 #include <filesystem>
 #ifdef __APPLE__
         namespace fs = std::__fs::filesystem;
-    #else
+#else
         namespace fs = std::filesystem;
 #endif
 
