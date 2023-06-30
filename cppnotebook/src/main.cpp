@@ -1,6 +1,7 @@
 #include <iostream>
 #include "init.h"
 #include "main.h"
+#include "study.h"
 
 using std::cout;
 using std::endl;
@@ -14,6 +15,8 @@ int main(){
     cout << SEPARATOR_LINE << endl;
 
     Nbk::init_dir("./build/");
+
+    STUDY::testAlg();
 
     return 0;
 }

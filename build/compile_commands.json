@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/ruff/project/study-gnuc-prj/build",
+  "command": "/usr/bin/g++ -g -std=gnu++14 -o CMakeFiles/hello.dir/helloworld.cpp.o -c /home/ruff/project/study-gnuc-prj/cmake/hellocpp/helloworld.cpp",
+  "file": "/home/ruff/project/study-gnuc-prj/cmake/hellocpp/helloworld.cpp"
+}
+]

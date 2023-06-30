@@ -17,6 +17,8 @@ SHARE_DIR:= share
 
 MODULES := build/nbk
 
+OBJS := main.o init.o study.o
+
 .PHONY: clean
 
 all: checkdirs build/nbk
@@ -28,7 +30,7 @@ $(BUILD_DIR):
 $(SHARE_DIR):
 	mkdir -p $(BUILD_DIR)/$(SHARE_DIR)
 
-build/nbk : main.o init.o
+build/nbk : $(OBJS)
 	$(CC) $(filter %.o,$^) -o $@ $(LIBS) $(LDFLAGS)
 
 %.o: %.cpp 

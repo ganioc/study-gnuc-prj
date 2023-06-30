@@ -1,0 +1,3 @@
+/home/ruff/project/study-gnuc-prj/build/CMakeFiles/hello.dir
+/home/ruff/project/study-gnuc-prj/build/CMakeFiles/edit_cache.dir
+/home/ruff/project/study-gnuc-prj/build/CMakeFiles/rebuild_cache.dir

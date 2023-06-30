@@ -3,8 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                ""
+                "/usr/include/c++/11/",
+                "${workspaceFolder}/cppnotebook/include/*",
+                "."
             ],
             "defines": [],
             "macFrameworkPath": [],
@@ -13,6 +14,12 @@
             "cppStandard": "c++11",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.makefile-tools"
+        },{
+            "name": "Mac",
+            "includePath": [
+
+            ],
+            "defines": []
         }
     ],
     "version": 4
